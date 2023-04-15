@@ -1,0 +1,66 @@
+.container {
+  width: $containerWidth;
+  margin: $marginCenter;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.m-auto {
+  margin: $marginCenter;
+}
+
+.btnPrimary {
+  display: inline-block;
+  // width: 25%;
+  background-color: $orangeBckGround;
+  color: $primaryFontColor;
+  padding: 10px;
+  border: 1px solid $orangeBckGround;
+  border-radius: 20px;
+  text-transform: capitalize;
+  // font-size: 1.1rem;
+  cursor: pointer;
+  transition: $transition;
+  &:hover {
+    background-color: $secondaryFontColor;
+    border: 1px solid $secondaryFontColor;
+  }
+}
+
+.loader {
+  border: 10px solid #ffff;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border-top: 10px solid $navyBckGround;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+// .btnLogin {
+//     padding: 5px;
+//     background-color: $navyBckGround;
+//     color: $primaryFontColor;
+//     border: 1px solid $navyBckGround;
+//     border-radius: 10px;
+//     text-transform: capitalize;
+//     font-size: 1.1rem;
+//     cursor: pointer;
+//     transition: $transition;
+//     &:hover {
+//         background-color: $hoverLinkColor;
+//     }
+
+// }

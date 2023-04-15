@@ -1,0 +1,74 @@
+@import "../../components/Styles/mixins";
+@import "../../components/Styles/variables";
+@import "../../components/Styles/basic";
+
+.nav__container {
+  margin: $marginCenter;
+  width: 100%;
+  padding: 15px;
+}
+
+.nav__background {
+  // background-color: $yellowBckGround;
+  // background-image: linear-gradient(to right, $yellowBckGround 40%,$orangeBckGround 70%);
+
+  background-color: #f7e135;
+  background-image: linear-gradient(to right, #f7e135 40%, #edbd25 70%);
+}
+
+.nav__flex {
+  @include flexx($dir: row, $justify: space-between, $align: center);
+  &__logo {
+    @include flexx($dir: row, $justify: space-between, $align: center);
+    gap: 15px;
+    cursor: pointer;
+    color: $secondaryFontColor;
+    &--animation:hover {
+      display: inline-block;
+      animation: rubberBand;
+      animation-duration: 1s;
+    }
+  }
+  &__search {
+    @include flexx($dir: row, $justify: space-between, $align: center);
+    position: relative;
+    width: 45%;
+    &__input {
+      width: 80%;
+      height: 35px;
+      border: 1px solid black;
+      border-radius: 20px;
+      font-size: 1.1rem;
+      color: $secondaryFontColor;
+      padding-left: 10px;
+    }
+    &__notLogin {
+      color: $primaryFontColor;
+      font-size: $fontSize;
+      cursor: pointer;
+      width: 12%;
+    }
+    &__login {
+      width: 20%;
+      span {
+        color: $secondaryFontColor;
+        font-size: $fontSize;
+        cursor: pointer;
+        padding-left: 1.6em;
+        // svg {
+        //     height: 1.5em;
+        //     width: 2.1em;
+        // }
+      }
+    }
+  }
+}
+.searchIcon {
+  position: absolute;
+  color: $secondaryFontColor;
+  top: 14%;
+  right: 23%;
+  height: 1.5em;
+  width: 2em;
+  cursor: pointer;
+}

@@ -1,0 +1,67 @@
+@import "../../components/Styles/mixins";
+@import "../../components/Styles/variables";
+
+.heroImg {
+  @include flexx($dir: row, $justify: space-between, $align: center);
+  flex-wrap: nowrap;
+  margin: $marginCenter;
+  height: 83vh;
+  // width: 100%;
+  background-color: black;
+  position: relative;
+  overflow: hidden;
+
+  &__title {
+    width: 20%;
+    height: 20%;
+    inset: 0;
+    position: absolute;
+    z-index: 99;
+  }
+  &__left {
+    background-image: url("../../img/BreakingBad.jpg");
+    // background-image: url('../../img/login-bckground-image.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 55%;
+    height: 83vh;
+    transform-origin: top right;
+    transform: skew(-25deg, 0deg);
+    opacity: 0.9;
+    &__btnHero {
+      position: absolute;
+      bottom: 12%;
+      left: 50%;
+      font-size: 1.3rem;
+      transform: skew(0deg);
+      padding: 20px 40px;
+      text-decoration: none;
+    }
+    // clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
+  }
+  &__right {
+    // background-image: url('../../img/BreakingBad.jpg');
+    background-image: url("../../img/JW4.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 83vh;
+    width: 55%;
+    transform-origin: bottom left;
+    transform: skew(-25deg, 0deg);
+    position: absolute;
+    left: 40%;
+    opacity: 0.9;
+    &__btnHero {
+      position: absolute;
+      bottom: 11%;
+      left: 40%;
+      font-size: 1.3rem;
+      transform-origin: 0%;
+      transform: skew(0deg, 0deg);
+      padding: 20px 40px;
+      text-decoration: none;
+    }
+    // clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}

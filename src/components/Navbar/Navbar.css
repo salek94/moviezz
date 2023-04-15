@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+/***** colors ****/
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.m-auto {
+  margin: 0 auto;
+}
+
+.btnPrimary {
+  display: inline-block;
+  background-color: #F07B3F;
+  color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #F07B3F;
+  border-radius: 20px;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.btnPrimary:hover {
+  background-color: #212121;
+  border: 1px solid #212121;
+}
+
+.loader {
+  border: 10px solid white;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border-top: 10px solid #2D4059;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.nav__container {
+  margin: 0 auto;
+  width: 100%;
+  padding: 15px;
+}
+
+.nav__background {
+  background-color: #f7e135;
+  background-image: linear-gradient(to right, #f7e135 40%, #edbd25 70%);
+}
+
+.nav__flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__flex__logo {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  color: #212121;
+}
+.nav__flex__logo--animation:hover {
+  display: inline-block;
+  animation: rubberBand;
+  animation-duration: 1s;
+}
+.nav__flex__search {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 45%;
+}
+.nav__flex__search__input {
+  width: 80%;
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  color: #212121;
+  padding-left: 10px;
+}
+.nav__flex__search__notLogin {
+  color: #f3f3f3;
+  font-size: 16px;
+  cursor: pointer;
+  width: 12%;
+}
+.nav__flex__search__login {
+  width: 20%;
+}
+.nav__flex__search__login span {
+  color: #212121;
+  font-size: 16px;
+  cursor: pointer;
+  padding-left: 1.6em;
+}
+
+.searchIcon {
+  position: absolute;
+  color: #212121;
+  top: 14%;
+  right: 23%;
+  height: 1.5em;
+  width: 2em;
+  cursor: pointer;
+}/*# sourceMappingURL=Navbar.css.map */

@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+/***** colors ****/
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.m-auto {
+  margin: 0 auto;
+}
+
+.btnPrimary {
+  display: inline-block;
+  background-color: #F07B3F;
+  color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #F07B3F;
+  border-radius: 20px;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.btnPrimary:hover {
+  background-color: #212121;
+  border: 1px solid #212121;
+}
+
+.loader {
+  border: 10px solid white;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border-top: 10px solid #2D4059;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.container-form {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.form-border {
+  padding: 35px;
+  border: 1px solid black;
+  border-radius: 20px;
+  color: #f3f3f3;
+  background-color: rgba(33, 33, 33, 0.7);
+}
+
+.bckground {
+  background-image: url("../../img/login-bckground-image.jpg"), linear-gradient(#150a12, #210706);
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.pop-border {
+  padding: 35px;
+  border: 1px solid #f3f3f3;
+  border-radius: 20px;
+  background-color: #f3f3f3;
+  z-index: 1;
+  opacity: 0.9;
+  animation: animate 1s linear;
+}
+
+@keyframes animate {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.pop-bckground {
+  background-image: url("../../img/login-bckground-image.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.absolute {
+  position: absolute;
+  width: 40%;
+  top: 23%;
+  left: 30%;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  cursor: pointer;
+}
+.closeIcon svg {
+  width: 1.8em;
+  height: 2.1em;
+}
+
+.relative {
+  position: relative;
+  min-height: 100vh;
+}
+
+.flex-login {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+h1,
+h4 {
+  color: #f3f3f3;
+}/*# sourceMappingURL=Register.css.map */

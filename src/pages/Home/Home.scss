@@ -1,0 +1,93 @@
+@import "../../components/Styles/mixins";
+@import "../../components/Styles/variables";
+@import "../../components/Styles/basic";
+
+.main-container {
+  width: 100%;
+  margin: $marginCenter;
+  background-color: $navyBckGround;
+  // color: $primaryFontColor;
+  & .slick-dots {
+    position: static;
+  }
+  & .banner {
+    padding: 0 7px;
+    transition: $transition;
+    position: relative;
+    // overflow: hidden;
+    &__overview {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      &:hover {
+        @include flexx($dir: column, $justify: center, $align: center);
+        position: absolute;
+        opacity: 1;
+        inset: 0;
+        gap: 20px;
+        z-index: 99;
+        cursor: pointer;
+        transform: translateY(-10px);
+        transition: $transition;
+        & span {
+          position: absolute;
+          top: 6%;
+          right: 5%;
+          color: $redBckGround;
+          transition: $transition;
+          &:hover {
+            color: $secondaryFontColor;
+          }
+        }
+      }
+      .redColor {
+        background-color: $redBckGround;
+        &:hover {
+          background-color: $secondaryFontColor;
+        }
+      }
+    }
+  }
+  & .wrapper {
+    @include flexx($dir: row, $justify: flex-start, $align: center);
+    gap: 20px;
+    padding: 15px 0;
+    &__period {
+      @include flexx($dir: row, $justify: space-between, $align: center);
+      border: 1px solid $secondaryFontColor;
+      border-radius: 20px;
+      &__box {
+        border-radius: 20px;
+        padding: 0 20px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: $transition;
+      }
+      &--active {
+        background-color: $redBckGround;
+        transition: $transition;
+        color: $primaryFontColor;
+      }
+    }
+  }
+}
+
+// za Trending 2
+// .flex-slider {
+//     @include flexx ($dir:row, $justify:center, $align:center);
+//     &__row {
+//         width: 18%;
+//         margin: 10px 8px;
+//         img {
+//             width: 100%;
+//         }
+//     }
+//     &__arrow {
+
+//         // margin-left: 5px;
+//         svg {
+//             height: 2em;
+//             width: 1.3em;
+//         }
+//     }
+// }

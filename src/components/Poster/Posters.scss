@@ -1,0 +1,33 @@
+@import "../../components/Styles/mixins";
+
+.container-poster {
+  width: 100%;
+  margin: 10px auto;
+  position: relative;
+}
+.flex-btn {
+  display: flex;
+  justify-content: space-around;
+  // margin-bottom: 30px;
+}
+.d-flex {
+  @include flexx($dir: row, $justify: space-between, $align: center);
+  overflow-x: auto;
+}
+
+.imgPoster {
+  width: 100%;
+  height: 40vh;
+  //   height: 100%;
+  border-radius: 20px;
+}
+
+.row {
+  // transition: $transition;
+  width: 25%;
+  margin-left: 10px;
+  // &:hover {
+  //     position: absolute;
+  //     transform: translateY(-20px);
+  // }
+}

@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+/***** colors ****/
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.m-auto {
+  margin: 0 auto;
+}
+
+.btnPrimary {
+  display: inline-block;
+  background-color: #F07B3F;
+  color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #F07B3F;
+  border-radius: 20px;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.btnPrimary:hover {
+  background-color: #212121;
+  border: 1px solid #212121;
+}
+
+.loader {
+  border: 10px solid white;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border-top: 10px solid #2D4059;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.main-container {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #2D4059;
+}
+.main-container .slick-dots {
+  position: static;
+}
+.main-container .banner {
+  padding: 0 7px;
+  transition: 0.3s ease-in-out;
+  position: relative;
+}
+.main-container .banner__overview {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.main-container .banner__overview:hover {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  opacity: 1;
+  inset: 0;
+  gap: 20px;
+  z-index: 99;
+  cursor: pointer;
+  transform: translateY(-10px);
+  transition: 0.3s ease-in-out;
+}
+.main-container .banner__overview:hover span {
+  position: absolute;
+  top: 6%;
+  right: 5%;
+  color: #EA5455;
+  transition: 0.3s ease-in-out;
+}
+.main-container .banner__overview:hover span:hover {
+  color: #212121;
+}
+.main-container .banner__overview .redColor {
+  background-color: #EA5455;
+}
+.main-container .banner__overview .redColor:hover {
+  background-color: #212121;
+}
+.main-container .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 0;
+}
+.main-container .wrapper__period {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #212121;
+  border-radius: 20px;
+}
+.main-container .wrapper__period__box {
+  border-radius: 20px;
+  padding: 0 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.main-container .wrapper__period--active {
+  background-color: #EA5455;
+  transition: 0.3s ease-in-out;
+  color: #f3f3f3;
+}/*# sourceMappingURL=Home.css.map */

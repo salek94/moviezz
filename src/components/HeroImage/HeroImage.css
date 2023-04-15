@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+/***** colors ****/
+.heroImg {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+  height: 83vh;
+  background-color: black;
+  position: relative;
+  overflow: hidden;
+}
+.heroImg__title {
+  width: 20%;
+  height: 20%;
+  inset: 0;
+  position: absolute;
+  z-index: 99;
+}
+.heroImg__left {
+  background-image: url("../../img/BreakingBad.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 55%;
+  height: 83vh;
+  transform-origin: top right;
+  transform: skew(-25deg, 0deg);
+  opacity: 0.9;
+}
+.heroImg__left__btnHero {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  font-size: 1.3rem;
+  transform: skew(0deg);
+  padding: 20px 40px;
+  text-decoration: none;
+}
+.heroImg__right {
+  background-image: url("../../img/JW4.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 83vh;
+  width: 55%;
+  transform-origin: bottom left;
+  transform: skew(-25deg, 0deg);
+  position: absolute;
+  left: 40%;
+  opacity: 0.9;
+}
+.heroImg__right__btnHero {
+  position: absolute;
+  bottom: 11%;
+  left: 40%;
+  font-size: 1.3rem;
+  transform-origin: 0%;
+  transform: skew(0deg, 0deg);
+  padding: 20px 40px;
+  text-decoration: none;
+}/*# sourceMappingURL=HeroImage.css.map */

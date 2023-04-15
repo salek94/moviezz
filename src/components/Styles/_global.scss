@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: $fontFamily;
+  font-size: $fontSize;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+}
+
+a,
+p {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+svg {
+  height: 1.5rem;
+  width: 2.1rem;
+}
