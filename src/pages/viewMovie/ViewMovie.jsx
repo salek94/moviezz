@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./ViewMovie.scss";
 import MovieContext from "../../context/MovieContext";
-import Navbar from "../../components/Navbar/Navbar";
+import { FaStar } from "react-icons/fa";
 
 const ViewMovie = () => {
   const { movie } = useContext(MovieContext);
@@ -64,7 +64,10 @@ const ViewMovie = () => {
               <h3>{movie.title ? movie.title : movie.original_name}</h3>
             </div>
             <div className="view-wrapper__about-movie__details__ratings">
-              <p>Popularity: {movie.vote_average.toFixed(2)}</p>
+              <p>
+                <FaStar /> <b>{movie.vote_average.toFixed(1)}</b>/10
+              </p>
+              <p>{movie.vote_count}</p>
               {movieGenres?.map((genreMovie) => {
                 const movieOverview = movie.genre_ids;
 
