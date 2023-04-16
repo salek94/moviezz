@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./ViewMovie.scss";
 import MovieContext from "../../context/MovieContext";
@@ -7,7 +7,7 @@ import { FaStar, FaHeart } from "react-icons/fa";
 const ViewMovie = () => {
   const { movie, setFavorite } = useContext(MovieContext);
   const [movieGenres, setMovieGenres] = useState();
-
+  const [flag, setFlag] = useState(true);
   const navigate = useNavigate();
   // const params = useParams();
 
@@ -24,8 +24,8 @@ const ViewMovie = () => {
       const response = await fetch(urlMovie);
       const responseJson = await response.json();
 
-      if (responseJson.genres) {
-        // console.log(responseJson.genres);
+      if (responseJson.genres && flag) {
+        console.log(responseJson.genres);
         setMovieGenres(responseJson.genres);
       }
     } catch (error) {
@@ -33,8 +33,11 @@ const ViewMovie = () => {
     }
   };
 
-  useMemo(() => {
+  useEffect(() => {
     getMovieGenre();
+    return () => {
+      setFlag(false);
+    };
   }, []);
 
   const goHome = () => {

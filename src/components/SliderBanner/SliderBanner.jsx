@@ -1,34 +1,50 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { FaHeart } from "react-icons/fa";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MovieContext from "../../context/MovieContext";
 
 const SliderBanner = ({ movie }) => {
-  const { setMovie, favorite, setFavorite } = useContext(MovieContext);
-
+  const { setMovie, favoriteMovie, setFavoriteMovie } =
+    useContext(MovieContext);
+  const [aa, setAa] = useState(false);
   const navigate = useNavigate();
+  const ref = useRef();
 
   const goToViewMovie = (movie) => {
     setMovie(movie);
     navigate(`/view/${movie.id}`);
   };
-  useEffect(() => {});
-  const addFavorite = (movie) => {
-    const picTitle = [movie.original_title, movie.poster_path];
-    const favoriteMovie = localStorage.setItem(
-      "favorite",
-      JSON.stringify(picTitle)
-    );
-    // if (favoriteMovie) {
+
+  const addFavorite = (a, b) => {
+    // const picTitle = [movie.original_title, movie.poster_path];
+    const picTitle = [a, b];
+    localStorage.setItem("favorite", JSON.stringify(picTitle));
     const getFavoriteMovie = JSON.parse(localStorage.getItem("favorite"));
-    setFavorite((prev) => {
-      return { ...prev, getFavoriteMovie };
-    });
-    console.log(getFavoriteMovie);
-    console.log(favorite);
-    // }
+    // setAa(true);
+
+    setFavoriteMovie((picTitle) => [...picTitle, getFavoriteMovie]);
+
+    // console.log(favoriteMovie);
+    // ref.current = getFavoriteMovie;
+    // console.log(ref.current);
   };
 
+  // useEffect(() => {
+  //   const getFavoriteMovie = JSON.parse(localStorage.getItem("favorite"));
+
+  //   if (aa) {
+  //     setFavoriteMovie((getFavoriteMovie) => [
+  //       ...getFavoriteMovie,
+  //       getFavoriteMovie,
+  //     ]);
+  //   }
+
+  //   return () => {
+  //     setAa(false);
+  //   };
+
+  //   console.log(favoriteMovie);
+  // }, []);
   return (
     <div className="banner">
       <img
@@ -46,8 +62,10 @@ const SliderBanner = ({ movie }) => {
         >
           Watch Now
         </button>
-        <span>
-          <FaHeart onClick={() => addFavorite(movie)} />
+        <span
+          onClick={() => addFavorite(movie.original_title, movie.poster_path)}
+        >
+          <FaHeart />
         </span>
       </div>
     </div>

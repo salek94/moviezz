@@ -24,7 +24,7 @@
       width: 20%;
     }
     &__details {
-      @include flexx($dir: column, $justify: center, $align: start);
+      @include flexx($dir: column, $justify: center, $align: flex-start);
       width: 50%;
       gap: 10px;
       &__ratings {
