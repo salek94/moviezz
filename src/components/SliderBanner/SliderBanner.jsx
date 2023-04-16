@@ -1,16 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { FaHeart } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import MovieContext from "../../context/MovieContext";
 
 const SliderBanner = ({ movie }) => {
-  const { setMovie } = useContext(MovieContext);
+  const { setMovie, favorite, setFavorite } = useContext(MovieContext);
 
   const navigate = useNavigate();
 
   const goToViewMovie = (movie) => {
     setMovie(movie);
     navigate(`/view/${movie.id}`);
+  };
+  useEffect(() => {});
+  const addFavorite = (movie) => {
+    const picTitle = [movie.original_title, movie.poster_path];
+    const favoriteMovie = localStorage.setItem(
+      "favorite",
+      JSON.stringify(picTitle)
+    );
+    // if (favoriteMovie) {
+    const getFavoriteMovie = JSON.parse(localStorage.getItem("favorite"));
+    setFavorite((prev) => {
+      return { ...prev, getFavoriteMovie };
+    });
+    console.log(getFavoriteMovie);
+    console.log(favorite);
+    // }
   };
 
   return (
@@ -31,7 +47,7 @@ const SliderBanner = ({ movie }) => {
           Watch Now
         </button>
         <span>
-          <FaHeart />
+          <FaHeart onClick={() => addFavorite(movie)} />
         </span>
       </div>
     </div>

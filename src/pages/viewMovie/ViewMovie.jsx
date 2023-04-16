@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./ViewMovie.scss";
 import MovieContext from "../../context/MovieContext";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaHeart } from "react-icons/fa";
 
 const ViewMovie = () => {
-  const { movie } = useContext(MovieContext);
-  // const params = useParams();
-  const navigate = useNavigate();
-
+  const { movie, setFavorite } = useContext(MovieContext);
   const [movieGenres, setMovieGenres] = useState();
+
+  const navigate = useNavigate();
+  // const params = useParams();
 
   console.log(movie);
 
@@ -25,20 +25,24 @@ const ViewMovie = () => {
       const responseJson = await response.json();
 
       if (responseJson.genres) {
-        console.log(responseJson.genres);
+        // console.log(responseJson.genres);
         setMovieGenres(responseJson.genres);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
-  useEffect(() => {
+  useMemo(() => {
     getMovieGenre();
   }, []);
 
   const goHome = () => {
     navigate("/home");
+  };
+
+  const goGenre = (a) => {
+    console.log(a);
   };
 
   return (
@@ -65,15 +69,29 @@ const ViewMovie = () => {
             </div>
             <div className="view-wrapper__about-movie__details__ratings">
               <p>
-                <FaStar /> <b>{movie.vote_average.toFixed(1)}</b>/10
+                <FaStar className="star" />{" "}
+                <b>{movie.vote_average.toFixed(1)}</b>/10
               </p>
-              <p>{movie.vote_count}</p>
+              <p>{movie.vote_count} Users vote</p>
+              <p>
+                Add to favorite <FaHeart className="favorite" />{" "}
+              </p>
+            </div>
+            <div className="view-wrapper__about-movie__details__list-genre">
               {movieGenres?.map((genreMovie) => {
                 const movieOverview = movie.genre_ids;
 
                 for (let i = 0; i < movieOverview.length; i++) {
                   if (genreMovie.id === movieOverview[i]) {
-                    return <p> {genreMovie.name}</p>;
+                    return (
+                      <p
+                        // key={movie.id}
+                        className="genre"
+                        onClick={() => goGenre(genreMovie.name)}
+                      >
+                        {genreMovie.name}
+                      </p>
+                    );
                   }
                 }
               })}

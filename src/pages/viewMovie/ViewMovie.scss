@@ -10,7 +10,7 @@
   // background-image: `url({https://image.tmdb.org/t/p/original${movie.poster_path}})`;
   &__about-movie {
     @include flexx($dir: row, $justify: center, $align: center);
-    height: 400px;
+    // height: 400px;
     position: absolute;
     top: 22%;
     width: 100%;
@@ -19,7 +19,7 @@
     background-color: $primaryFontColor;
     border: 1px solid $secondaryFontColor;
     gap: 40px;
-    padding: 20px;
+    padding: 15px;
     &__picture {
       width: 20%;
     }
@@ -30,6 +30,28 @@
       &__ratings {
         @include flexx($dir: row, $justify: center, $align: center);
         gap: 20px;
+        & .favorite {
+          color: $redBckGround;
+          cursor: pointer;
+          &:hover {
+            color: $secondaryFontColor;
+          }
+        }
+      }
+      &__list-genre {
+        @include flexx($dir: row, $justify: center, $align: center);
+        gap: 20px;
+        & .genre {
+          border: 1px solid $secondaryFontColor;
+          border-radius: 20px;
+          padding: 5px 10px;
+          cursor: pointer;
+          transition: $transition;
+          &:hover {
+            background-color: $secondaryFontColor;
+            color: $primaryFontColor;
+          }
+        }
       }
       &__btn {
         @include flexx($dir: row, $justify: space-between, $align: center);

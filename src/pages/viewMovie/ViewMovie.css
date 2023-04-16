@@ -13,7 +13,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 400px;
   position: absolute;
   top: 22%;
   width: 100%;
@@ -22,7 +21,7 @@
   background-color: #f3f3f3;
   border: 1px solid #212121;
   gap: 40px;
-  padding: 20px;
+  padding: 15px;
 }
 .view-wrapper__about-movie__picture {
   width: 20%;
@@ -43,6 +42,32 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+.view-wrapper__about-movie__details__ratings .favorite {
+  color: #EA5455;
+  cursor: pointer;
+}
+.view-wrapper__about-movie__details__ratings .favorite:hover {
+  color: #212121;
+}
+.view-wrapper__about-movie__details__list-genre {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.view-wrapper__about-movie__details__list-genre .genre {
+  border: 1px solid #212121;
+  border-radius: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.view-wrapper__about-movie__details__list-genre .genre:hover {
+  background-color: #212121;
+  color: #f3f3f3;
 }
 .view-wrapper__about-movie__details__btn {
   display: flex;
