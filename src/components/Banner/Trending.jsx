@@ -40,7 +40,7 @@ const Trending = () => {
 
   return (
     <div className="container">
-      <div className="wrapper">
+      <div className="wrapper" id="trend">
         <h3>Trending</h3>
         <div className="wrapper__period">
           <span

@@ -4,11 +4,11 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
   margin: 0 auto;
-  height: 83vh;
+  height: 84vh;
   background-color: black;
   position: relative;
   overflow: hidden;
@@ -16,7 +16,7 @@
 .heroImg__title {
   width: 20%;
   height: 20%;
-  inset: 0;
+  left: 30%;
   position: absolute;
   z-index: 99;
 }
@@ -27,15 +27,15 @@
   width: 55%;
   height: 83vh;
   transform-origin: top right;
-  transform: skew(-25deg, 0deg);
+  transform: skew(-20deg, 0deg);
   opacity: 0.9;
+  transition: linear 1.5s;
 }
 .heroImg__left__btnHero {
   position: absolute;
   bottom: 12%;
-  left: 50%;
+  right: 30%;
   font-size: 1.3rem;
-  transform: skew(0deg);
   padding: 20px 40px;
   text-decoration: none;
 }
@@ -47,12 +47,91 @@
   height: 83vh;
   width: 55%;
   transform-origin: bottom left;
-  transform: skew(-25deg, 0deg);
-  position: absolute;
-  left: 40%;
+  transform: skew(-20deg, 0deg);
   opacity: 0.9;
+  transition: linear 1.5s;
 }
 .heroImg__right__btnHero {
+  position: absolute;
+  bottom: 11%;
+  left: 40%;
+  font-size: 1.3rem;
+  transform-origin: 0%;
+  transform: skew(0deg, 0deg);
+  padding: 20px 40px;
+  text-decoration: none;
+}
+.heroImg__left1 {
+  background-image: url("../../img/BreakingBad.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 1%;
+  height: 83vh;
+  transform-origin: top right;
+  transform: skew(-25deg, 0deg);
+  opacity: 0.9;
+  transition: linear 1.5s;
+}
+.heroImg__left1__btnHero {
+  position: absolute;
+  bottom: 12%;
+  left: 250%;
+  font-size: 1.3rem;
+  transform: skew(0deg);
+  padding: 20px 40px;
+  text-decoration: none;
+  z-index: 99;
+}
+.heroImg__right1 {
+  background-image: url("../../img/JW4.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 83vh;
+  width: 100%;
+  transition: linear 1.5s;
+  z-index: 0;
+}
+.heroImg__right1__btnHero {
+  visibility: hidden;
+  position: absolute;
+  bottom: 11%;
+  left: 40%;
+  font-size: 1.3rem;
+  transform-origin: 0%;
+  transform: skew(0deg, 0deg);
+  padding: 20px 40px;
+  text-decoration: none;
+}
+.heroImg__left2 {
+  background-image: url("../../img/BreakingBad.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 83vh;
+  opacity: 0.9;
+  transition: linear 1.5s;
+}
+.heroImg__left2__btnHero {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  font-size: 1.3rem;
+  transform: skew(0deg);
+  padding: 20px 40px;
+  text-decoration: none;
+}
+.heroImg__right2 {
+  background-image: url("../../img/JW4.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 83vh;
+  width: 0%;
+  transition: linear 1.5s;
+  opacity: 0.9;
+}
+.heroImg__right2__btnHero {
   position: absolute;
   bottom: 11%;
   left: 40%;
