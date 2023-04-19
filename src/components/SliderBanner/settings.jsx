@@ -4,8 +4,8 @@ export const settings = {
   adaptiveHeight: true,
   arrows: true,
   speed: 1000,
-  slidesToShow: 6,
-  slidesToScroll: 5,
+  slidesToShow: 5,
+  slidesToScroll: 6,
   variableWidth: true,
 };
 

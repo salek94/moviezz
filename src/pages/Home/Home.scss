@@ -5,8 +5,10 @@
 .main-container {
   width: 100%;
   margin: $marginCenter;
-  background-color: $navyBckGround;
-  // color: $primaryFontColor;
+  // background-color: $navyBckGround;
+  background-color: $secondaryFontColor;
+  // background-color: $primaryFontColor;
+  color: $primaryFontColor;
   & .slick-dots {
     position: static;
   }
@@ -42,6 +44,7 @@
       }
       .redColor {
         background-color: $redBckGround;
+        border: none;
         &:hover {
           background-color: $secondaryFontColor;
         }
@@ -54,7 +57,7 @@
     padding: 15px 0;
     &__period {
       @include flexx($dir: row, $justify: space-between, $align: center);
-      border: 1px solid $secondaryFontColor;
+      border: 1px solid $redBckGround;
       border-radius: 20px;
       &__box {
         border-radius: 20px;

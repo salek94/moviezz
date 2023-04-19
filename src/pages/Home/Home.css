@@ -15,10 +15,10 @@
 
 .btnPrimary {
   display: inline-block;
-  background-color: #F07B3F;
+  background-color: #f07b3f;
   color: #f3f3f3;
   padding: 15px;
-  border: 1px solid #F07B3F;
+  border: 1px solid #f07b3f;
   border-radius: 20px;
   text-transform: capitalize;
   cursor: pointer;
@@ -34,7 +34,7 @@
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  border-top: 10px solid #2D4059;
+  border-top: 10px solid #2d4059;
   position: absolute;
   top: 45%;
   left: 45%;
@@ -52,7 +52,8 @@
 .main-container {
   width: 100%;
   margin: 0 auto;
-  background-color: #2D4059;
+  background-color: #212121;
+  color: #f3f3f3;
 }
 .main-container .slick-dots {
   position: static;
@@ -86,14 +87,15 @@
   position: absolute;
   top: 6%;
   right: 5%;
-  color: #EA5455;
+  color: #df3232;
   transition: 0.3s ease-in-out;
 }
 .main-container .banner__overview:hover span:hover {
   color: #212121;
 }
 .main-container .banner__overview .redColor {
-  background-color: #EA5455;
+  background-color: #df3232;
+  border: none;
 }
 .main-container .banner__overview .redColor:hover {
   background-color: #212121;
@@ -113,7 +115,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #212121;
+  border: 1px solid #df3232;
   border-radius: 20px;
 }
 .main-container .wrapper__period__box {
@@ -124,7 +126,7 @@
   transition: 0.3s ease-in-out;
 }
 .main-container .wrapper__period--active {
-  background-color: #EA5455;
+  background-color: #df3232;
   transition: 0.3s ease-in-out;
   color: #f3f3f3;
 }/*# sourceMappingURL=Home.css.map */

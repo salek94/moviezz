@@ -15,10 +15,10 @@
 
 .btnPrimary {
   display: inline-block;
-  background-color: #F07B3F;
+  background-color: #f07b3f;
   color: #f3f3f3;
   padding: 15px;
-  border: 1px solid #F07B3F;
+  border: 1px solid #f07b3f;
   border-radius: 20px;
   text-transform: capitalize;
   cursor: pointer;
@@ -34,7 +34,7 @@
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  border-top: 10px solid #2D4059;
+  border-top: 10px solid #2d4059;
   position: absolute;
   top: 45%;
   left: 45%;
@@ -56,8 +56,7 @@
 }
 
 .nav__background {
-  background-color: #f7e135;
-  background-image: linear-gradient(to right, #f7e135 40%, #edbd25 70%);
+  background-image: linear-gradient(to right, #f7e135 30%, #edbd25 60%);
 }
 
 .nav__flex {

@@ -62,6 +62,7 @@ const SliderBanner = ({ movie }) => {
         >
           Watch Now
         </button>
+        {/* <h5>{movie.original_title}</h5> */}
         <span
           onClick={() => addFavorite(movie.original_title, movie.poster_path)}
         >

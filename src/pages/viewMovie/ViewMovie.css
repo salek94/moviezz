@@ -44,7 +44,7 @@
   gap: 20px;
 }
 .view-wrapper__about-movie__details__ratings .favorite {
-  color: #EA5455;
+  color: #df3232;
   cursor: pointer;
 }
 .view-wrapper__about-movie__details__ratings .favorite:hover {
@@ -79,6 +79,6 @@
   margin-top: 20px;
 }
 .view-wrapper__about-movie__details__btn .red {
-  background-color: #EA5455;
+  background-color: #df3232;
   opacity: 1 !important;
 }/*# sourceMappingURL=ViewMovie.css.map */
