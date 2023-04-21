@@ -49,6 +49,14 @@
     transform: rotate(360deg);
   }
 }
+@keyframes ticTac {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
 .main-container {
   width: 100%;
   margin: 0 auto;
@@ -91,7 +99,7 @@
   transition: 0.3s ease-in-out;
 }
 .main-container .banner__overview:hover span:hover {
-  color: #212121;
+  animation: ticTac 1s infinite;
 }
 .main-container .banner__overview .redColor {
   background-color: #df3232;

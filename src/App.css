@@ -87,6 +87,14 @@ svg {
     transform: rotate(360deg);
   }
 }
+@keyframes ticTac {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
 .App {
   margin: 0 auto;
 }/*# sourceMappingURL=App.css.map */

@@ -9,6 +9,9 @@
   background-color: $secondaryFontColor;
   // background-color: $primaryFontColor;
   color: $primaryFontColor;
+
+  //SLIDER BANNER
+
   & .slick-dots {
     position: static;
   }
@@ -38,7 +41,8 @@
           color: $redBckGround;
           transition: $transition;
           &:hover {
-            color: $secondaryFontColor;
+            // color: $secondaryFontColor;
+            animation: ticTac 1s infinite;
           }
         }
       }
@@ -51,6 +55,9 @@
       }
     }
   }
+
+  // TRENDING
+
   & .wrapper {
     @include flexx($dir: row, $justify: flex-start, $align: center);
     gap: 20px;
