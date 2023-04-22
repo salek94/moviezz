@@ -30,26 +30,27 @@ const Posters = () => {
     <>
       <h2>dawdwa</h2>
 
-      <div className="container-poster d-flex">
-        {movie.map((movie) => {
-          return (
-            <div key={movie.id} className="row">
-              <img
-                className="imgPoster"
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt=""
-              />
-              <p>{movie.title}</p>
-              <p>{movie.overview}</p>
-              <div className="flex-btn">
-                <button>
-                  <Link to={`/view/${movie.id}`}>More Details</Link>
-                </button>
-                <button>Watch Now</button>
+      <div className="poster-container">
+        {movie &&
+          movie.map((movie) => {
+            return (
+              <div key={movie.id} className="banner">
+                <img
+                  className="imgPoster"
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt=""
+                />
+                <p>{movie.title}</p>
+                <p>{movie.overview}</p>
+                <div className="flex-btn">
+                  <button>
+                    <Link to={`/view/${movie.id}`}>More Details</Link>
+                  </button>
+                  <button>Watch Now</button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     </>
   );

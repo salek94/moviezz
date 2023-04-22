@@ -21,7 +21,7 @@ const HeroImage = () => {
       setClickedMovie(true);
       setClickedTVshow(false);
       setMovieOrTV("movie");
-    }, 4000);
+    }, 2500);
     setTransitionMovie(true);
     setTransitionTV(false);
     // navigate("/home/movies");
@@ -32,7 +32,7 @@ const HeroImage = () => {
       setClickedTVshow(true);
       setClickedMovie(false);
       setMovieOrTV("tv");
-    }, 4000);
+    }, 2500);
     setTransitionTV(true);
     setTransitionMovie(false);
   };

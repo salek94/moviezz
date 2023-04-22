@@ -79,6 +79,12 @@ svg {
   animation: spin 2s linear infinite;
 }
 
+.imgPoster {
+  width: 100%;
+  height: 40vh;
+  border-radius: 20px;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
