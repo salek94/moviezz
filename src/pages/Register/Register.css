@@ -128,7 +128,7 @@
 
 .relative {
   position: relative;
-  min-height: 100vh;
+  height: 101vh;
 }
 
 .flex-login {

@@ -52,6 +52,7 @@ const ViewMovie = () => {
     <div>
       {/* <Navbar /> */}
       <div
+        key={movie.id}
         className="view-wrapper"
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,

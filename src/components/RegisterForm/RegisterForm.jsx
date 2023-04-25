@@ -50,7 +50,6 @@ const LoginForm = ({ setSignIn }) => {
         <div className="bckground text-center">
           <div className="color-red">
             <h1>Looking for BEST Movies, TV Shows and more?</h1>
-            {/* <h4>You're at the right place!</h4> */}
             <h4>Just sign up here and start watching.</h4>
           </div>
 

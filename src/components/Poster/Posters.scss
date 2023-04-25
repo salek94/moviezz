@@ -1,9 +1,39 @@
 @import "../../components/Styles/mixins";
+@import "../../components/Styles/variables";
 
 .poster-container {
   width: 100%;
-  margin: 10px auto;
-  position: relative;
+  margin: $marginCenter;
+  background-color: $secondaryFontColor;
+  color: $primaryFontColor;
+
+  .poster-info {
+    @include flexx($dir: row, $justify: center, $align: flex-start);
+    &__filter {
+      width: 20%;
+    }
+    &__results {
+      width: 70%;
+      &__banner {
+        @include flexx($dir: row, $justify: flex-start, $align: flex-start);
+        gap: 30px;
+        margin-bottom: 30px;
+
+        & .imgPoster {
+          width: 15%;
+          height: 10%;
+        }
+        &__details {
+          width: 60%;
+          // height: 180px;
+          // overflow-y: hidden;
+          & p > .none {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 // .imgPoster {

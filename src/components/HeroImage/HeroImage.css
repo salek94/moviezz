@@ -19,6 +19,7 @@
   left: 30%;
   position: absolute;
   z-index: 99;
+  mix-blend-mode: overlay;
 }
 .heroImg__left {
   background-image: url("../../img/BreakingBad.jpg");

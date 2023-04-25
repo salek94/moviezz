@@ -1,5 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+/***** colors ****/
 .poster-container {
   width: 100%;
-  margin: 10px auto;
-  position: relative;
+  margin: 0 auto;
+  background-color: #212121;
+  color: #f3f3f3;
+}
+.poster-container .poster-info {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+.poster-container .poster-info__filter {
+  width: 20%;
+}
+.poster-container .poster-info__results {
+  width: 70%;
+}
+.poster-container .poster-info__results__banner {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.poster-container .poster-info__results__banner .imgPoster {
+  width: 15%;
+  height: 10%;
+}
+.poster-container .poster-info__results__banner__details {
+  width: 60%;
+}
+.poster-container .poster-info__results__banner__details p > .none {
+  display: none;
 }/*# sourceMappingURL=Posters.css.map */
