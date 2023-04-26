@@ -15,10 +15,10 @@
 
 .btnPrimary {
   display: inline-block;
-  background-color: #f07b3f;
+  background-color: #f7bb0d;
   color: #f3f3f3;
   padding: 15px;
-  border: 1px solid #f07b3f;
+  border: none;
   border-radius: 20px;
   text-transform: capitalize;
   cursor: pointer;
@@ -26,7 +26,10 @@
 }
 .btnPrimary:hover {
   background-color: #212121;
-  border: 1px solid #212121;
+}
+
+.redColorBtn {
+  background-color: #ef0003;
 }
 
 .loader {

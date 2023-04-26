@@ -27,22 +27,30 @@
           width: 60%;
           // height: 180px;
           // overflow-y: hidden;
-          & p > .none {
-            display: none;
+          & p > button {
+            background-color: $primaryFontColor;
+            color: $secondaryFontColor;
+            padding: 2px;
+            margin-left: 3px;
+            border: 1px solid $secondaryFontColor;
+            border-radius: 25px;
+            font-size: 0.7em;
+            &.none {
+              display: none;
+            }
+          }
+          &__poster-btn {
+            @include flexx($dir: row, $justify: flex-start, $align: center);
+            gap: 30px;
+            transition: $transition;
+            & .btnPrimary:hover {
+              transform: translateY(-10px);
+              transition: $transition;
+              // trebam smisliti sta cu sa hover bojama
+            }
           }
         }
       }
     }
   }
 }
-
-// .imgPoster {
-//   width: 100%;
-//   height: 40vh;
-//   border-radius: 20px;
-// }
-
-// .row {
-//   width: 25%;
-//   margin-left: 10px;
-// }

@@ -35,6 +35,28 @@
 .poster-container .poster-info__results__banner__details {
   width: 60%;
 }
-.poster-container .poster-info__results__banner__details p > .none {
+.poster-container .poster-info__results__banner__details p > button {
+  background-color: #f3f3f3;
+  color: #212121;
+  padding: 2px;
+  margin-left: 3px;
+  border: 1px solid #212121;
+  border-radius: 25px;
+  font-size: 0.7em;
+}
+.poster-container .poster-info__results__banner__details p > button.none {
   display: none;
+}
+.poster-container .poster-info__results__banner__details__poster-btn {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  transition: 0.3s ease-in-out;
+}
+.poster-container .poster-info__results__banner__details__poster-btn .btnPrimary:hover {
+  transform: translateY(-10px);
+  transition: 0.3s ease-in-out;
 }/*# sourceMappingURL=Posters.css.map */

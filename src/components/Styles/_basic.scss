@@ -13,20 +13,22 @@
 
 .btnPrimary {
   display: inline-block;
-  // width: 25%;
-  background-color: $orangeBckGround;
+  background-color: $orangeYellow;
   color: $primaryFontColor;
   padding: 15px;
-  border: 1px solid $orangeBckGround;
+  border: none;
   border-radius: 20px;
   text-transform: capitalize;
-  // font-size: 1.1rem;
   cursor: pointer;
   transition: $transition;
   &:hover {
     background-color: $secondaryFontColor;
-    border: 1px solid $secondaryFontColor;
+    // border: 1px solid $secondaryFontColor;
   }
+}
+
+.redColorBtn {
+  background-color: $red;
 }
 
 .loader {

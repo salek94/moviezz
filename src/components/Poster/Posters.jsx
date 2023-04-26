@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import "../Poster/Posters.scss";
 import MovieContext from "../../context/MovieContext";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 const Posters = () => {
   const [query, setQuery] = useSearchParams();
   const { movie, setMovie } = useContext(MovieContext);
   const [flag, setFlag] = useState(false);
   const [showMore, setShowMore] = useState(false);
+
+  const navigate = useNavigate();
 
   const getMovieRequest = async (getQuery) => {
     if (getQuery) {
@@ -20,6 +22,7 @@ const Posters = () => {
         console.log(responseJson.results);
         setMovie(responseJson.results);
         setFlag(true);
+        setShowMore(false);
       }
     }
   };
@@ -29,8 +32,16 @@ const Posters = () => {
     getMovieRequest(getQuery);
   }, [query]);
 
-  const showMoreText = () => {
-    setShowMore(showMore ? false : true);
+  const showMoreText = (a) => {
+    console.log(a.id);
+    const clickedBtn = movie.filter((item) => item.id === a.id);
+    console.log(clickedBtn[0].id);
+    if (clickedBtn[0].id === a.id) setShowMore(!showMore);
+  };
+
+  const goToView = (movie) => {
+    setMovie(movie);
+    navigate(`/view/${movie.id}`);
   };
 
   return (
@@ -65,6 +76,7 @@ const Posters = () => {
         <div className="poster-info__results">
           {flag &&
             movie.map((movie) => {
+              const movieOvr = movie.overview;
               return (
                 <div key={movie.id} className="poster-info__results__banner">
                   <img
@@ -76,21 +88,25 @@ const Posters = () => {
                   <div className="poster-info__results__banner__details">
                     <h3>{movie.title}</h3>
                     <p>
-                      {showMore
-                        ? movie.overview
-                        : movie.overview.substring(0, 250)}
+                      {showMore ? movieOvr : movieOvr.substring(0, 250)}
                       <button
-                        className={movie.overview.length < 250 && `none`}
-                        onClick={showMoreText}
+                        className={movieOvr.length < 250 && "none"}
+                        onClick={() => showMoreText(movie)}
+                        // ne znam kako samo jedan div da pokaze
                       >
-                        See more
+                        {showMore ? "Show less" : "Show more"}
                       </button>
                     </p>
 
-                    <div>
-                      <button>Watch Now</button>
-                      <button>
-                        <Link to={`/view/${movie.id}`}>More Details</Link>
+                    <div className="poster-info__results__banner__details__poster-btn">
+                      <button className="btnPrimary redColorBtn">
+                        Watch Now
+                      </button>
+                      <button
+                        className="btnPrimary"
+                        onClick={() => goToView(movie)}
+                      >
+                        More Details
                       </button>
                     </div>
                   </div>
