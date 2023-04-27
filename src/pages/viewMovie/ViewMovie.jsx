@@ -40,8 +40,8 @@ const ViewMovie = () => {
     };
   }, []);
 
-  const goHome = () => {
-    navigate("/home");
+  const goBack = () => {
+    navigate(-1);
   };
 
   const goGenre = (a) => {
@@ -111,7 +111,7 @@ const ViewMovie = () => {
               </button>
               <button
                 className="view-wrapper__about-movie__details__btn-back btnPrimary"
-                onClick={goHome}
+                onClick={goBack}
               >
                 Search More
               </button>

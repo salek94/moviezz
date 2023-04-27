@@ -18,11 +18,18 @@ const Navbar = () => {
 
   const getSearchResults = (e) => {
     e.preventDefault();
-    // e.key === 'Enter' naci za enter dugme
-    if (searchValue || e.key === "Enter") {
+    if (searchValue) {
       navigate(`/list?search=${searchValue}`);
     }
   };
+
+  // NE ZNAM DA NAMESTIM ENTER BUTTON
+  // const aaa = (e) => {
+  //   e.preventDefault();
+  //   if (e.key === "Enter") {
+  //     navigate(`/list?search=${searchValue}`);
+  //   }
+  // };
 
   const goToHome = (e) => {
     e.preventDefault();
@@ -47,6 +54,7 @@ const Navbar = () => {
             name="searchMovie"
             autoComplete="off"
             onChange={handleSearchValue}
+            // onKeyDown={(e) => aaa(e)}
           />
 
           <FaSearch

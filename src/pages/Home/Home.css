@@ -18,7 +18,7 @@
   background-color: #f7bb0d;
   color: #f3f3f3;
   padding: 15px;
-  border: none;
+  border: 1px solid #f7bb0d;
   border-radius: 20px;
   text-transform: capitalize;
   cursor: pointer;
@@ -30,6 +30,7 @@
 
 .redColorBtn {
   background-color: #ef0003;
+  border: 1px solid #ef0003;
 }
 
 .loader {

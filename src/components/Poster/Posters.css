@@ -6,6 +6,9 @@
   background-color: #212121;
   color: #f3f3f3;
 }
+.poster-container .poster-search {
+  padding: 25px;
+}
 .poster-container .poster-info {
   display: flex;
   flex-wrap: wrap;
@@ -26,7 +29,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 .poster-container .poster-info__results__banner .imgPoster {
   width: 15%;
@@ -57,6 +60,8 @@
   transition: 0.3s ease-in-out;
 }
 .poster-container .poster-info__results__banner__details__poster-btn .btnPrimary:hover {
-  transform: translateY(-10px);
-  transition: 0.3s ease-in-out;
+  border: 1px solid #f7bb0d;
+}
+.poster-container .poster-info__results__banner__details__poster-btn .redColorBtn:hover {
+  border: 1px solid #ef0003;
 }/*# sourceMappingURL=Posters.css.map */

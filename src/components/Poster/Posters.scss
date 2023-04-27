@@ -7,6 +7,9 @@
   background-color: $secondaryFontColor;
   color: $primaryFontColor;
 
+  .poster-search {
+    padding: 25px;
+  }
   .poster-info {
     @include flexx($dir: row, $justify: center, $align: flex-start);
     &__filter {
@@ -17,7 +20,7 @@
       &__banner {
         @include flexx($dir: row, $justify: flex-start, $align: flex-start);
         gap: 30px;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
 
         & .imgPoster {
           width: 15%;
@@ -25,8 +28,6 @@
         }
         &__details {
           width: 60%;
-          // height: 180px;
-          // overflow-y: hidden;
           & p > button {
             background-color: $primaryFontColor;
             color: $secondaryFontColor;
@@ -44,9 +45,10 @@
             gap: 30px;
             transition: $transition;
             & .btnPrimary:hover {
-              transform: translateY(-10px);
-              transition: $transition;
-              // trebam smisliti sta cu sa hover bojama
+              border: 1px solid $orangeYellow;
+            }
+            & .redColorBtn:hover {
+              border: 1px solid $red;
             }
           }
         }

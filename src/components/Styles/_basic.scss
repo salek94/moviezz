@@ -16,7 +16,7 @@
   background-color: $orangeYellow;
   color: $primaryFontColor;
   padding: 15px;
-  border: none;
+  border: 1px solid $orangeYellow;
   border-radius: 20px;
   text-transform: capitalize;
   cursor: pointer;
@@ -29,6 +29,7 @@
 
 .redColorBtn {
   background-color: $red;
+  border: 1px solid $red;
 }
 
 .loader {

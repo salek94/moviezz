@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useContext } from "react";
 import "../Poster/Posters.scss";
 import MovieContext from "../../context/MovieContext";
@@ -11,6 +11,8 @@ const Posters = () => {
   const [showMore, setShowMore] = useState(false);
 
   const navigate = useNavigate();
+  const getQuery = query.get("search");
+  const showMoreDetails = useRef([]);
 
   const getMovieRequest = async (getQuery) => {
     if (getQuery) {
@@ -19,7 +21,7 @@ const Posters = () => {
       const responseJson = await response.json();
 
       if (responseJson.results) {
-        console.log(responseJson.results);
+        // console.log(responseJson.results);
         setMovie(responseJson.results);
         setFlag(true);
         setShowMore(false);
@@ -28,15 +30,15 @@ const Posters = () => {
   };
 
   useEffect(() => {
-    const getQuery = query.get("search");
     getMovieRequest(getQuery);
   }, [query]);
 
-  const showMoreText = (a) => {
-    console.log(a.id);
-    const clickedBtn = movie.filter((item) => item.id === a.id);
-    console.log(clickedBtn[0].id);
-    if (clickedBtn[0].id === a.id) setShowMore(!showMore);
+  const showMoreText = (e) => {
+    e.preventDefault();
+    setShowMore(!showMore);
+    if (e.target) {
+      // showMoreDetails.current.setAttribute("name", "a");
+    }
   };
 
   const goToView = (movie) => {
@@ -47,7 +49,7 @@ const Posters = () => {
   return (
     <div className="poster-container">
       <div className="poster-search">
-        <h3>Search results for:...</h3>
+        <h3>Search results for: {getQuery}</h3>
       </div>
 
       <div className="poster-info">
@@ -87,11 +89,13 @@ const Posters = () => {
 
                   <div className="poster-info__results__banner__details">
                     <h3>{movie.title}</h3>
-                    <p>
+
+                    <p ref={showMoreDetails}>
                       {showMore ? movieOvr : movieOvr.substring(0, 250)}
                       <button
                         className={movieOvr.length < 250 && "none"}
-                        onClick={() => showMoreText(movie)}
+                        // onClick={() => showMoreText(movie)}
+                        onClick={showMoreText}
                         // ne znam kako samo jedan div da pokaze
                       >
                         {showMore ? "Show less" : "Show more"}
