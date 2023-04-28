@@ -2,7 +2,7 @@
 @import "../../components/Styles/variables";
 
 .heroImg {
-  @include flexx($dir: row, $justify: center, $align: center);
+  @include flexx($dir: row, $justify: space-between, $align: center);
   flex-wrap: nowrap;
   margin: $marginCenter;
   height: 84vh;
@@ -20,22 +20,26 @@
     mix-blend-mode: overlay;
   }
   &__left {
-    background-image: url("../../img/BreakingBad.jpg");
+    background-image: linear-gradient(
+        to right,
+        rgba(200, 188, 21, 0.41),
+        rgba(237, 226, 15, 0.43)
+      ),
+      url("../../img/BreakingBad.jpg");
     background-size: cover;
     background-position: center;
-    width: 55%;
-    height: 83vh;
-    transform-origin: top right;
-    transform: skew(-20deg, 0deg);
+    width: 50%;
+    height: 84vh;
+    // transform-origin: top right;
+    // transform: skew(-20deg, 0deg);
     opacity: 0.9;
     transition: linear 1.5s;
 
     &__btnHero {
       position: absolute;
       bottom: 12%;
-      right: 30%;
+      left: 30%;
       font-size: 1.3rem;
-      // transform: skew(-10, 10deg);
       padding: 20px 40px;
       text-decoration: none;
     }
@@ -43,14 +47,20 @@
   }
   &__right {
     // background-image: url('../../img/BreakingBad.jpg');
-    background-image: url("../../img/JW4.jpg");
+    // background-color: #fbab7e;
+    background-image: linear-gradient(
+        to left,
+        rgba(131, 39, 39, 0.3),
+        rgba(166, 21, 21, 0.4)
+      ),
+      url("../../img/JW4.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 83vh;
-    width: 55%;
-    transform-origin: bottom left;
-    transform: skew(-20deg, 0deg);
+    height: 84vh;
+    width: 50%;
+    // transform-origin: bottom left;
+    // transform: skew(-20deg, 0deg);
     // position: absolute;
     // left: 40%;
     opacity: 0.9;
@@ -59,10 +69,8 @@
     &__btnHero {
       position: absolute;
       bottom: 11%;
-      left: 40%;
+      right: 30%;
       font-size: 1.3rem;
-      transform-origin: 0%;
-      transform: skew(0deg, 0deg);
       padding: 20px 40px;
       text-decoration: none;
     }
@@ -73,18 +81,18 @@
     // background-image: url('../../img/login-bckground-image.jpg');
     background-size: cover;
     background-position: center;
-    width: 1%;
+    width: 30%;
     height: 83vh;
-    transform-origin: top right;
-    transform: skew(-25deg, 0deg);
+    // transform-origin: top right;
+    // transform: skew(-25deg, 0deg);
     opacity: 0.9;
     transition: linear 1.5s;
     &__btnHero {
       position: absolute;
+      transform: translateY(-50px);
       bottom: 12%;
-      left: 250%;
+      left: 10%;
       font-size: 1.3rem;
-      transform: skew(0deg);
       padding: 20px 40px;
       text-decoration: none;
       // transform: translate(350px, 50px);
@@ -111,11 +119,11 @@
     &__btnHero {
       visibility: hidden;
       position: absolute;
-      bottom: 11%;
-      left: 40%;
+      bottom: 15%;
+      right: 10%;
       font-size: 1.3rem;
-      transform-origin: 0%;
-      transform: skew(0deg, 0deg);
+      // transform-origin: 0%;
+      // transform: skew(0deg, 0deg);
       padding: 20px 40px;
       text-decoration: none;
     }
@@ -133,9 +141,10 @@
     opacity: 0.9;
     transition: linear 1.5s;
     &__btnHero {
+      visibility: hidden;
       position: absolute;
-      bottom: 12%;
-      left: 50%;
+      bottom: 11%;
+      left: 10%;
       font-size: 1.3rem;
       transform: skew(0deg);
       padding: 20px 40px;
@@ -150,7 +159,7 @@
     background-position: center;
     background-size: cover;
     height: 83vh;
-    width: 0%;
+    width: 30%;
     // transform-origin: bottom left;
     // transform: skew(-25deg, 0deg);
     // position: absolute;
@@ -159,11 +168,10 @@
     opacity: 0.9;
     &__btnHero {
       position: absolute;
-      bottom: 11%;
-      left: 40%;
+      transform: translateY(-50px);
+      bottom: 13%;
+      right: 10%;
       font-size: 1.3rem;
-      transform-origin: 0%;
-      transform: skew(0deg, 0deg);
       padding: 20px 40px;
       text-decoration: none;
     }
