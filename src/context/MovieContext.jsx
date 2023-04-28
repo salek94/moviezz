@@ -11,6 +11,8 @@ export const MovieProvider = ({ children }) => {
   const [clickedTVshow, setClickedTVshow] = useState(false);
   const [movieOrTV, setMovieOrTV] = useState("movie");
   const [favoriteMovie, setFavoriteMovie] = useState([]);
+  const [movieGenres, setMovieGenres] = useState();
+  const [viewMovieOrTv, setViewMovieOrTv] = useState();
 
   return (
     <MovieContext.Provider
@@ -27,6 +29,10 @@ export const MovieProvider = ({ children }) => {
         setFavoriteMovie,
         movieOrTV,
         setMovieOrTV,
+        movieGenres,
+        setMovieGenres,
+        viewMovieOrTv,
+        setViewMovieOrTv,
       }}
     >
       {children}

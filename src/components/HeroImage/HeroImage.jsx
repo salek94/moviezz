@@ -1,17 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect, useMemo } from "react";
 import "./HeroImage.scss";
 import randomIMG from "../../img/login-bckground-image.jpg";
 import random2 from "../../img/BreakingBad.jpg";
 import random3 from "../../img/MOVIZZ.jpg";
 import MovieContext from "../../context/MovieContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaArrowDown } from "react-icons/fa";
+import { logDOM } from "@testing-library/react";
 
 const HeroImage = () => {
-  const navigate = useNavigate();
   let slike = [random2, random3, randomIMG];
-  const { setMovieOrTV, setClickedMovie, setClickedTVshow } =
-    useContext(MovieContext);
+  const {
+    movieGenres,
+    setMovieOrTV,
+    setClickedMovie,
+    setClickedTVshow,
+    setMovieGenres,
+  } = useContext(MovieContext);
 
   const [transitionMovie, setTransitionMovie] = useState(false);
   const [transitionTV, setTransitionTV] = useState(false);
@@ -42,6 +47,51 @@ const HeroImage = () => {
     setTransitionTV(false);
   };
 
+  // const getMovieGenre = async () => {
+  //   const urlMovie =
+  //     "https://api.themoviedb.org/3/genre/movie/list?api_key=39b7c306441823329a6e5fa506a7906c";
+
+  //   try {
+  //     const response = await fetch(urlMovie);
+  //     const responseJson = await response.json();
+
+  //     if (responseJson.genres) {
+  //       // console.log(responseJson.genres);
+  //       setMovieGenres(responseJson.genres);
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getMovieGenre();
+  // }, []);
+
+  useEffect(() => {
+    let controller = new AbortController();
+    (async () => {
+      const urlMovie =
+        "https://api.themoviedb.org/3/genre/movie/list?api_key=39b7c306441823329a6e5fa506a7906c";
+
+      try {
+        const response = await fetch(urlMovie, {
+          signal: controller.signal,
+        });
+        const responseJson = await response.json();
+
+        if (responseJson.genres) {
+          // console.log(responseJson.genres);
+          setMovieGenres(responseJson.genres);
+          controller = null;
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+    return () => controller?.abort();
+  }, []);
+  console.log(movieGenres);
   return (
     <>
       <div className="heroImg">

@@ -2,26 +2,28 @@ import React, { useEffect, useRef, useState } from "react";
 import { useContext } from "react";
 import "../Poster/Posters.scss";
 import MovieContext from "../../context/MovieContext";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Posters = () => {
   const [query, setQuery] = useSearchParams();
-  const { movie, setMovie } = useContext(MovieContext);
+  const { movie, setMovie, setViewMovieOrTv, movieGenres } =
+    useContext(MovieContext);
   const [flag, setFlag] = useState(false);
   const [showMore, setShowMore] = useState(false);
 
   const navigate = useNavigate();
   const getQuery = query.get("search");
-  const showMoreDetails = useRef([]);
-
+  const showMoreDetails = useRef();
+  console.log(movie);
   const getMovieRequest = async (getQuery) => {
     if (getQuery) {
-      const url = `https://api.themoviedb.org/3/search/movie?api_key=39b7c306441823329a6e5fa506a7906c&query=${getQuery}`;
+      const url = `https://api.themoviedb.org/3/search/multi?api_key=39b7c306441823329a6e5fa506a7906c&query=${getQuery}&language=en-US`;
       const response = await fetch(url);
       const responseJson = await response.json();
 
       if (responseJson.results) {
-        // console.log(responseJson.results);
+        // console.log(responseJson.total_pages);
+        console.log(responseJson.results);
         setMovie(responseJson.results);
         setFlag(true);
         setShowMore(false);
@@ -42,9 +44,13 @@ const Posters = () => {
   };
 
   const goToView = (movie) => {
-    setMovie(movie);
+    setViewMovieOrTv(movie);
     navigate(`/view/${movie.id}`);
   };
+
+  const movieArray = movie?.filter((m) => m.media_type === "movie");
+  const tvArray = movie?.filter((m) => m.media_type !== "movie");
+  console.log(movieGenres);
 
   return (
     <div className="poster-container">
@@ -54,16 +60,16 @@ const Posters = () => {
 
       <div className="poster-info">
         <aside className="poster-info__filter">
-          <div>Movies</div>
-          <div>TV Shows</div>
+          <div>Movies {movieArray.length}</div>
+          <div>TV Shows {tvArray.length}</div>
           <div>
             Genres
             <ul>
-              <li>a</li>
-              <li>b</li>
-              <li>c</li>
-              <li></li>
-              <li></li>
+              {movieGenres?.map((item) => {
+                const genre = item.name;
+                console.log(genre);
+                return <li key={movie.id}>{genre}</li>;
+              })}
             </ul>
           </div>
           <div>
@@ -77,8 +83,9 @@ const Posters = () => {
         </aside>
         <div className="poster-info__results">
           {flag &&
-            movie.map((movie) => {
+            movie?.map((movie) => {
               const movieOvr = movie.overview;
+
               return (
                 <div key={movie.id} className="poster-info__results__banner">
                   <img
@@ -88,12 +95,11 @@ const Posters = () => {
                   />
 
                   <div className="poster-info__results__banner__details">
-                    <h3>{movie.title}</h3>
-
+                    <h3>{movie.title ? movie.title : movie.original_name}</h3>
                     <p ref={showMoreDetails}>
-                      {showMore ? movieOvr : movieOvr.substring(0, 250)}
+                      {showMore ? movieOvr : movieOvr?.substring(0, 250)}
                       <button
-                        className={movieOvr.length < 250 && "none"}
+                        className={movieOvr?.length < 250 ? "none" : ""}
                         // onClick={() => showMoreText(movie)}
                         onClick={showMoreText}
                         // ne znam kako samo jedan div da pokaze
