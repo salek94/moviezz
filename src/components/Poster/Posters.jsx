@@ -14,7 +14,8 @@ const Posters = () => {
   const navigate = useNavigate();
   const getQuery = query.get("search");
   const showMoreDetails = useRef();
-  console.log(movie);
+  // console.log(movieGenres);
+  // console.log(movie);
   const getMovieRequest = async (getQuery) => {
     if (getQuery) {
       const url = `https://api.themoviedb.org/3/search/multi?api_key=39b7c306441823329a6e5fa506a7906c&query=${getQuery}&language=en-US`;
@@ -23,7 +24,7 @@ const Posters = () => {
 
       if (responseJson.results) {
         // console.log(responseJson.total_pages);
-        console.log(responseJson.results);
+        // console.log(responseJson.results);
         setMovie(responseJson.results);
         setFlag(true);
         setShowMore(false);
@@ -50,7 +51,6 @@ const Posters = () => {
 
   const movieArray = movie?.filter((m) => m.media_type === "movie");
   const tvArray = movie?.filter((m) => m.media_type !== "movie");
-  console.log(movieGenres);
 
   return (
     <div className="poster-container">
@@ -66,9 +66,30 @@ const Posters = () => {
             Genres
             <ul>
               {movieGenres?.map((item) => {
-                const genre = item.name;
-                console.log(genre);
-                return <li key={movie.id}>{genre}</li>;
+                const genreGeneral = item.name;
+                const genreGeneralId = item.id;
+                let freq = [];
+                for (let i = 0; i < movie?.length; i++) {
+                  const ele = movie[i].genre_ids;
+                  for (let i = 0; i < ele?.length; i++) {
+                    const num = ele[i];
+                    freq.push(num);
+                  }
+                  let frequencyArray = [];
+                  for (let i = 0; i < freq?.length; i++) {
+                    frequencyArray.push([freq[i], i]);
+                    // console.log(frequencyArray[i]);
+                    if (genreGeneralId === frequencyArray[i][0]) {
+                      return (
+                        <li>
+                          {genreGeneral}
+                          {frequencyArray[i][1] + 1}
+                        </li>
+                      );
+                    }
+                  }
+                  // return frequencyArray[i];
+                }
               })}
             </ul>
           </div>

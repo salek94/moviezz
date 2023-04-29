@@ -59,6 +59,7 @@
         margin-top: 20px;
         & .red {
           background-color: $redBckGround;
+          border: 1px solid $redBckGround;
           opacity: 1 !important;
           // child nece da ima veci opacity od parent-a
         }

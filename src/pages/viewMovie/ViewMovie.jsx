@@ -8,9 +8,7 @@ const ViewMovie = () => {
   const { viewMovieOrTv, movieGenres } = useContext(MovieContext);
   const navigate = useNavigate();
   // const params = useParams();
-
-  console.log(viewMovieOrTv);
-
+  console.log(movieGenres);
   const goBack = () => {
     navigate(-1);
   };
@@ -57,7 +55,6 @@ const ViewMovie = () => {
             <div className="view-wrapper__about-movie__details__list-genre">
               {movieGenres?.map((genreMovie) => {
                 const movieOverview = viewMovieOrTv.genre_ids;
-
                 for (let i = 0; i < movieOverview.length; i++) {
                   if (genreMovie.id === movieOverview[i]) {
                     return (

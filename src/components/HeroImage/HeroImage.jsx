@@ -47,50 +47,51 @@ const HeroImage = () => {
     setTransitionTV(false);
   };
 
-  // const getMovieGenre = async () => {
-  //   const urlMovie =
-  //     "https://api.themoviedb.org/3/genre/movie/list?api_key=39b7c306441823329a6e5fa506a7906c";
+  const getMovieGenre = async () => {
+    const urlMovie =
+      "https://api.themoviedb.org/3/genre/movie/list?api_key=39b7c306441823329a6e5fa506a7906c";
 
-  //   try {
-  //     const response = await fetch(urlMovie);
-  //     const responseJson = await response.json();
+    try {
+      const response = await fetch(urlMovie);
+      const responseJson = await response.json();
 
-  //     if (responseJson.genres) {
-  //       // console.log(responseJson.genres);
-  //       setMovieGenres(responseJson.genres);
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+      if (responseJson.genres) {
+        const allGenres = responseJson.genres;
+        // console.log(responseJson.genres);
+        setMovieGenres(responseJson.genres);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useMemo(() => {
+    getMovieGenre();
+  }, []);
 
   // useEffect(() => {
-  //   getMovieGenre();
+  //   let controller = new AbortController();
+  //   (async () => {
+  //     const urlMovie =
+  //       "https://api.themoviedb.org/3/genre/movie/list?api_key=39b7c306441823329a6e5fa506a7906c";
+
+  //     try {
+  //       const response = await fetch(urlMovie, {
+  //         signal: controller.signal,
+  //       });
+  //       const responseJson = await response.json();
+
+  //       if (responseJson.genres) {
+  //         // console.log(responseJson.genres);
+  //         setMovieGenres(responseJson.genres);
+  //         controller = null;
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   })();
+  //   return () => controller?.abort();
   // }, []);
-
-  useEffect(() => {
-    let controller = new AbortController();
-    (async () => {
-      const urlMovie =
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=39b7c306441823329a6e5fa506a7906c";
-
-      try {
-        const response = await fetch(urlMovie, {
-          signal: controller.signal,
-        });
-        const responseJson = await response.json();
-
-        if (responseJson.genres) {
-          // console.log(responseJson.genres);
-          setMovieGenres(responseJson.genres);
-          controller = null;
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-    return () => controller?.abort();
-  }, []);
   console.log(movieGenres);
   return (
     <>
