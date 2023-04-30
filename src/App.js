@@ -85,6 +85,7 @@ function App() {
         ) : (
           <>
             <Route path="*" element={<Register />} />
+            {/* <Route path="*" element={<NotFound/>} /> */}
             <Route path="/" element={<Register />}></Route>
           </>
         )}

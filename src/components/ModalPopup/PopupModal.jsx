@@ -1,14 +1,11 @@
 import React, { useContext } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { GrFormClose } from "react-icons/gr";
 import MovieContext from "../../context/MovieContext";
 
-const PopupModal = ({ setIsSubmitForm }) => {
+const PopupModal = ({ setIsSubmitForm, authModal }) => {
   const { setAuth } = useContext(MovieContext);
   const navigate = useNavigate();
-  const [approve, setApprove] = useSearchParams("");
-  const approved = approve.get("approved");
-  // approved=true  moze da ide params.get('approved')
 
   const goHome = () => {
     setAuth(true);
@@ -30,7 +27,7 @@ const PopupModal = ({ setIsSubmitForm }) => {
           </div>
           <div>
             <h3>Thank You for your registration!</h3>
-            {approved == "true" ? (
+            {authModal == "true" ? (
               <p>Welcome!</p>
             ) : (
               <p>
@@ -40,7 +37,7 @@ const PopupModal = ({ setIsSubmitForm }) => {
               </p>
             )}
           </div>
-          {approved == "true" ? (
+          {authModal == "true" ? (
             <button className="btnPrimary" onClick={goHome}>
               Home
             </button>

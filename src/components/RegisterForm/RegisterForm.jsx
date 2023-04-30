@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { ValidationUser } from "../ValidationScheme/ValidationUser";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import PopupModal from "../ModalPopup/PopupModal";
 import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 // import ModalPopup from '../ModalPopup/ModalPopup';
 
-const LoginForm = ({ setSignIn }) => {
+const RegisterForm = ({ setSignIn }) => {
   const [isSubmitForm, setIsSubmitForm] = useState(false);
+  const [approve] = useSearchParams("");
+  const approved = approve.get("approved");
 
   const formik = useFormik({
     initialValues: {
@@ -56,12 +59,18 @@ const LoginForm = ({ setSignIn }) => {
     },
   });
 
+  useEffect(() => {
+    if (approved == "true") {
+      setIsSubmitForm(true);
+    }
+  }, [approved]);
+
   return (
     // color-red nije iskorisceno
     <>
       {/* {isSubmitForm && <ModalPopup/>}  */}
       {isSubmitForm ? (
-        <PopupModal setIsSubmitForm={setIsSubmitForm} />
+        <PopupModal setIsSubmitForm={setIsSubmitForm} authModal={approved} />
       ) : (
         <div className="bckground text-center">
           <div className="color-red">
@@ -223,4 +232,4 @@ const LoginForm = ({ setSignIn }) => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
