@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import SignInForm from "../../components/SignInForm/SignInForm";
 import "../Register/Register.scss";
-import Footer from "../Footer/Footer";
 
 const Register = () => {
   const [signIn, setSignIn] = useState(false);
@@ -14,7 +13,6 @@ const Register = () => {
       ) : (
         <RegisterForm setSignIn={setSignIn} />
       )}
-      {/* <Footer/> */}
     </div>
   );
 };

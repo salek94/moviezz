@@ -1,15 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import { ValidationUser } from "../ValidationScheme/ValidationUser";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import PopupModal from "../ModalPopup/PopupModal";
-import MovieContext from "../../context/MovieContext";
+import axios from "axios";
 // import ModalPopup from '../ModalPopup/ModalPopup';
 
 const LoginForm = ({ setSignIn }) => {
   const [isSubmitForm, setIsSubmitForm] = useState(false);
-  const { setUserLogin } = useContext(MovieContext);
 
   const formik = useFormik({
     initialValues: {
@@ -23,12 +22,29 @@ const LoginForm = ({ setSignIn }) => {
     validationSchema: ValidationUser,
     onSubmit: async (values, action) => {
       console.log(values);
-      // await new Promise((resolve) => setTimeout(resolve, 500));
-      await fetch(
-        "https://api.themoviedb.org/3/authentication/token/new?api_key=39b7c306441823329a6e5fa506a7906c"
-      );
+      try {
+        await axios
+          .get(
+            "https://api.themoviedb.org/3/authentication/token/new?api_key=39b7c306441823329a6e5fa506a7906c"
+          )
+          .then((res) => {
+            if (res && res.status === 200) {
+              // console.log(res.data);
+
+              localStorage.setItem(
+                "tokenRequest",
+                JSON.stringify(res.data.request_token)
+              );
+            }
+          });
+      } catch (error) {
+        console.log(error);
+      }
+      setIsSubmitForm(true);
+
+      action.resetForm();
       // axios.post(url, values)
-      //.then(()=>{
+      //.then((res)=>{
       /// if (res && res.status === 200){
       //  console.log(res.data)
       //  localStorage.setItem('tokenUser', JSON.stringify(res.data.token));
@@ -37,14 +53,8 @@ const LoginForm = ({ setSignIn }) => {
       //.catch((err)=>{
       // console.log(err)})
       //})
-
-      setIsSubmitForm(true);
-
-      action.resetForm();
     },
   });
-
-  // https://api.themoviedb.org/3/authentication/token/new?api_key=39b7c306441823329a6e5fa506a7906c
 
   return (
     // color-red nije iskorisceno
