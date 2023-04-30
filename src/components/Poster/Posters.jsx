@@ -15,7 +15,7 @@ const Posters = () => {
   const getQuery = query.get("search");
   const showMoreDetails = useRef();
   // console.log(movieGenres);
-  // console.log(movie);
+  console.log(movie);
   const getMovieRequest = async (getQuery) => {
     if (getQuery) {
       const url = `https://api.themoviedb.org/3/search/multi?api_key=39b7c306441823329a6e5fa506a7906c&query=${getQuery}&language=en-US`;

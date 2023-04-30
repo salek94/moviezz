@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ViewMovie.scss";
 import MovieContext from "../../context/MovieContext";
@@ -9,6 +9,26 @@ const ViewMovie = () => {
   const navigate = useNavigate();
   // const params = useParams();
   console.log(movieGenres);
+
+  useEffect(() => {
+    const getMovieReview = async () => {
+      const urlMovie =
+        "https://api.themoviedb.org/3/movie/312221/reviews?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1";
+      // keywords reviews
+      try {
+        const response = await fetch(urlMovie);
+        const responseJson = await response.json();
+
+        if (responseJson.results) {
+          console.log(responseJson.results);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getMovieReview();
+  }, []);
+
   const goBack = () => {
     navigate(-1);
   };

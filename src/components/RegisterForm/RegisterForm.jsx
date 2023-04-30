@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { ValidationUser } from "../ValidationScheme/ValidationUser";
 import Button from "react-bootstrap/Button";
@@ -23,7 +23,10 @@ const LoginForm = ({ setSignIn }) => {
     validationSchema: ValidationUser,
     onSubmit: async (values, action) => {
       console.log(values);
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      // await new Promise((resolve) => setTimeout(resolve, 500));
+      await fetch(
+        "https://api.themoviedb.org/3/authentication/token/new?api_key=39b7c306441823329a6e5fa506a7906c"
+      );
       // axios.post(url, values)
       //.then(()=>{
       /// if (res && res.status === 200){
@@ -34,11 +37,14 @@ const LoginForm = ({ setSignIn }) => {
       //.catch((err)=>{
       // console.log(err)})
       //})
+
       setIsSubmitForm(true);
 
       action.resetForm();
     },
   });
+
+  // https://api.themoviedb.org/3/authentication/token/new?api_key=39b7c306441823329a6e5fa506a7906c
 
   return (
     // color-red nije iskorisceno
