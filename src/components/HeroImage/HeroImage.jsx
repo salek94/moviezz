@@ -6,7 +6,7 @@ import random3 from "../../img/MOVIZZ.jpg";
 import MovieContext from "../../context/MovieContext";
 import { Link } from "react-router-dom";
 import { FaArrowDown } from "react-icons/fa";
-import { logDOM } from "@testing-library/react";
+import Loader from "../Loader/Loader";
 
 const HeroImage = () => {
   let slike = [random2, random3, randomIMG];
@@ -150,6 +150,7 @@ const HeroImage = () => {
             transitionTV ? "2" : ""
           }`}
         >
+          {" "}
           <Link
             to={"/home/movies"}
             className={`heroImg__right${transitionMovie ? "1" : ""}${

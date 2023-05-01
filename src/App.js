@@ -2,7 +2,7 @@ import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./pages/Register/Register";
 import MovieContext from "./context/MovieContext";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import ViewMovie from "./pages/viewMovie/ViewMovie";
 import Home from "./pages/Home/Home";
 import SearchedMovies from "./pages/SearchedMovies/SearchedMovies";
@@ -56,7 +56,7 @@ function App() {
             if (res && res.status === 200) {
               console.log(res.data);
               setUserLogin(false);
-              localStorage.removeItem("tokenSession");
+              // localStorage.removeItem("tokenSession");
               navigate("/");
             }
           })
@@ -71,7 +71,7 @@ function App() {
       {/* <BrowserRouter> */}
       <Routes>
         {/* <Route path="/" element={<Register />}></Route> */}
-        {userLogin ? (
+        {userLogin && JSON.parse(localStorage?.getItem("tokenSession")) ? (
           <>
             <Route path="/home" element={<Home />}>
               <Route path="movies" element={<MovieSection />} />

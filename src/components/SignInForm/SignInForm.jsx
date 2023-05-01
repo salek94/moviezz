@@ -58,7 +58,7 @@ const SignInForm = ({ setSignIn }) => {
 
   const goToHome = () => {
     navigate("/home");
-    //localStorage.setItem('user',JSON.stringify(Pera))
+    localStorage.setItem("tokenSession", JSON.stringify("3423tsfdqwe"));
     //dispatch setUser(values)
     setUserLogin(true);
   };
@@ -117,7 +117,7 @@ const SignInForm = ({ setSignIn }) => {
             className="mt-3"
             variant="warning"
             onClick={goToHome}
-            type="submit"
+            // type="submit"
           >
             Sign in
           </Button>

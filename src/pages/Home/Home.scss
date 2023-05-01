@@ -48,7 +48,7 @@
       }
       .redColor {
         background-color: $redBckGround;
-        border: none;
+        border: 1px solid $redBckGround;
         &:hover {
           background-color: $secondaryFontColor;
         }
