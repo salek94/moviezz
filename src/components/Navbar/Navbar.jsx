@@ -5,7 +5,6 @@ import MovieContext from "../../context/MovieContext";
 import mainLogo from "../../img/logo.png";
 import { FaUserCircle, FaSearch, FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const Navbar = () => {
   const { userLogin, setUserLogin, setLogout } = useContext(MovieContext);

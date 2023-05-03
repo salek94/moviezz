@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { ValidationUser } from "../ValidationScheme/ValidationUser";
 import Button from "react-bootstrap/Button";
@@ -6,10 +6,12 @@ import Form from "react-bootstrap/Form";
 import PopupModal from "../ModalPopup/PopupModal";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
+import MovieContext from "../../context/MovieContext";
 // import ModalPopup from '../ModalPopup/ModalPopup';
 
 const RegisterForm = ({ setSignIn }) => {
   const [isSubmitForm, setIsSubmitForm] = useState(false);
+  const { setAuth } = useContext(MovieContext);
   const [approve] = useSearchParams("");
   const approved = approve.get("approved");
 
@@ -61,7 +63,9 @@ const RegisterForm = ({ setSignIn }) => {
 
   useEffect(() => {
     if (approved == "true") {
+      setAuth(true);
       setIsSubmitForm(true);
+      // mogao sam da redirect na Home page i tamo da hvatam approved
     }
   }, [approved]);
 
