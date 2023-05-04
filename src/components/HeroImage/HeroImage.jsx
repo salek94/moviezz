@@ -6,8 +6,6 @@ import React, {
   useCallback,
 } from "react";
 import "./HeroImage.scss";
-import random2 from "../../img/BreakingBad.jpg";
-import random5 from "../../img/JW4.jpg";
 import MovieContext from "../../context/MovieContext";
 import { Link } from "react-router-dom";
 import { FaAngleDoubleDown } from "react-icons/fa";
@@ -198,7 +196,7 @@ const HeroImage = () => {
             <p>
               <b>{imgPopularTV?.overview?.substring(0, 200)}</b>...
             </p>
-            <button className="btnPrimary redColorBtn">Watch Now </button>
+            <button className="btnPrimary btnPrimary--red">Watch Now </button>
           </div>
           <Link
             to={"/home/tv"}
@@ -233,7 +231,7 @@ const HeroImage = () => {
             <p>
               <b>{imgPopularMovie?.overview?.substring(0, 200)}</b>...
             </p>
-            <button className="btnPrimary redColorBtn">Watch Now</button>
+            <button className="btnPrimary btnPrimary--red">Watch Now</button>
           </div>
           <Link
             to={"/home/movies"}

@@ -59,6 +59,7 @@
       width: 600px;
       position: absolute;
       bottom: 13%;
+
       // left: 1%;
     }
     &__btnHero {
@@ -73,9 +74,9 @@
   }
   &__right {
     background-image: linear-gradient(
-        to left,
-        rgba(131, 39, 39, 0.3),
-        rgba(166, 21, 21, 0.3)
+        to right,
+        rgba(131, 39, 39, 0.8),
+        rgba(166, 21, 21, 0.8)
       ),
       url("../../img/JW4.jpg");
     background-repeat: no-repeat;

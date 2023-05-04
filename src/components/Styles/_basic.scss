@@ -25,12 +25,19 @@
     background-color: $secondaryFontColor;
     // border: 1px solid $secondaryFontColor;
   }
+  &--red {
+    background-color: $red;
+    border: 1px solid $red;
+    &:hover {
+      border: 1px solid $red;
+    }
+  }
 }
 
-.redColorBtn {
-  background-color: $red;
-  border: 1px solid $red;
-}
+// .redColorBtn {
+//   background-color: $red;
+//   border: 1px solid $red;
+// }
 
 .imgPoster {
   width: 100%;

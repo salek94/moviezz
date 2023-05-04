@@ -36,26 +36,6 @@ const Navbar = () => {
     navigate("/home");
   };
 
-  // const goLogout = () => {
-  //   if (flag) {
-  //     axios
-  //       .delete(
-  //         "https://api.themoviedb.org/3/authentication/session?api_key=39b7c306441823329a6e5fa506a7906c",
-  //         {
-  //           session_id: JSON.parse(localStorage.getItem("tokenSession")),
-  //         }
-  //       )
-  //       .then((res) => {
-  //         console.log(res.data);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   } else console.log("nije dobro");
-  //   setUserLogin(false);
-  //   navigate("/");
-  // };
-  // useEffect(() => {
-  //   goLogout();
-  // }, [flag]);
   return (
     <div className="nav__container nav__background">
       <div className="nav__flex">
@@ -63,7 +43,7 @@ const Navbar = () => {
           <div>
             <img src={mainLogo} alt="" />
           </div>
-          <h3 className="nav__flex__logo--animation">MOVIZZ</h3>
+          <h3 className="nav__flex__logo">MOVIZZ</h3>
         </div>
 
         <div className="nav__flex__search">

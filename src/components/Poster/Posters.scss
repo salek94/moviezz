@@ -3,6 +3,7 @@
 
 .poster-container {
   width: 100%;
+  min-height: 83vh;
   margin: $marginCenter;
   background-color: $secondaryFontColor;
   color: $primaryFontColor;
@@ -33,7 +34,7 @@
             color: $secondaryFontColor;
             padding: 2px;
             margin-left: 3px;
-            border: 1px solid $secondaryFontColor;
+            // border: 1px solid $secondaryFontColor;
             border-radius: 25px;
             font-size: 0.7em;
             &.none {
@@ -44,12 +45,6 @@
             @include flexx($dir: row, $justify: flex-start, $align: center);
             gap: 30px;
             transition: $transition;
-            & .btnPrimary:hover {
-              border: 1px solid $orangeYellow;
-            }
-            & .redColorBtn:hover {
-              border: 1px solid $red;
-            }
           }
         }
       }

@@ -3,9 +3,11 @@ import { useContext } from "react";
 import "../Poster/Posters.scss";
 import MovieContext from "../../context/MovieContext";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import slika from "../../img/MOVIZZ.jpg";
+import axios from "axios";
 
 const Posters = () => {
-  const [query, setQuery] = useSearchParams();
+  const [query] = useSearchParams();
   const { movie, setMovie, setViewMovieOrTv, movieGenres } =
     useContext(MovieContext);
   const [flag, setFlag] = useState(false);
@@ -62,7 +64,7 @@ const Posters = () => {
         <aside className="poster-info__filter">
           <div>Movies {movieArray.length}</div>
           <div>TV Shows {tvArray.length}</div>
-          <div>
+          {/* <div>
             Genres
             <ul>
               {movieGenres?.map((item) => {
@@ -92,7 +94,7 @@ const Posters = () => {
                 }
               })}
             </ul>
-          </div>
+          </div> */}
           <div>
             Ratings
             <ul>
@@ -103,15 +105,20 @@ const Posters = () => {
           <div>Year</div>
         </aside>
         <div className="poster-info__results">
+          {movie.length === 0 && <h3>No results</h3>}
           {flag &&
             movie?.map((movie) => {
               const movieOvr = movie.overview;
-
+              const movieImg = movie.poster_path;
               return (
                 <div key={movie.id} className="poster-info__results__banner">
                   <img
                     className="imgPoster"
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    src={
+                      movieImg === undefined || movieImg === null
+                        ? slika
+                        : `https://image.tmdb.org/t/p/w500${movieImg}`
+                    }
                     alt=""
                   />
 
@@ -130,7 +137,7 @@ const Posters = () => {
                     </p>
 
                     <div className="poster-info__results__banner__details__poster-btn">
-                      <button className="btnPrimary redColorBtn">
+                      <button className="btnPrimary btnPrimary--red ">
                         Watch Now
                       </button>
                       <button

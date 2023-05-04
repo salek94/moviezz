@@ -45,7 +45,7 @@ const PopupModal = ({ setIsSubmitForm, authModal }) => {
             <a
               className="btnPrimary"
               // href={`https://www.themoviedb.org/authenticate/${tokenRequest}`}
-              href={`https://www.themoviedb.org/authenticate/${tokenRequest}?redirect_to=http://localhost:3000/`}
+              href={`https://www.themoviedb.org/authenticate/${tokenRequest}?redirect_to=http://localhost:3000/home`}
               rel="noreferrer"
               target="_blank"
             >

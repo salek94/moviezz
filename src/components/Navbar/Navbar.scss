@@ -22,11 +22,12 @@
     gap: 15px;
     cursor: pointer;
     color: $secondaryFontColor;
-    &--animation:hover {
-      display: inline-block;
-      animation: rubberBand;
-      animation-duration: 1s;
-    }
+    font-family: $fontLogo;
+    // &--animation:hover {
+    //   display: inline-block;
+    //   animation: rubberBand;
+    //   animation-duration: 1s;
+    // }
   }
   &__search {
     @include flexx($dir: row, $justify: space-between, $align: center);
