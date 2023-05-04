@@ -13,8 +13,9 @@ const ViewMovie = () => {
   useEffect(() => {
     const getMovieReview = async () => {
       const urlMovie =
-        "https://api.themoviedb.org/3/movie/312221/reviews?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1";
-      // keywords reviews
+        // "https://api.themoviedb.org/3/movie/312221/reviews?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1";
+        "https://api.themoviedb.org/3/discover/movie?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=35,10749&sort_by=popularity.desc";
+
       try {
         const response = await fetch(urlMovie);
         const responseJson = await response.json();

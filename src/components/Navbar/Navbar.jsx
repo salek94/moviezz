@@ -37,19 +37,19 @@ const Navbar = () => {
   };
 
   return (
-    <div className="nav__container nav__background">
-      <div className="nav__flex">
-        <div className="nav__flex__logo" onClick={goToHome}>
+    <div className="nav-container">
+      <div className="nav-flex">
+        <div className="nav-flex__logo" onClick={goToHome}>
           <div>
             <img src={mainLogo} alt="" />
           </div>
-          <h3 className="nav__flex__logo">MOVIZZ</h3>
+          <h3>MOVIZZ</h3>
         </div>
 
-        <div className="nav__flex__search">
+        <div className="nav-flex__search">
           <input
             type="search"
-            className="nav__flex__search__input"
+            className="nav-flex__search__input"
             placeholder="Search for a movie, tv show..."
             name="searchMovie"
             autoComplete="off"
@@ -63,9 +63,9 @@ const Navbar = () => {
           />
 
           {!userLogin ? (
-            <span className="nav__flex__search__notLogin">Login</span>
+            <span className="nav-flex__search__notLogin">Login</span>
           ) : (
-            <div className="nav__flex__search__login">
+            <div className="nav-flex__search__login">
               <span onClick={() => setLogout(true)}>
                 <FaUserCircle />
               </span>

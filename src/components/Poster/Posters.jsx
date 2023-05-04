@@ -3,13 +3,12 @@ import { useContext } from "react";
 import "../Poster/Posters.scss";
 import MovieContext from "../../context/MovieContext";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import slika from "../../img/MOVIZZ.jpg";
+import pic from "../../img/MOVIZZ.jpg";
 import axios from "axios";
 
 const Posters = () => {
   const [query] = useSearchParams();
-  const { movie, setMovie, setViewMovieOrTv, movieGenres } =
-    useContext(MovieContext);
+  const { movie, setMovie, setViewMovieOrTv } = useContext(MovieContext);
   const [flag, setFlag] = useState(false);
   const [showMore, setShowMore] = useState(false);
 
@@ -116,7 +115,7 @@ const Posters = () => {
                     className="imgPoster"
                     src={
                       movieImg === undefined || movieImg === null
-                        ? slika
+                        ? pic
                         : `https://image.tmdb.org/t/p/w500${movieImg}`
                     }
                     alt=""

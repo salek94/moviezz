@@ -2,21 +2,15 @@
 @import "../../components/Styles/variables";
 @import "../../components/Styles/basic";
 
-.nav__container {
+.nav-container {
   margin: $marginCenter;
   width: 100%;
-  padding: 15px;
 }
 
-.nav__background {
-  // background-color: #f7e135;
-  // background-image: linear-gradient(#edbd25 70%);
-
-  background-image: linear-gradient(to right, #f7e135 30%, #edbd25 60%);
-}
-
-.nav__flex {
+.nav-flex {
   @include flexx($dir: row, $justify: space-between, $align: center);
+  background-image: linear-gradient(to right, #f7e135 30%, #edbd25 60%);
+  padding: 15px;
   &__logo {
     @include flexx($dir: row, $justify: space-between, $align: center);
     gap: 15px;
