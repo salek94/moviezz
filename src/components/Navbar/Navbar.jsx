@@ -7,7 +7,7 @@ import { FaUserCircle, FaSearch, FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const { userLogin, setUserLogin, setLogout } = useContext(MovieContext);
+  const { userLogin, setLogout, favoriteMovie } = useContext(MovieContext);
   const [searchValue, setSearchValue] = useState("");
 
   const navigate = useNavigate();
@@ -23,6 +23,11 @@ const Navbar = () => {
     }
   };
 
+  const goToHome = (e) => {
+    e.preventDefault();
+    navigate("/home");
+  };
+
   // NE ZNAM DA NAMESTIM ENTER BUTTON
   // const aaa = (e) => {
   //   e.preventDefault();
@@ -31,10 +36,7 @@ const Navbar = () => {
   //   }
   // };
 
-  const goToHome = (e) => {
-    e.preventDefault();
-    navigate("/home");
-  };
+  // treba da napravim dropdown menu za favoriteMovie
 
   return (
     <div className="nav-container">
@@ -69,7 +71,7 @@ const Navbar = () => {
               <span onClick={() => setLogout(true)}>
                 <FaUserCircle />
               </span>
-              <span>
+              <span className={favoriteMovie.length === 0 ? "" : "aa"}>
                 <FaHeart />
               </span>
             </div>

@@ -17,6 +17,12 @@ const Posters = () => {
   const showMoreDetails = useRef();
   // console.log(movieGenres);
   console.log(movie);
+
+  // ratings od vecem ka manjem i obratno
+  // year (napraviti input pa da kucaju y:2002 )
+  // pagination
+  // scroll to top
+
   const getMovieRequest = async (getQuery) => {
     if (getQuery) {
       const url = `https://api.themoviedb.org/3/search/multi?api_key=39b7c306441823329a6e5fa506a7906c&query=${getQuery}&language=en-US`;

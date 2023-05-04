@@ -33,7 +33,6 @@ const HeroImage = () => {
     }, 2500);
     setTransitionMovie(true);
     setTransitionTV(false);
-    // navigate("/home/movies");
   };
 
   const handleTVshow = () => {
@@ -155,6 +154,10 @@ const HeroImage = () => {
   // }, []);
   // console.log(movieGenres);
 
+  // code splitting (lazy loading)
+  // scroll to top
+  // pritiskom na watch now da se otvori video
+
   return (
     <>
       <div className="heroImg">
@@ -200,7 +203,6 @@ const HeroImage = () => {
           </div>
           <Link
             to={"/home/tv"}
-            // className="heroImg__left__btnHero btnPrimary"
             className={`heroImg__left${
               transitionMovie ? "--transition-movie" : ""
             }${transitionTV ? "--transition-tv" : ""}__btnHero btnPrimary`}

@@ -10,11 +10,14 @@ const ViewMovie = () => {
   // const params = useParams();
   console.log(movieGenres);
 
+  // kad se stisne na dugme od nekog zanra da mi izlista taj zanr
+  // reviews
+
   useEffect(() => {
     const getMovieReview = async () => {
       const urlMovie =
-        // "https://api.themoviedb.org/3/movie/312221/reviews?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1";
-        "https://api.themoviedb.org/3/discover/movie?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=35,10749&sort_by=popularity.desc";
+        "https://api.themoviedb.org/3/movie/312221/reviews?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1";
+      // "https://api.themoviedb.org/3/discover/movie?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=35,10749&sort_by=popularity.desc";
 
       try {
         const response = await fetch(urlMovie);
@@ -40,7 +43,6 @@ const ViewMovie = () => {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <div
         className="view-wrapper"
         style={{

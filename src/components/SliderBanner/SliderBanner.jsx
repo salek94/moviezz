@@ -18,7 +18,6 @@ const SliderBanner = ({ movie }) => {
     const picTitle = [a, b];
     localStorage.setItem("favorite", JSON.stringify(picTitle));
     const getFavoriteMovie = JSON.parse(localStorage.getItem("favorite"));
-
     setFavoriteMovie((picTitle) => [...picTitle, getFavoriteMovie]);
   };
 
@@ -36,7 +35,7 @@ const SliderBanner = ({ movie }) => {
   //     setAa(false);
   //   };
 
-  //   console.log(favoriteMovie);
+  console.log(favoriteMovie);
   // }, []);
   return (
     <div className="banner">
