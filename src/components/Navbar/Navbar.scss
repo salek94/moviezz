@@ -54,16 +54,26 @@
         //     width: 2.1em;
         // }
       }
-      & .aa::after {
-        content: "";
-        display: inline-block;
-        position: absolute;
-        right: 2%;
-        height: 12px;
-        width: 12px;
-        background-color: $red;
-        border-radius: 50%;
-      }
+      // & .aa::after {
+      //   content: "";
+      //   display: inline-block;
+      //   position: absolute;
+      //   right: 2%;
+      //   height: 12px;
+      //   width: 12px;
+      //   background-color: $red;
+      //   border-radius: 50%;
+      // }
+    }
+    &__favorite::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      right: 2%;
+      height: 12px;
+      width: 12px;
+      background-color: $red;
+      border-radius: 50%;
     }
   }
 }

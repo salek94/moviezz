@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MovieContext from "../../context/MovieContext";
 
 const SliderBanner = ({ movie }) => {
-  const { setViewMovieOrTv, favoriteMovie, setFavoriteMovie } =
-    useContext(MovieContext);
+  const { setViewMovieOrTv, setFavoriteMovie } = useContext(MovieContext);
   const navigate = useNavigate();
 
   const goToViewMovie = (movie) => {
@@ -13,30 +12,16 @@ const SliderBanner = ({ movie }) => {
     navigate(`/view/${movie.id}`);
   };
 
-  const addFavorite = (a, b) => {
+  const addFavorite = (a, b, c) => {
     // const picTitle = [movie.original_title, movie.poster_path];
-    const picTitle = [a, b];
-    localStorage.setItem("favorite", JSON.stringify(picTitle));
-    const getFavoriteMovie = JSON.parse(localStorage.getItem("favorite"));
-    setFavoriteMovie((picTitle) => [...picTitle, getFavoriteMovie]);
+    const picTitle = {
+      name: a,
+      pic: b,
+      id: c,
+    };
+    setFavoriteMovie((prev) => [...prev, picTitle]);
   };
 
-  // useEffect(() => {
-  //   const getFavoriteMovie = JSON.parse(localStorage.getItem("favorite"));
-
-  //   if (aa) {
-  //     setFavoriteMovie((getFavoriteMovie) => [
-  //       ...getFavoriteMovie,
-  //       getFavoriteMovie,
-  //     ]);
-  //   }
-
-  //   return () => {
-  //     setAa(false);
-  //   };
-
-  console.log(favoriteMovie);
-  // }, []);
   return (
     <div className="banner">
       <img
@@ -48,15 +33,11 @@ const SliderBanner = ({ movie }) => {
         <button className="btnPrimary" onClick={() => goToViewMovie(movie)}>
           Overview
         </button>
-        <button
-          className="btnPrimary redColor"
-          // onClick={() => goToViewMovie(movie)}
-        >
-          Watch Now
-        </button>
-        {/* <h5>{movie.original_title}</h5> */}
+        <button className="btnPrimary btnPrimary--red">Watch Now</button>
         <span
-          onClick={() => addFavorite(movie.original_title, movie.poster_path)}
+          onClick={() =>
+            addFavorite(movie.original_title, movie.poster_path, movie.id)
+          }
         >
           <FaHeart />
         </span>

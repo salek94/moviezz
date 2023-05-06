@@ -6,7 +6,6 @@
   flex-wrap: nowrap;
   margin: $marginCenter;
   height: 84vh;
-  // width: 100%;
   background-color: $secondaryFontColor;
   position: relative;
   overflow: hidden;
@@ -45,7 +44,6 @@
       rgba(200, 188, 21, 0.7),
       rgba(237, 226, 15, 0.7)
     );
-    // url("../../img/BreakingBad.jpg");
     // url(https://image.tmdb.org/t/p/original${ex.backdrop_path});
 
     background-size: cover;
@@ -59,18 +57,16 @@
       width: 600px;
       position: absolute;
       bottom: 13%;
-
-      // left: 1%;
+      left: 1%;
     }
     &__btnHero {
       position: absolute;
       bottom: 12%;
-      left: 30%;
+      left: 40%;
       font-size: 1.3rem;
       padding: 20px 40px;
       text-decoration: none;
     }
-    // clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
   }
   &__right {
     background-image: linear-gradient(
@@ -88,24 +84,23 @@
     // transform: skew(-13deg, 0deg);
     transition: linear 1.5s;
     &__movie-info {
-      @extend .heroImg__left__tv-info;
+      // @extend .heroImg__left__tv-info;
       text-align: end;
       right: 1%;
-      // width: 600px;
-      // position: absolute;
-      // bottom: 13%;
+      width: 600px;
+      position: absolute;
+      bottom: 13%;
     }
     &__btnHero {
       @extend .heroImg__left__btnHero;
+      left: 53%;
       // position: absolute;
       // bottom: 12%;
-      left: 60%;
       // right: 30%;
       // font-size: 1.3rem;
       // padding: 20px 40px;
       // text-decoration: none;
     }
-    // clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
   &__left--transition-movie {
     background-image: url("../../img/BreakingBad.jpg");
@@ -135,19 +130,13 @@
     // clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
   }
   &__right--transition-movie {
-    // background-image: url('../../img/BreakingBad.jpg');
-    background-image: url("../../img/JW4.jpg");
+    // background-image: url("../../img/JW4.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 84vh;
     width: 100%;
-    // transform-origin: bottom left;
-    // transform: skew(-25deg, 0deg);
-    // position: absolute;
-    // left: 40%;
     transition: linear 1.5s;
-    // opacity: 0.2;
     z-index: 0;
     &__movie-info {
       @extend .heroImg__right__movie-info;
@@ -163,7 +152,6 @@
       padding: 20px 40px;
       text-decoration: none;
     }
-    // clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
   &__left--transition-tv {
     background-image: url("../../img/BreakingBad.jpg");
@@ -192,17 +180,12 @@
     // clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
   }
   &__right--transition-tv {
-    // background-image: url('../../img/BreakingBad.jpg');
-    background-image: url("../../img/JW4.jpg");
+    // background-image: url("../../img/JW4.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 84vh;
     width: 40%;
-    // transform-origin: bottom left;
-    // transform: skew(-25deg, 0deg);
-    // position: absolute;
-    // left: 40%;
     transition: linear 1.5s;
     opacity: 0.9;
     &__movie-info {

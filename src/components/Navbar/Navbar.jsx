@@ -5,10 +5,12 @@ import MovieContext from "../../context/MovieContext";
 import mainLogo from "../../img/logo.png";
 import { FaUserCircle, FaSearch, FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import FavoriteMovie from "../FavoriteMovie/FavoriteMovie";
 
 const Navbar = () => {
   const { userLogin, setLogout, favoriteMovie } = useContext(MovieContext);
   const [searchValue, setSearchValue] = useState("");
+  const [showFavoriteMovie, setShowFavoriteMovie] = useState(false);
 
   const navigate = useNavigate();
 
@@ -36,7 +38,9 @@ const Navbar = () => {
   //   }
   // };
 
-  // treba da napravim dropdown menu za favoriteMovie
+  const handleFavoriteMovie = () => {
+    setShowFavoriteMovie(!showFavoriteMovie);
+  };
 
   return (
     <div className="nav-container">
@@ -52,7 +56,7 @@ const Navbar = () => {
           <input
             type="search"
             className="nav-flex__search__input"
-            placeholder="Search for a movie, tv show..."
+            placeholder="Search for a movie, tv shows..."
             name="searchMovie"
             autoComplete="off"
             onChange={handleSearchValue}
@@ -71,12 +75,21 @@ const Navbar = () => {
               <span onClick={() => setLogout(true)}>
                 <FaUserCircle />
               </span>
-              <span className={favoriteMovie.length === 0 ? "" : "aa"}>
+              <span
+                className={
+                  favoriteMovie.length === 0 ? "" : "nav-flex__search__favorite"
+                }
+                onClick={handleFavoriteMovie}
+              >
                 <FaHeart />
               </span>
             </div>
           )}
         </div>
+        {favoriteMovie &&
+          favoriteMovie?.map((fav) => {
+            return <FavoriteMovie fav={fav} key={fav.id} />;
+          })}
       </div>
     </div>
   );

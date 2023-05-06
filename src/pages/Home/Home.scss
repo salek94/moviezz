@@ -2,13 +2,16 @@
 @import "../../components/Styles/variables";
 @import "../../components/Styles/basic";
 
-.main-container {
-  width: 100%;
+.main {
+  // width: 100%;
   margin: $marginCenter;
   // background-color: $navyBckGround;
   background-color: $secondaryFontColor;
   // background-color: $primaryFontColor;
   color: $primaryFontColor;
+  &--center {
+    width: 19%;
+  }
 
   //SLIDER BANNER
 
@@ -44,13 +47,9 @@
             // color: $secondaryFontColor;
             animation: ticTac 1s infinite;
           }
-        }
-      }
-      .redColor {
-        background-color: $redBckGround;
-        border: 1px solid $redBckGround;
-        &:hover {
-          background-color: $secondaryFontColor;
+          &:active {
+            color: $secondaryFontColor;
+          }
         }
       }
     }
@@ -81,23 +80,3 @@
     }
   }
 }
-
-// za Trending 2
-// .flex-slider {
-//     @include flexx ($dir:row, $justify:center, $align:center);
-//     &__row {
-//         width: 18%;
-//         margin: 10px 8px;
-//         img {
-//             width: 100%;
-//         }
-//     }
-//     &__arrow {
-
-//         // margin-left: 5px;
-//         svg {
-//             height: 2em;
-//             width: 1.3em;
-//         }
-//     }
-// }

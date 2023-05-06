@@ -1,7 +1,6 @@
 import React from "react";
 import Trending from "../../components/Banner/Trending";
 import TopRated from "../../components/Banner/TopRated";
-import Trailers from "../../components/Banner/Trailers";
 import Popular from "../../components/Banner/Popular";
 import Action from "../../components/Banner/Action";
 import Animation from "../../components/Banner/Animation";
@@ -10,10 +9,10 @@ import Comedy from "../../components/Banner/Comedy";
 
 const MovieSection = () => {
   return (
-    <div className="main-container">
+    <div className="main">
+      <h3 className="main main--center">You choose Movies</h3>
       <Trending />
       <Popular />
-      {/* <Trailers/> */}
       <TopRated />
       <Action />
       <Animation />
