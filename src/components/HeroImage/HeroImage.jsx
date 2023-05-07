@@ -9,7 +9,6 @@ import "./HeroImage.scss";
 import MovieContext from "../../context/MovieContext";
 import { Link } from "react-router-dom";
 import { FaAngleDoubleDown } from "react-icons/fa";
-import Loader from "../Loader/Loader";
 
 const HeroImage = () => {
   const {

@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useContext } from "react";
+import React, { useRef, useState, useContext } from "react";
 import "../Navbar/Navbar.scss";
 import MovieContext from "../../context/MovieContext";
 import mainLogo from "../../img/logo.png";
@@ -12,6 +11,7 @@ const Navbar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [showFavoriteMovie, setShowFavoriteMovie] = useState(false);
   const navigate = useNavigate();
+  const inputSearch = useRef();
 
   const handleSearchValue = (e) => {
     setSearchValue(e.target.value);
@@ -21,6 +21,7 @@ const Navbar = () => {
     e.preventDefault();
     if (searchValue) {
       navigate(`/list?search=${searchValue}`);
+      inputSearch.current.value = "";
     }
   };
 
@@ -29,15 +30,14 @@ const Navbar = () => {
     navigate("/home");
   };
 
-  // NE ZNAM DA NAMESTIM ENTER BUTTON
-  // const aaa = (e) => {
-  //   e.preventDefault();
-  //   if (e.key === "Enter") {
-  //     navigate(`/list?search=${searchValue}`);
-  //   }
-  // };
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      navigate(`/list?search=${searchValue}`);
+      inputSearch.current.value = "";
+    }
+  };
 
-  const handleFavoriteMovie = (e) => {
+  const handleFavoriteMovie = () => {
     if (!favorite) setShowFavoriteMovie(false);
     // setShowFavoriteMovie(!showFavoriteMovie);
     setShowFavoriteMovie(showFavoriteMovie ? false : true);
@@ -60,14 +60,12 @@ const Navbar = () => {
             placeholder="Search for a movie, tv shows..."
             name="searchMovie"
             autoComplete="off"
+            ref={inputSearch}
             onChange={handleSearchValue}
-            // onKeyDown={(e) => aaa(e)}
+            onKeyDown={handleEnter}
           />
 
-          <FaSearch
-            className="searchIcon"
-            onClick={(e) => getSearchResults(e)}
-          />
+          <FaSearch className="searchIcon" onClick={getSearchResults} />
 
           {!userLogin ? (
             <span className="nav-flex__search__notLogin">Login</span>

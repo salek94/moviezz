@@ -1,16 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useContext } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import "../Poster/Posters.scss";
 import MovieContext from "../../context/MovieContext";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import pic from "../../img/MOVIZZ.jpg";
 import axios from "axios";
+import ScrollTop from "../features/scrollTop/ScrollTop";
 
 const Posters = () => {
   const [query] = useSearchParams();
   const { movie, setMovie, setViewMovieOrTv } = useContext(MovieContext);
   const [flag, setFlag] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const [showScroll, setShowScroll] = useState(false);
 
   const navigate = useNavigate();
   const getQuery = query.get("search");
@@ -21,7 +22,6 @@ const Posters = () => {
   // ratings od vecem ka manjem i obratno
   // year (napraviti input pa da kucaju y:2002 )
   // pagination
-  // scroll to top
 
   const getMovieRequest = async (getQuery) => {
     if (getQuery) {
@@ -46,9 +46,6 @@ const Posters = () => {
   const showMoreText = (e) => {
     e.preventDefault();
     setShowMore(!showMore);
-    if (e.target) {
-      // showMoreDetails.current.setAttribute("name", "a");
-    }
   };
 
   const goToView = (movie) => {
@@ -58,9 +55,15 @@ const Posters = () => {
 
   const movieArray = movie?.filter((m) => m.media_type === "movie");
   const tvArray = movie?.filter((m) => m.media_type !== "movie");
+  const handleScroll = () => {
+    if (window.scrollY >= 1000) {
+      setShowScroll(true);
+    } else setShowScroll(false);
+  };
 
   return (
-    <div className="poster-container">
+    <div className="poster-container" onMouseMove={handleScroll}>
+      {showScroll ? <ScrollTop /> : ""}
       <div className="poster-search">
         <h3>Search results for: {getQuery}</h3>
       </div>

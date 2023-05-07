@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./FavoriteMovie.scss";
 import MovieContext from "../../context/MovieContext";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
