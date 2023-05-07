@@ -93,7 +93,7 @@ const Navbar = () => {
               <FavoriteMovie
                 fav={fav}
                 key={fav.id}
-                show={setShowFavoriteMovie}
+                onClickOutside={() => setShowFavoriteMovie(false)}
               />
             );
           })}
