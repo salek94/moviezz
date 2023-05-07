@@ -10,7 +10,7 @@ export const MovieProvider = ({ children }) => {
   const [clickedMovie, setClickedMovie] = useState(false);
   const [clickedTVshow, setClickedTVshow] = useState(false);
   const [movieOrTV, setMovieOrTV] = useState("movie");
-  const [favoriteMovie, setFavoriteMovie] = useState([]);
+  const [favorite, setFavorite] = useState([]);
   const [movieGenres, setMovieGenres] = useState();
   const [viewMovieOrTv, setViewMovieOrTv] = useState();
   const [auth, setAuth] = useState(false);
@@ -27,8 +27,8 @@ export const MovieProvider = ({ children }) => {
         setClickedMovie,
         clickedTVshow,
         setClickedTVshow,
-        favoriteMovie,
-        setFavoriteMovie,
+        favorite,
+        setFavorite,
         movieOrTV,
         setMovieOrTV,
         movieGenres,

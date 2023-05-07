@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MovieContext from "../../context/MovieContext";
 
 const SliderBanner = ({ movie }) => {
-  const { setViewMovieOrTv, setFavoriteMovie } = useContext(MovieContext);
+  const { setViewMovieOrTv, favorite, setFavorite } = useContext(MovieContext);
   const navigate = useNavigate();
 
   const goToViewMovie = (movie) => {
@@ -19,7 +19,7 @@ const SliderBanner = ({ movie }) => {
       pic: b,
       id: c,
     };
-    setFavoriteMovie((prev) => [...prev, picTitle]);
+    if (picTitle.id !== favorite.id) setFavorite((prev) => [...prev, picTitle]);
   };
 
   return (

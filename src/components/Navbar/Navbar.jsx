@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState, useContext } from "react";
 import "../Navbar/Navbar.scss";
 import MovieContext from "../../context/MovieContext";
@@ -8,10 +8,9 @@ import { useNavigate } from "react-router-dom";
 import FavoriteMovie from "../FavoriteMovie/FavoriteMovie";
 
 const Navbar = () => {
-  const { userLogin, setLogout, favoriteMovie } = useContext(MovieContext);
+  const { userLogin, setLogout, favorite } = useContext(MovieContext);
   const [searchValue, setSearchValue] = useState("");
   const [showFavoriteMovie, setShowFavoriteMovie] = useState(false);
-
   const navigate = useNavigate();
 
   const handleSearchValue = (e) => {
@@ -38,8 +37,10 @@ const Navbar = () => {
   //   }
   // };
 
-  const handleFavoriteMovie = () => {
-    setShowFavoriteMovie(!showFavoriteMovie);
+  const handleFavoriteMovie = (e) => {
+    if (!favorite) setShowFavoriteMovie(false);
+    // setShowFavoriteMovie(!showFavoriteMovie);
+    setShowFavoriteMovie(showFavoriteMovie ? false : true);
   };
 
   return (
@@ -77,7 +78,7 @@ const Navbar = () => {
               </span>
               <span
                 className={
-                  favoriteMovie.length === 0 ? "" : "nav-flex__search__favorite"
+                  favorite.length === 0 ? "" : "nav-flex__search__favorite"
                 }
                 onClick={handleFavoriteMovie}
               >
@@ -86,9 +87,15 @@ const Navbar = () => {
             </div>
           )}
         </div>
-        {favoriteMovie &&
-          favoriteMovie?.map((fav) => {
-            return <FavoriteMovie fav={fav} key={fav.id} />;
+        {showFavoriteMovie &&
+          favorite?.map((fav) => {
+            return (
+              <FavoriteMovie
+                fav={fav}
+                key={fav.id}
+                show={setShowFavoriteMovie}
+              />
+            );
           })}
       </div>
     </div>

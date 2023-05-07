@@ -45,11 +45,6 @@ const HeroImage = () => {
     setTransitionMovie(false);
   };
 
-  const backTransition = () => {
-    setTransitionMovie(false);
-    setTransitionTV(false);
-  };
-
   const getMovieGenre = async () => {
     const urlMovie =
       "https://api.themoviedb.org/3/genre/movie/list?api_key=39b7c306441823329a6e5fa506a7906c";
@@ -129,31 +124,6 @@ const HeroImage = () => {
     return () => clearInterval(interval);
   }, [getPopularTV]);
 
-  // useEffect(() => {
-  //   let controller = new AbortController();
-  //   (async () => {
-  //     const urlMovie =
-  //       "https://api.themoviedb.org/3/genre/movie/list?api_key=39b7c306441823329a6e5fa506a7906c";
-
-  //     try {
-  //       const response = await fetch(urlMovie, {
-  //         signal: controller.signal,
-  //       });
-  //       const responseJson = await response.json();
-
-  //       if (responseJson.genres) {
-  //         // console.log(responseJson.genres);
-  //         setMovieGenres(responseJson.genres);
-  //         controller = null;
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   })();
-  //   return () => controller?.abort();
-  // }, []);
-  // console.log(movieGenres);
-
   // code splitting (lazy loading)
   // scroll to top
   // pritiskom na watch now da se otvori video
@@ -177,7 +147,7 @@ const HeroImage = () => {
         <a className="heroImg__arrow" href={"#trend"}>
           <FaAngleDoubleDown />
         </a>
-        {/* <button onClick={backTransition}>go back</button> */}
+
         <div
           style={{
             backgroundImage: `linear-gradient(
