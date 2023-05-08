@@ -12,6 +12,7 @@ const Posters = () => {
   const [flag, setFlag] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
+  const [desc, setDesc] = useState(false);
 
   const navigate = useNavigate();
   const getQuery = query.get("search");
@@ -19,7 +20,6 @@ const Posters = () => {
   // console.log(movieGenres);
   console.log(movie);
 
-  // ratings od vecem ka manjem i obratno
   // year (napraviti input pa da kucaju y:2002 )
   // pagination
 
@@ -53,13 +53,17 @@ const Posters = () => {
     navigate(`/view/${movie.id}`);
   };
 
-  const movieArray = movie?.filter((m) => m.media_type === "movie");
-  const tvArray = movie?.filter((m) => m.media_type !== "movie");
   const handleScroll = () => {
     if (window.scrollY >= 1000) {
       setShowScroll(true);
     } else setShowScroll(false);
   };
+
+  if (desc) movie?.sort((a, b) => a.popularity - b.popularity);
+  else movie?.sort((a, b) => b.popularity - a.popularity);
+
+  const movieArray = movie?.filter((m) => m.media_type === "movie");
+  const tvArray = movie?.filter((m) => m.media_type !== "movie");
 
   return (
     <div className="poster-container" onMouseMove={handleScroll}>
@@ -72,42 +76,12 @@ const Posters = () => {
         <aside className="poster-info__filter">
           <div>Movies {movieArray.length}</div>
           <div>TV Shows {tvArray.length}</div>
-          {/* <div>
-            Genres
-            <ul>
-              {movieGenres?.map((item) => {
-                const genreGeneral = item.name;
-                const genreGeneralId = item.id;
-                let freq = [];
-                for (let i = 0; i < movie?.length; i++) {
-                  const ele = movie[i].genre_ids;
-                  for (let i = 0; i < ele?.length; i++) {
-                    const num = ele[i];
-                    freq.push(num);
-                  }
-                  let frequencyArray = [];
-                  for (let i = 0; i < freq?.length; i++) {
-                    frequencyArray.push([freq[i], i]);
-                    // console.log(frequencyArray[i]);
-                    if (genreGeneralId === frequencyArray[i][0]) {
-                      return (
-                        <li>
-                          {genreGeneral}
-                          {frequencyArray[i][1] + 1}
-                        </li>
-                      );
-                    }
-                  }
-                  // return frequencyArray[i];
-                }
-              })}
-            </ul>
-          </div> */}
           <div>
             Ratings
             <ul>
-              <li>a</li>
-              <li>b</li>
+              <li onClick={() => setDesc(!desc)}>
+                {desc ? "Ascending" : "Descending"}
+              </li>
             </ul>
           </div>
           <div>Year</div>

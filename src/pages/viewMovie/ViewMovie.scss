@@ -10,11 +10,10 @@
   // background-image: `url({https://image.tmdb.org/t/p/original${movie.poster_path}})`;
   &__about-movie {
     @include flexx($dir: row, $justify: center, $align: center);
-    // height: 400px;
     position: absolute;
     top: 22%;
     width: 100%;
-    opacity: 0.8;
+    opacity: 0.9;
     font-weight: bold;
     background-color: $primaryFontColor;
     border: 1px solid $secondaryFontColor;
@@ -57,12 +56,6 @@
         @include flexx($dir: row, $justify: space-between, $align: center);
         width: 40%;
         margin-top: 20px;
-        & .red {
-          background-color: $redBckGround;
-          border: 1px solid $redBckGround;
-          opacity: 1 !important;
-          // child nece da ima veci opacity od parent-a
-        }
       }
     }
   }

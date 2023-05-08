@@ -19,6 +19,7 @@ function App() {
   const { auth, userLogin, setUserLogin, logout } = useContext(MovieContext);
   const navigate = useNavigate();
   console.log(userLogin);
+
   useEffect(() => {
     const handleAuth = () => {
       if (auth) {

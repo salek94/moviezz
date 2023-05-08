@@ -9,7 +9,8 @@ const Popular = () => {
   const { movieOrTV } = useContext(MovieContext);
 
   const getMoviePopular = async (movieOrTV) => {
-    const urlPopular = `https://api.themoviedb.org/3/${movieOrTV}/popular?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1`;
+    const baseUrl = "https://api.themoviedb.org/3/";
+    const urlPopular = `${baseUrl}${movieOrTV}/popular?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1`;
 
     try {
       const response = await fetch(urlPopular);

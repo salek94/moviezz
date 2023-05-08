@@ -7,31 +7,30 @@ import { FaStar, FaHeart } from "react-icons/fa";
 const ViewMovie = () => {
   const { viewMovieOrTv, movieGenres } = useContext(MovieContext);
   const navigate = useNavigate();
-  // const params = useParams();
   console.log(movieGenres);
 
   // kad se stisne na dugme od nekog zanra da mi izlista taj zanr
   // reviews
 
-  useEffect(() => {
-    const getMovieReview = async () => {
-      const urlMovie =
-        "https://api.themoviedb.org/3/movie/312221/reviews?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1";
-      // "https://api.themoviedb.org/3/discover/movie?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=35,10749&sort_by=popularity.desc";
+  // useEffect(() => {
+  //   const getMovieReview = async () => {
+  //     const urlMovie =
+  //       "https://api.themoviedb.org/3/movie/312221/reviews?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1";
+  //     // "https://api.themoviedb.org/3/discover/movie?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=35,10749&sort_by=popularity.desc";
 
-      try {
-        const response = await fetch(urlMovie);
-        const responseJson = await response.json();
+  //     try {
+  //       const response = await fetch(urlMovie);
+  //       const responseJson = await response.json();
 
-        if (responseJson.results) {
-          console.log(responseJson.results);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getMovieReview();
-  }, []);
+  //       if (responseJson.results) {
+  //         console.log(responseJson.results);
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   getMovieReview();
+  // }, []);
 
   const goBack = () => {
     navigate(-1);
@@ -105,13 +104,8 @@ const ViewMovie = () => {
               {viewMovieOrTv.overview}
             </div>
             <div className="view-wrapper__about-movie__details__btn">
-              <button className="view-wrapper__about-movie__details__btn-watch btnPrimary red">
-                Watch Now
-              </button>
-              <button
-                className="view-wrapper__about-movie__details__btn-back btnPrimary"
-                onClick={goBack}
-              >
+              <button className="btnPrimary btnPrimary--red">Watch Now</button>
+              <button className="btnPrimary" onClick={goBack}>
                 Search More
               </button>
             </div>

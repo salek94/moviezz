@@ -9,7 +9,8 @@ const Trending = () => {
   const [today, setToday] = useState(true);
 
   const getMovieTrending = async (period) => {
-    const urlTrending = `https://api.themoviedb.org/3/trending/all/${period}?api_key=39b7c306441823329a6e5fa506a7906c`;
+    const baseUrl = "https://api.themoviedb.org/3/";
+    const urlTrending = `${baseUrl}trending/all/${period}?api_key=39b7c306441823329a6e5fa506a7906c`;
 
     try {
       const response = await fetch(urlTrending);

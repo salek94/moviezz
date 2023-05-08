@@ -9,7 +9,12 @@ const Action = () => {
   const [moviesAction, setMoviesAction] = useState("");
 
   const getMovieAction = async (movieOrTV) => {
-    const urlAction = `https://api.themoviedb.org/3/discover/${movieOrTV}?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=18&sort_by=popularity.desc`;
+    const baseUrl = "https://api.themoviedb.org/3/discover/";
+
+    const urlAction =
+      movieOrTV === "movie"
+        ? `${baseUrl}movie?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=18&sort_by=popularity.desc`
+        : `${baseUrl}tv?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=10759&sort_by=popularity.desc`;
 
     try {
       const response = await fetch(urlAction);

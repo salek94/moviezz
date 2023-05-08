@@ -15,6 +15,7 @@ const HeroImage = () => {
     movieGenres,
     setMovieOrTV,
     setClickedMovie,
+    clickedMovie,
     setClickedTVshow,
     setMovieGenres,
   } = useContext(MovieContext);
@@ -124,7 +125,6 @@ const HeroImage = () => {
   }, [getPopularTV]);
 
   // code splitting (lazy loading)
-  // scroll to top
   // pritiskom na watch now da se otvori video
 
   return (
@@ -137,15 +137,15 @@ const HeroImage = () => {
               : "heroImg__title--none"
           }
         >
-          <p className="title__welcome">
-            Welcome.
+          <p className="heroImg__title__welcome">
+            <span>Welcome!</span>
             <br />
-            Choose your favorite TV Show or Movie.
+            <span>Choose your favorite TV Show or Movie</span>
           </p>
         </div>
-        <a className="heroImg__arrow" href={"#trend"}>
+        {/* <a className={clickedMovie ? "heroImg__arrow" : ""} href={"#trend"}>
           <FaAngleDoubleDown />
-        </a>
+        </a> */}
 
         <div
           style={{
@@ -174,7 +174,7 @@ const HeroImage = () => {
             to={"/home/tv"}
             className={`heroImg__left${
               transitionMovie ? "--transition-movie" : ""
-            }${transitionTV ? "--transition-tv" : ""}__btnHero btnPrimary`}
+            }${transitionTV ? "--transition-tv" : ""}--btnHero btnPrimary`}
             onClick={handleTVshow}
           >
             TV Shows
@@ -208,7 +208,7 @@ const HeroImage = () => {
             to={"/home/movies"}
             className={`heroImg__right${
               transitionMovie ? "--transition-movie" : ""
-            }${transitionTV ? "--transition-tv" : ""}__btnHero btnPrimary`}
+            }${transitionTV ? "--transition-tv" : ""}--btnHero btnPrimary`}
             onClick={handleMovie}
           >
             Movies

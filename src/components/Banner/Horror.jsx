@@ -9,7 +9,8 @@ const Horror = () => {
   const [moviesHorror, setMoviesHorror] = useState("");
 
   const getMovieHorror = async (movieOrTV) => {
-    const urlHorror = `https://api.themoviedb.org/3/discover/${movieOrTV}?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=27,53&sort_by=popularity.desc`;
+    const baseUrl = "https://api.themoviedb.org/3/discover/";
+    const urlHorror = `${baseUrl}${movieOrTV}?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=27,53&sort_by=popularity.desc`;
 
     try {
       const response = await fetch(urlHorror);

@@ -3,14 +3,13 @@
 @import "../../components/Styles/basic";
 
 .main {
-  // width: 100%;
   margin: $marginCenter;
-  // background-color: $navyBckGround;
   background-color: $secondaryFontColor;
-  // background-color: $primaryFontColor;
   color: $primaryFontColor;
   &--center {
-    width: 19%;
+    width: 21%;
+    padding: 20px;
+    text-transform: capitalize;
   }
 
   //SLIDER BANNER

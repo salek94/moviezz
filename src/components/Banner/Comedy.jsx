@@ -9,7 +9,8 @@ const Comedy = () => {
   const [moviesComedy, setMoviesComedy] = useState("");
 
   const getMovieComedy = async (movieOrTV) => {
-    const urlComedy = `https://api.themoviedb.org/3/discover/${movieOrTV}?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=35,10749&sort_by=popularity.desc`;
+    const baseUrl = "https://api.themoviedb.org/3/discover/";
+    const urlComedy = `${baseUrl}${movieOrTV}?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=35,10749&sort_by=popularity.desc`;
 
     try {
       const response = await fetch(urlComedy);

@@ -21,6 +21,7 @@
   text-transform: capitalize;
   cursor: pointer;
   transition: $transition;
+
   &:hover {
     background-color: $secondaryFontColor;
     // border: 1px solid $secondaryFontColor;
@@ -33,11 +34,6 @@
     }
   }
 }
-
-// .redColorBtn {
-//   background-color: $red;
-//   border: 1px solid $red;
-// }
 
 .imgPoster {
   width: 100%;
