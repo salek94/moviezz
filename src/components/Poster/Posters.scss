@@ -65,6 +65,9 @@
             &.none {
               display: none;
             }
+            &.proba {
+              min-height: 50px;
+            }
           }
           &__poster-btn {
             @include flexx($dir: row, $justify: flex-start, $align: center);

@@ -13,12 +13,13 @@ const Posters = () => {
   const [showMore, setShowMore] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
   const [desc, setDesc] = useState(false);
+  const [de, setDe] = useState();
 
   const navigate = useNavigate();
   const getQuery = query.get("search");
   const showMoreDetails = useRef();
   // console.log(movieGenres);
-  console.log(movie);
+  // console.log(movie);
 
   // year (napraviti input pa da kucaju y:2002 )
   // pagination
@@ -43,10 +44,10 @@ const Posters = () => {
     getMovieRequest(getQuery);
   }, [query]);
 
-  const showMoreText = (e) => {
-    e.preventDefault();
-    setShowMore(!showMore);
-  };
+  // const showMoreText = (e) => {
+  //   e.preventDefault();
+  //   setShowMore(!showMore);
+  // };
 
   const goToView = (movie) => {
     setViewMovieOrTv(movie);
@@ -57,6 +58,11 @@ const Posters = () => {
     if (window.scrollY >= 1000) {
       setShowScroll(true);
     } else setShowScroll(false);
+  };
+
+  const d = (i) => {
+    console.log(i);
+    setDe(i);
   };
 
   if (desc) movie?.sort((a, b) => a.popularity - b.popularity);
@@ -94,7 +100,7 @@ const Posters = () => {
         <div className="poster-info__results">
           {movie.length === 0 && <h3>No results</h3>}
           {flag &&
-            movie?.map((movie) => {
+            movie?.map((movie, i) => {
               const movieOvr = movie.overview;
               const movieImg = movie.poster_path;
               return (
@@ -111,13 +117,13 @@ const Posters = () => {
 
                   <div className="poster-info__results__banner__details">
                     <h3>{movie.title ? movie.title : movie.original_name}</h3>
-                    <p ref={showMoreDetails}>
-                      {showMore ? movieOvr : movieOvr?.substring(0, 250)}
+                    <p className={de == i ? "proba" : ""} onClick={() => d(i)}>
+                      {/* {showMore ? movieOvr : movieOvr?.substring(0, 250)} */}
+                      {de == i ? movieOvr : movieOvr?.substring(0, 250)}
                       <button
                         className={movieOvr?.length < 250 ? "none" : ""}
                         // onClick={() => showMoreText(movie)}
-                        onClick={showMoreText}
-                        // ne znam kako samo jedan div da pokaze
+                        // onClick={showMoreText}
                       >
                         {showMore ? "Show less" : "Show more"}
                       </button>
