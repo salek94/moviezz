@@ -3,14 +3,6 @@
   margin: $marginCenter;
 }
 
-.text-center {
-  text-align: center;
-}
-
-.m-auto {
-  margin: $marginCenter;
-}
-
 .btnPrimary {
   display: inline-block;
   background-color: $orangeYellow;
@@ -21,6 +13,7 @@
   text-transform: capitalize;
   cursor: pointer;
   transition: $transition;
+  text-decoration: none;
 
   &:hover {
     background-color: $secondaryFontColor;
@@ -47,6 +40,15 @@
   }
   100% {
     transform: scale(1.2);
+  }
+}
+
+@keyframes animate {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
   }
 }
 // .btnLogin {

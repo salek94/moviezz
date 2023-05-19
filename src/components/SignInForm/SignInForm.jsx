@@ -64,8 +64,8 @@ const SignInForm = ({ setSignIn }) => {
   };
 
   return (
-    <div className="bckground relative">
-      <div className="container-form absolute form-border text-center">
+    <div className="bckground-form relative">
+      <div className="container-form absolute form-border">
         <Form>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="userName">Username:</Form.Label>

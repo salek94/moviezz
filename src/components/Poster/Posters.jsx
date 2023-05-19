@@ -74,10 +74,15 @@ const Posters = () => {
 
       <div className="poster-info">
         <aside className="poster-info__filter">
-          <div>Movies {movieArray.length}</div>
-          <div>TV Shows {tvArray.length}</div>
-          <div>
-            Ratings
+          <div className="poster-info__pick">
+            Movies
+            <span>{movieArray.length}</span>
+          </div>
+          <div className="poster-info__pick">
+            TV Shows<span>{tvArray.length}</span>
+          </div>
+          <div className="poster-info__order">
+            Sort
             <ul>
               <li onClick={() => setDesc(!desc)}>
                 {desc ? "Ascending" : "Descending"}

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import "../Navbar/Navbar.scss";
 import MovieContext from "../../context/MovieContext";
 import mainLogo from "../../img/logo.png";
@@ -38,10 +38,14 @@ const Navbar = () => {
   };
 
   const handleFavoriteMovie = () => {
-    if (!favorite) setShowFavoriteMovie(false);
     // setShowFavoriteMovie(!showFavoriteMovie);
-    setShowFavoriteMovie(showFavoriteMovie ? false : true);
+    setShowFavoriteMovie(true);
+    console.log(showFavoriteMovie);
   };
+  // useEffect(() => {
+  //   if (favorite.length > 0) setShowFavoriteMovie(true);
+  //   else setShowFavoriteMovie(false);
+  // }, [favorite]);
 
   return (
     <div className="nav-container">
@@ -78,9 +82,8 @@ const Navbar = () => {
                 className={
                   favorite.length === 0 ? "" : "nav-flex__search__favorite"
                 }
-                onClick={handleFavoriteMovie}
               >
-                <FaHeart />
+                <FaHeart onClick={handleFavoriteMovie} />
               </span>
             </div>
           )}
@@ -91,7 +94,7 @@ const Navbar = () => {
               <FavoriteMovie
                 fav={fav}
                 key={fav.id}
-                onClickOutside={() => setShowFavoriteMovie(false)}
+                onClickOutside={() => setShowFavoriteMovie(!showFavoriteMovie)}
               />
             );
           })}

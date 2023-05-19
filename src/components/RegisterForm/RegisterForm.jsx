@@ -1,19 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import { ValidationUser } from "../ValidationScheme/ValidationUser";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import PopupModal from "../ModalPopup/PopupModal";
 import axios from "axios";
-import { useSearchParams } from "react-router-dom";
-import MovieContext from "../../context/MovieContext";
-// import ModalPopup from '../ModalPopup/ModalPopup';
 
 const RegisterForm = ({ setSignIn }) => {
   const [isSubmitForm, setIsSubmitForm] = useState(false);
-  const { setAuth } = useContext(MovieContext);
-  const [approve] = useSearchParams("");
-  const approved = approve.get("approved");
 
   const formik = useFormik({
     initialValues: {
@@ -61,23 +55,13 @@ const RegisterForm = ({ setSignIn }) => {
     },
   });
 
-  useEffect(() => {
-    if (approved == "true") {
-      setAuth(true);
-      setIsSubmitForm(true);
-      // mogao sam da redirect na Home page i tamo da hvatam approved
-    }
-  }, [approved]);
-
   return (
-    // color-red nije iskorisceno
     <>
-      {/* {isSubmitForm && <ModalPopup/>}  */}
       {isSubmitForm ? (
-        <PopupModal setIsSubmitForm={setIsSubmitForm} authModal={approved} />
+        <PopupModal setIsSubmitForm={setIsSubmitForm} authModal={false} />
       ) : (
-        <div className="bckground text-center">
-          <div className="color-red">
+        <div className="bckground-form">
+          <div>
             <h1>Looking for BEST Movies, TV Shows and more?</h1>
             <h4>Just sign up here and start watching.</h4>
           </div>

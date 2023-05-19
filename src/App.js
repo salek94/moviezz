@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Register from "./pages/Register/Register";
 import MovieContext from "./context/MovieContext";
 import { Route, Routes, useNavigate } from "react-router-dom";
-// import ViewMovie from "./pages/ViewMovie/ViewMovie";
 import ViewMovie from "./pages/ViewMovie/ViewMovie";
 import Home from "./pages/Home/Home";
 import SearchedMovies from "./pages/SearchedMovies/SearchedMovies";
@@ -13,12 +12,22 @@ import "animate.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useContext, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 function App() {
-  const { auth, userLogin, setUserLogin, logout } = useContext(MovieContext);
+  const { auth, setAuth, userLogin, setUserLogin, logout } =
+    useContext(MovieContext);
   const navigate = useNavigate();
+  const [approve] = useSearchParams("");
+  const approved = approve.get("approved");
   console.log(userLogin);
+
+  useEffect(() => {
+    if (approved == "true") {
+      setAuth(true);
+    }
+  }, [approved]);
 
   useEffect(() => {
     const handleAuth = () => {
@@ -70,7 +79,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <BrowserRouter> */}
       <Routes>
         {/* <Route path="/" element={<Register />}></Route> */}
         {userLogin && JSON.parse(localStorage?.getItem("tokenSession")) ? (
@@ -92,7 +100,6 @@ function App() {
           </>
         )}
       </Routes>
-      {/* </BrowserRouter> */}
     </div>
   );
 }
