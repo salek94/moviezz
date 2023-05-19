@@ -22,7 +22,8 @@
     }
     &__pick {
       @include flexx($dir: row, $justify: space-between, $align: flex-start);
-      // margin-bottom: 5px;
+      margin-bottom: 10px;
+      cursor: pointer;
       &::after {
         content: "";
         background-color: #fff;
@@ -32,9 +33,8 @@
     }
     &__order {
       cursor: pointer;
-
       &::after {
-        display: inline-block;
+        display: block;
         content: "";
         background-color: #fff;
         height: 1px;
