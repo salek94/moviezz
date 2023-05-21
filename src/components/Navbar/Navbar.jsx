@@ -88,16 +88,16 @@ const Navbar = () => {
             </div>
           )}
         </div>
-        {showFavoriteMovie &&
-          favorite?.map((fav) => {
-            return (
-              <FavoriteMovie
-                fav={fav}
-                key={fav.id}
-                onClickOutside={() => setShowFavoriteMovie(!showFavoriteMovie)}
-              />
-            );
-          })}
+        {favorite?.map((fav) => {
+          return (
+            <FavoriteMovie
+              fav={fav}
+              show={showFavoriteMovie}
+              key={fav.id}
+              onClickOutside={() => setShowFavoriteMovie(false)}
+            />
+          );
+        })}
       </div>
     </div>
   );

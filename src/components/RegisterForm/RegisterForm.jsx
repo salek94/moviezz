@@ -20,7 +20,6 @@ const RegisterForm = ({ setSignIn }) => {
     },
     validationSchema: ValidationUser,
     onSubmit: async (values, action) => {
-      console.log(values);
       try {
         await axios
           .get(

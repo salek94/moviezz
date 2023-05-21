@@ -18,6 +18,7 @@ const HeroImage = () => {
     clickedMovie,
     setClickedTVshow,
     setMovieGenres,
+    setVideoOn,
   } = useContext(MovieContext);
 
   const [transitionMovie, setTransitionMovie] = useState(false);
@@ -202,7 +203,12 @@ const HeroImage = () => {
             <p>
               <b>{imgPopularMovie?.overview?.substring(0, 200)}</b>...
             </p>
-            <button className="btnPrimary btnPrimary--red">Watch Now</button>
+            <button
+              className="btnPrimary btnPrimary--red"
+              onClick={() => setVideoOn(false)}
+            >
+              Watch Now
+            </button>
           </div>
           <Link
             to={"/home/movies"}

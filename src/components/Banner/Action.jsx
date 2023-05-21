@@ -21,7 +21,7 @@ const Action = () => {
       const responseJson = await response.json();
 
       if (responseJson) {
-        // console.log(responseJson.results);
+        console.log(responseJson.results);
         setMoviesAction(responseJson.results);
       }
     } catch (error) {

@@ -15,6 +15,7 @@ export const MovieProvider = ({ children }) => {
   const [viewMovieOrTv, setViewMovieOrTv] = useState();
   const [auth, setAuth] = useState(false);
   const [logout, setLogout] = useState(false);
+  const [videoOn, setVideoOn] = useState(false);
 
   return (
     <MovieContext.Provider
@@ -39,6 +40,8 @@ export const MovieProvider = ({ children }) => {
         setAuth,
         logout,
         setLogout,
+        videoOn,
+        setVideoOn,
       }}
     >
       {children}

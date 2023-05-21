@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../Poster/Posters.scss";
 import MovieContext from "../../context/MovieContext";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import pic from "../../img/MOVIZZ.jpg";
-import axios from "axios";
 import ScrollTop from "../features/scrollTop/ScrollTop";
 
 const Posters = () => {
@@ -13,11 +12,10 @@ const Posters = () => {
   const [showMore, setShowMore] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
   const [desc, setDesc] = useState(false);
-  const [de, setDe] = useState();
+  const [selectedPara, setSelectedPara] = useState();
 
   const navigate = useNavigate();
   const getQuery = query.get("search");
-  const showMoreDetails = useRef();
   // console.log(movieGenres);
   // console.log(movie);
 
@@ -44,10 +42,10 @@ const Posters = () => {
     getMovieRequest(getQuery);
   }, [query]);
 
-  // const showMoreText = (e) => {
-  //   e.preventDefault();
-  //   setShowMore(!showMore);
-  // };
+  const handleText = (i) => {
+    setSelectedPara(i);
+    setShowMore(!showMore);
+  };
 
   const goToView = (movie) => {
     setViewMovieOrTv(movie);
@@ -58,11 +56,6 @@ const Posters = () => {
     if (window.scrollY >= 1000) {
       setShowScroll(true);
     } else setShowScroll(false);
-  };
-
-  const d = (i) => {
-    console.log(i);
-    setDe(i);
   };
 
   if (desc) movie?.sort((a, b) => a.popularity - b.popularity);
@@ -95,7 +88,7 @@ const Posters = () => {
               </li>
             </ul>
           </div>
-          <div>Year</div>
+          {/* <div>Year</div> */}
         </aside>
         <div className="poster-info__results">
           {movie.length === 0 && <h3>No results</h3>}
@@ -117,15 +110,17 @@ const Posters = () => {
 
                   <div className="poster-info__results__banner__details">
                     <h3>{movie.title ? movie.title : movie.original_name}</h3>
-                    <p className={de == i ? "proba" : ""} onClick={() => d(i)}>
-                      {/* {showMore ? movieOvr : movieOvr?.substring(0, 250)} */}
-                      {de == i ? movieOvr : movieOvr?.substring(0, 250)}
+                    <p>
+                      {selectedPara === i && !showMore
+                        ? movieOvr
+                        : movieOvr?.substring(0, 250)}
                       <button
                         className={movieOvr?.length < 250 ? "none" : ""}
-                        // onClick={() => showMoreText(movie)}
-                        // onClick={showMoreText}
+                        onClick={() => handleText(i)}
                       >
-                        {showMore ? "Show less" : "Show more"}
+                        {selectedPara === i && !showMore
+                          ? "Show less"
+                          : "Show more"}
                       </button>
                     </p>
 

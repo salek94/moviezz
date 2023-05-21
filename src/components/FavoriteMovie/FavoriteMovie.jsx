@@ -1,22 +1,25 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import "./FavoriteMovie.scss";
 import MovieContext from "../../context/MovieContext";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 
-const FavoriteMovie = ({ fav, onClickOutside, a }) => {
+const FavoriteMovie = ({ fav, onClickOutside, show }) => {
   const { favorite } = useContext(MovieContext);
-  const [flag, setFlag] = useState(false);
   const ref = useRef(null);
+
+  // useEffect(() => {
+  //   const handleRemoveItem = (fav) => {
+  //     favorite.splice(fav.id, 1);
+  //   };
+
   const handleRemoveItem = (fav) => {
     favorite.splice(fav.id, 1);
-    setFlag(flag ? false : true);
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
         onClickOutside && onClickOutside();
-        // console.log(event.target);
       }
     };
     document.addEventListener("click", handleClickOutside, true);
@@ -24,6 +27,8 @@ const FavoriteMovie = ({ fav, onClickOutside, a }) => {
       document.removeEventListener("click", handleClickOutside, true);
     };
   }, [onClickOutside]);
+
+  if (!show) return null;
 
   return (
     <>

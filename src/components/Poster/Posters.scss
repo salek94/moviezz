@@ -23,7 +23,7 @@
     &__pick {
       @include flexx($dir: row, $justify: space-between, $align: flex-start);
       margin-bottom: 10px;
-      cursor: pointer;
+      cursor: default;
       &::after {
         content: "";
         background-color: #fff;
@@ -64,9 +64,6 @@
             font-size: 0.7em;
             &.none {
               display: none;
-            }
-            &.proba {
-              min-height: 50px;
             }
           }
           &__poster-btn {

@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ViewMovie.scss";
 import MovieContext from "../../context/MovieContext";
 import { FaStar, FaHeart } from "react-icons/fa";
 
 const ViewMovie = () => {
-  const { viewMovieOrTv, movieGenres } = useContext(MovieContext);
+  const { viewMovieOrTv, movieGenres, setFavorite } = useContext(MovieContext);
   const navigate = useNavigate();
   console.log(movieGenres);
 
@@ -40,6 +40,15 @@ const ViewMovie = () => {
     console.log(a);
   };
 
+  const addToFav = (a, b) => {
+    const picTitle = {
+      name: a,
+      pic: b,
+      // id: c,
+    };
+    setFavorite((prev) => [...prev, picTitle]);
+  };
+
   return (
     <div>
       <div
@@ -70,7 +79,11 @@ const ViewMovie = () => {
                 <b>{viewMovieOrTv.vote_average.toFixed(1)}</b>/10
               </p>
               <p>{viewMovieOrTv.vote_count} Users vote</p>
-              <p>
+              <p
+                onClick={() =>
+                  addToFav(viewMovieOrTv.title, viewMovieOrTv.poster_path)
+                }
+              >
                 Add to favorite <FaHeart className="favorite" />{" "}
               </p>
             </div>
