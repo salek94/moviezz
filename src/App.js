@@ -14,6 +14,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useContext, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
+import Playvideo from "./components/Playvideo/Playvideo";
 
 function App() {
   const { auth, setAuth, userLogin, setUserLogin, logout } =
@@ -94,6 +95,9 @@ function App() {
           </>
         ) : (
           <>
+            <Route path="/watch">
+              <Route path=":id" element={<Playvideo />} />
+            </Route>
             <Route path="*" element={<Register />} />
             {/* <Route path="*" element={<NotFound/>} /> */}
             <Route path="/" element={<Register />}></Route>

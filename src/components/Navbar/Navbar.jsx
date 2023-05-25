@@ -38,8 +38,8 @@ const Navbar = () => {
   };
 
   const handleFavoriteMovie = () => {
-    // setShowFavoriteMovie(!showFavoriteMovie);
-    setShowFavoriteMovie(true);
+    setShowFavoriteMovie(!showFavoriteMovie);
+    // setShowFavoriteMovie(true);
     console.log(showFavoriteMovie);
   };
   // useEffect(() => {
@@ -49,18 +49,19 @@ const Navbar = () => {
 
   return (
     <div className="nav-container">
-      <div className="nav-flex">
-        <div className="nav-flex__logo" onClick={goToHome}>
+      <div className="navbar">
+        <div className="navbar__logo" onClick={goToHome}>
           <div>
             <img src={mainLogo} alt="" />
           </div>
           <h3>MOVIZZ</h3>
         </div>
 
-        <div className="nav-flex__search">
+        <div className="navbar__search">
           <input
             type="search"
-            className="nav-flex__search__input"
+            className="navbar__input"
+            // className="navbar__search__input"
             placeholder="Search for a movie, tv shows..."
             name="searchMovie"
             autoComplete="off"
@@ -69,18 +70,23 @@ const Navbar = () => {
             onKeyDown={handleEnter}
           />
 
-          <FaSearch className="searchIcon" onClick={getSearchResults} />
+          <FaSearch className="navbar__searchIcon" onClick={getSearchResults} />
 
           {!userLogin ? (
-            <span className="nav-flex__search__notLogin">Login</span>
+            <span className="navbar__notLogin">Login</span>
           ) : (
-            <div className="nav-flex__search__login">
-              <span onClick={() => setLogout(true)}>
+            <div className="navbar__login">
+              <span
+                className="navbar__login--icon"
+                onClick={() => setLogout(true)}
+              >
                 <FaUserCircle />
               </span>
               <span
                 className={
-                  favorite.length === 0 ? "" : "nav-flex__search__favorite"
+                  favorite.length === 0
+                    ? "navbar__login--icon"
+                    : "navbar__login--icon navbar__favorite-length"
                 }
               >
                 <FaHeart onClick={handleFavoriteMovie} />
@@ -88,16 +94,20 @@ const Navbar = () => {
             </div>
           )}
         </div>
-        {favorite?.map((fav) => {
-          return (
-            <FavoriteMovie
-              fav={fav}
-              show={showFavoriteMovie}
-              key={fav.id}
-              onClickOutside={() => setShowFavoriteMovie(false)}
-            />
-          );
-        })}
+        {showFavoriteMovie && (
+          <div className="navbar__favorite-wrapper">
+            {favorite?.map((fav) => {
+              return (
+                <FavoriteMovie
+                  fav={fav}
+                  show={showFavoriteMovie}
+                  key={fav.id}
+                  onClickOutside={() => setShowFavoriteMovie(false)}
+                />
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

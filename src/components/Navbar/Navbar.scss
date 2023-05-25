@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.nav-flex {
+.navbar {
   @include flexx($dir: row, $justify: space-between, $align: center);
   background-image: linear-gradient(to right, #f7e135 30%, #edbd25 60%);
   padding: 15px;
@@ -17,72 +17,62 @@
     cursor: pointer;
     color: $secondaryFontColor;
     font-family: $fontLogo;
-    // &--animation:hover {
-    //   display: inline-block;
-    //   animation: rubberBand;
-    //   animation-duration: 1s;
-    // }
   }
   &__search {
     @include flexx($dir: row, $justify: space-between, $align: center);
     position: relative;
     width: 45%;
-    &__input {
-      width: 80%;
-      height: 35px;
-      border: 1px solid black;
-      border-radius: 20px;
-      font-size: 1.1rem;
-      color: $secondaryFontColor;
-      padding-left: 10px;
-    }
-    &__notLogin {
-      color: $primaryFontColor;
-      font-size: $fontSize;
+  }
+
+  &__input {
+    width: 80%;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    color: $secondaryFontColor;
+    padding-left: 10px;
+  }
+  &__searchIcon {
+    position: absolute;
+    color: $secondaryFontColor;
+    top: 14%;
+    right: 23%;
+    height: 1.5em;
+    width: 2em;
+    cursor: pointer;
+  }
+  &__notLogin {
+    color: $primaryFontColor;
+    font-size: $fontSize;
+    cursor: pointer;
+    width: 12%;
+  }
+  &__login {
+    @include flexx($dir: row, $justify: space-around, $align: center);
+    width: 20%;
+    color: $secondaryFontColor;
+    font-size: $fontSize;
+    &--icon {
       cursor: pointer;
-      width: 12%;
-    }
-    &__login {
-      width: 20%;
-      span {
-        color: $secondaryFontColor;
-        font-size: $fontSize;
-        cursor: pointer;
-        padding-left: 1.6em;
-        // svg {
-        //     height: 1.5em;
-        //     width: 2.1em;
-        // }
-      }
-      // & .aa::after {
-      //   content: "";
-      //   display: inline-block;
-      //   position: absolute;
-      //   right: 2%;
-      //   height: 12px;
-      //   width: 12px;
-      //   background-color: $red;
-      //   border-radius: 50%;
-      // }
-    }
-    &__favorite::after {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      right: 2%;
-      height: 12px;
-      width: 12px;
-      background-color: $red;
-      border-radius: 50%;
     }
   }
-}
-.searchIcon {
-  position: absolute;
-  color: $secondaryFontColor;
-  top: 14%;
-  right: 23%;
-  height: 1.5em;
-  width: 2em;
-  cursor: pointer;
+  &__favorite-length::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: 2%;
+    height: 12px;
+    width: 12px;
+    background-color: $red;
+    border-radius: 50%;
+  }
+  &__favorite-wrapper {
+    position: absolute;
+    top: 80px;
+    right: 15px;
+    width: 15%;
+    background-color: $primaryFontColor;
+    z-index: 10;
+  }
 }

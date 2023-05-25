@@ -1,14 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import MovieContext from "../../context/MovieContext";
-import PlayVideo from "../PlayVideo/PlayVideo";
 
 const SliderBanner = ({ movie }) => {
-  const { setViewMovieOrTv, favorite, setFavorite, setVideoOn, videoOn } =
-    useContext(MovieContext);
-  const [videoKey, setVideoKey] = useState("");
+  const {
+    setViewMovieOrTv,
+    favorite,
+    setFavorite,
+    setVideoOn,
+    videoOn,
+    setVideoKey,
+    videoKey,
+  } = useContext(MovieContext);
   const navigate = useNavigate();
+  console.log(videoKey);
 
   const goToViewMovie = (movie) => {
     setViewMovieOrTv(movie);
@@ -33,8 +39,8 @@ const SliderBanner = ({ movie }) => {
       const responseJson = await response.json();
 
       if (responseJson.results) {
-        console.log(responseJson.results);
-        setVideoKey(responseJson.results.key);
+        // console.log(responseJson.results[0].key);
+        setVideoKey(responseJson.results[0].key);
       }
     } catch (error) {
       console.error(error);
@@ -43,9 +49,9 @@ const SliderBanner = ({ movie }) => {
 
   useEffect(() => {
     getVideos(movie);
-  }, []);
+  }, [videoOn]);
 
-  return !videoOn ? (
+  return (
     <div className="banner">
       <img
         className="imgPoster"
@@ -56,23 +62,27 @@ const SliderBanner = ({ movie }) => {
         <button className="btnPrimary" onClick={() => goToViewMovie(movie)}>
           Overview
         </button>
-        <button
+        <a
+          href={`/watch/${movie.id}`}
+          target="_blank"
+          rel="noreferrer"
           className="btnPrimary btnPrimary--red"
-          onClick={() => setVideoOn(true)}
+          onClick={() => setVideoOn(!videoOn)}
         >
           Watch Now
-        </button>
+        </a>
         <span
-          onClick={() =>
-            addFavorite(movie.original_title, movie.poster_path, movie.id)
+          onClick={
+            favorite.length < 6
+              ? () =>
+                  addFavorite(movie.original_title, movie.poster_path, movie.id)
+              : null
           }
         >
           <FaHeart />
         </span>
       </div>
     </div>
-  ) : (
-    <PlayVideo videoKey={videoKey} />
   );
   // <div className="banner">
   //   <img

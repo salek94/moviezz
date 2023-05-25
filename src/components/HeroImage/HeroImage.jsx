@@ -47,8 +47,8 @@ const HeroImage = () => {
   };
 
   const getMovieGenre = async () => {
-    const urlMovie =
-      "https://api.themoviedb.org/3/genre/movie/list?api_key=39b7c306441823329a6e5fa506a7906c";
+    const baseUrl = "https://api.themoviedb.org/3/";
+    const urlMovie = `${baseUrl}genre/movie/list?api_key=39b7c306441823329a6e5fa506a7906c`;
 
     try {
       const response = await fetch(urlMovie);
@@ -68,7 +68,8 @@ const HeroImage = () => {
   }, []);
 
   const getPopularMovie = useCallback(async () => {
-    const urlPopular = `https://api.themoviedb.org/3/movie/popular?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1`;
+    const baseUrl = "https://api.themoviedb.org/3/";
+    const urlPopular = `${baseUrl}movie/popular?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1`;
 
     try {
       const response = await fetch(urlPopular);
@@ -97,7 +98,8 @@ const HeroImage = () => {
   }, [getPopularMovie]);
 
   const getPopularTV = useCallback(async () => {
-    const urlPopular = `https://api.themoviedb.org/3/tv/top_rated?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1`;
+    const baseUrl = "https://api.themoviedb.org/3/";
+    const urlPopular = `${baseUrl}tv/top_rated?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1`;
 
     try {
       const response = await fetch(urlPopular);
@@ -124,9 +126,6 @@ const HeroImage = () => {
     }, 10000);
     return () => clearInterval(interval);
   }, [getPopularTV]);
-
-  // code splitting (lazy loading)
-  // pritiskom na watch now da se otvori video
 
   return (
     <>
@@ -205,7 +204,7 @@ const HeroImage = () => {
             </p>
             <button
               className="btnPrimary btnPrimary--red"
-              onClick={() => setVideoOn(false)}
+              onClick={() => setVideoOn(true)}
             >
               Watch Now
             </button>
