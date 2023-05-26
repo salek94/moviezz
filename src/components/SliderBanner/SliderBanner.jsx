@@ -18,7 +18,8 @@ const SliderBanner = ({ movie }) => {
       pic: b,
       id: c,
     };
-    if (picTitle.id !== favorite.id) setFavorite((prev) => [...prev, picTitle]);
+
+    setFavorite((prev) => [...prev, picTitle]);
   };
 
   return (

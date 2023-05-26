@@ -13,7 +13,7 @@
   }
   .poster-info {
     @include flexx($dir: row, $justify: center, $align: flex-start);
-    gap: 50px;
+    gap: 100px;
     &__filter {
       width: 10%;
       border: 1px solid white;
@@ -43,36 +43,34 @@
     }
     &__results {
       width: 75%;
-      &__banner {
-        @include flexx($dir: row, $justify: flex-start, $align: flex-start);
-        gap: 30px;
-        margin-bottom: 50px;
-
-        & .imgPoster {
-          width: 15%;
-          height: 10%;
-        }
-        &__details {
-          width: 60%;
-          & p > button {
-            background-color: $primaryFontColor;
-            color: $secondaryFontColor;
-            padding: 2px;
-            margin-left: 3px;
-            // border: 1px solid $secondaryFontColor;
-            border-radius: 25px;
-            font-size: 0.7em;
-            &.none {
-              display: none;
-            }
-          }
-          &__poster-btn {
-            @include flexx($dir: row, $justify: flex-start, $align: center);
-            gap: 30px;
-            transition: $transition;
-          }
-        }
+    }
+    &__banner {
+      @include flexx($dir: row, $justify: flex-start, $align: flex-start);
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    &__imgPoster {
+      width: 15%;
+      height: 10%;
+    }
+    &__details {
+      width: 60%;
+      &--show {
+        background-color: $primaryFontColor;
+        color: $secondaryFontColor;
+        padding: 2px;
+        margin-left: 3px;
+        border-radius: 25px;
+        font-size: 0.7em;
       }
+      &--show-none {
+        display: none;
+      }
+    }
+    &__poster-btn {
+      @include flexx($dir: row, $justify: flex-start, $align: center);
+      gap: 30px;
+      transition: $transition;
     }
   }
 }

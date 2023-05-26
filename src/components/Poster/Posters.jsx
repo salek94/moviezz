@@ -9,7 +9,7 @@ const Posters = () => {
   const [query] = useSearchParams();
   const { movie, setMovie, setViewMovieOrTv } = useContext(MovieContext);
   const [flag, setFlag] = useState(false);
-  const [showMore, setShowMore] = useState(false);
+  const [showMore, setShowMore] = useState(true);
   const [showScroll, setShowScroll] = useState(false);
   const [desc, setDesc] = useState(false);
   const [selectedPara, setSelectedPara] = useState();
@@ -17,7 +17,7 @@ const Posters = () => {
   const navigate = useNavigate();
   const getQuery = query.get("search");
   // console.log(movieGenres);
-  // console.log(movie);
+  console.log("aaa", showMore);
 
   const getMovieRequest = async (getQuery) => {
     if (getQuery) {
@@ -30,7 +30,7 @@ const Posters = () => {
         // console.log(responseJson.results);
         setMovie(responseJson.results);
         setFlag(true);
-        setShowMore(false);
+        setShowMore(true);
       }
     }
   };
@@ -41,7 +41,8 @@ const Posters = () => {
 
   const handleText = (i) => {
     setSelectedPara(i);
-    setShowMore(!showMore);
+    setShowMore(showMore ? false : true);
+    console.log("clicked", showMore);
   };
 
   const goToView = (movie) => {
@@ -94,9 +95,9 @@ const Posters = () => {
               const movieOvr = movie.overview;
               const movieImg = movie.poster_path;
               return (
-                <div key={movie.id} className="poster-info__results__banner">
+                <div key={movie.id} className="poster-info__banner">
                   <img
-                    className="imgPoster"
+                    className="poster-info__imgPoster"
                     src={
                       movieImg === undefined || movieImg === null
                         ? pic
@@ -105,14 +106,18 @@ const Posters = () => {
                     alt=""
                   />
 
-                  <div className="poster-info__results__banner__details">
+                  <div className="poster-info__details">
                     <h3>{movie.title ? movie.title : movie.original_name}</h3>
-                    <p>
+                    <p className="poster-info__describe">
                       {selectedPara === i && !showMore
                         ? movieOvr
                         : movieOvr?.substring(0, 250)}
                       <button
-                        className={movieOvr?.length < 250 ? "none" : ""}
+                        className={
+                          movieOvr?.length < 250
+                            ? "poster-info__details--show-none"
+                            : "poster-info__details--show"
+                        }
                         onClick={() => handleText(i)}
                       >
                         {selectedPara === i && !showMore
@@ -121,7 +126,7 @@ const Posters = () => {
                       </button>
                     </p>
 
-                    <div className="poster-info__results__banner__details__poster-btn">
+                    <div className="poster-info__poster-btn">
                       <button className="btnPrimary btnPrimary--red ">
                         Watch Now
                       </button>

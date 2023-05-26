@@ -7,7 +7,7 @@ import { FaStar, FaHeart } from "react-icons/fa";
 const ViewMovie = () => {
   const { viewMovieOrTv, movieGenres, setFavorite } = useContext(MovieContext);
   const navigate = useNavigate();
-  console.log(movieGenres);
+  // console.log(movieGenres);
 
   // reviews
 
@@ -34,7 +34,7 @@ const ViewMovie = () => {
     navigate(-1);
   };
 
-  const goGenre = (a) => {
+  const handleClickedGenre = (a) => {
     console.log(a);
   };
 
@@ -50,28 +50,28 @@ const ViewMovie = () => {
   return (
     <div>
       <div
-        className="view-wrapper"
+        className="overview-container"
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/original${viewMovieOrTv.backdrop_path})`,
         }}
       >
-        <div className="view-wrapper__about-movie">
-          <div className="view-wrapper__about-movie__picture">
+        <div className="overview-about">
+          <div className="overview-about__picture">
             <img
               className="imgPoster"
               src={`https://image.tmdb.org/t/p/original${viewMovieOrTv.poster_path}`}
               alt=""
             />
           </div>
-          <div className="view-wrapper__about-movie__details">
-            <div className="view-wrapper__about-movie__details__title">
+          <div className="overview-about__details">
+            <div className="overview-about__title">
               <h3>
                 {viewMovieOrTv.title
                   ? viewMovieOrTv.title
                   : viewMovieOrTv.original_name}
               </h3>
             </div>
-            <div className="view-wrapper__about-movie__details__ratings">
+            <div className="overview-about__ratings">
               <p>
                 <FaStar className="star" />{" "}
                 <b>{viewMovieOrTv.vote_average.toFixed(1)}</b>/10
@@ -89,16 +89,16 @@ const ViewMovie = () => {
                 Add to favorite <FaHeart className="favorite" />{" "}
               </p>
             </div>
-            <div className="view-wrapper__about-movie__details__list-genre">
-              {movieGenres?.map((genreMovie) => {
+            <div className="overview-about__list-genre">
+              {movieGenres?.map((genreMovie, idx) => {
                 const movieOverview = viewMovieOrTv.genre_ids;
                 for (let i = 0; i < movieOverview.length; i++) {
                   if (genreMovie.id === movieOverview[i]) {
                     return (
                       <p
-                        // key={movie.id}
+                        key={idx}
                         className="genre"
-                        onClick={() => goGenre(genreMovie.name)}
+                        onClick={() => handleClickedGenre(genreMovie.name)}
                       >
                         {genreMovie.name}
                       </p>
@@ -107,7 +107,7 @@ const ViewMovie = () => {
                 }
               })}
             </div>
-            <div className="view-wrapper__about-movie__details__date">
+            <div className="overview-about__date">
               <p>
                 Release date:{" "}
                 {viewMovieOrTv.release_date
@@ -115,11 +115,18 @@ const ViewMovie = () => {
                   : viewMovieOrTv.first_air_date}
               </p>
             </div>
-            <div className="view-wrapper__about-movie__details__overview">
+            <div className="overview-about__overview">
               {viewMovieOrTv.overview}
             </div>
-            <div className="view-wrapper__about-movie__details__btn">
-              <button className="btnPrimary btnPrimary--red">Watch Now</button>
+            <div className="overview-about__btn">
+              <a
+                href={`/watch/?v=${viewMovieOrTv.id}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btnPrimary btnPrimary--red"
+              >
+                Watch Now
+              </a>
               <button className="btnPrimary" onClick={goBack}>
                 Search More
               </button>
