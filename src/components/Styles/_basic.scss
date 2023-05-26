@@ -23,6 +23,7 @@
     background-color: $red;
     border: 1px solid $red;
     &:hover {
+      color: $primaryFontColor;
       border: 1px solid $red;
     }
   }

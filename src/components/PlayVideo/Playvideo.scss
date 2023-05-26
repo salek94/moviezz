@@ -1,5 +1,11 @@
 .video-container {
-  width: 60%;
-  height: 60vh;
+  position: relative;
+  width: 100%;
+  height: 100vh;
   background-color: black;
+}
+.video-player {
+  position: absolute;
+  top: 10%;
+  left: 9%;
 }

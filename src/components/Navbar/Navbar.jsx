@@ -32,7 +32,7 @@ const Navbar = () => {
 
   const handleEnter = (e) => {
     if (e.key === "Enter") {
-      navigate(`/list?search=${searchValue}`);
+      navigate(`/list/?search=${searchValue}`);
       inputSearch.current.value = "";
     }
   };

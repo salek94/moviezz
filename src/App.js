@@ -88,19 +88,17 @@ function App() {
               <Route path="movies" element={<MovieSection />} />
               <Route path="tv" element={<TVshowSection />} />
             </Route>
-            <Route path="/list" element={<SearchedMovies />}></Route>
+            <Route path="/list" element={<SearchedMovies />} />
             <Route path="/view">
               <Route path=":id" element={<ViewMovie />} />
             </Route>
           </>
         ) : (
           <>
-            <Route path="/watch">
-              <Route path=":id" element={<Playvideo />} />
-            </Route>
+            <Route path="/watch" element={<Playvideo />} />
             <Route path="*" element={<Register />} />
             {/* <Route path="*" element={<NotFound/>} /> */}
-            <Route path="/" element={<Register />}></Route>
+            <Route path="/" element={<Register />} />
           </>
         )}
       </Routes>

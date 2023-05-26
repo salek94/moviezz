@@ -12,13 +12,11 @@ import { FaAngleDoubleDown } from "react-icons/fa";
 
 const HeroImage = () => {
   const {
-    movieGenres,
     setMovieOrTV,
     setClickedMovie,
     clickedMovie,
     setClickedTVshow,
     setMovieGenres,
-    setVideoOn,
   } = useContext(MovieContext);
 
   const [transitionMovie, setTransitionMovie] = useState(false);
@@ -45,10 +43,11 @@ const HeroImage = () => {
     setTransitionTV(true);
     setTransitionMovie(false);
   };
+  const baseUrl = "https://api.themoviedb.org/3/";
+  const myApiKey = "api_key=39b7c306441823329a6e5fa506a7906c";
 
   const getMovieGenre = async () => {
-    const baseUrl = "https://api.themoviedb.org/3/";
-    const urlMovie = `${baseUrl}genre/movie/list?api_key=39b7c306441823329a6e5fa506a7906c`;
+    const urlMovie = `${baseUrl}genre/movie/list?${myApiKey}`;
 
     try {
       const response = await fetch(urlMovie);
@@ -68,8 +67,7 @@ const HeroImage = () => {
   }, []);
 
   const getPopularMovie = useCallback(async () => {
-    const baseUrl = "https://api.themoviedb.org/3/";
-    const urlPopular = `${baseUrl}movie/popular?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1`;
+    const urlPopular = `${baseUrl}movie/popular?${myApiKey}&language=en-US&page=1`;
 
     try {
       const response = await fetch(urlPopular);
@@ -98,8 +96,7 @@ const HeroImage = () => {
   }, [getPopularMovie]);
 
   const getPopularTV = useCallback(async () => {
-    const baseUrl = "https://api.themoviedb.org/3/";
-    const urlPopular = `${baseUrl}tv/top_rated?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1`;
+    const urlPopular = `${baseUrl}tv/top_rated?${myApiKey}&language=en-US&page=1`;
 
     try {
       const response = await fetch(urlPopular);
@@ -168,7 +165,14 @@ const HeroImage = () => {
             <p>
               <b>{imgPopularTV?.overview?.substring(0, 200)}</b>...
             </p>
-            <button className="btnPrimary btnPrimary--red">Watch Now </button>
+            <a
+              href={`/watch/?v=${imgPopularTV.id}`}
+              target="_blank"
+              rel="noreferrer"
+              className="btnPrimary btnPrimary--red"
+            >
+              Watch Now
+            </a>
           </div>
           <Link
             to={"/home/tv"}
@@ -202,12 +206,14 @@ const HeroImage = () => {
             <p>
               <b>{imgPopularMovie?.overview?.substring(0, 200)}</b>...
             </p>
-            <button
+            <a
+              href={`/watch/?v=${imgPopularMovie.id}`}
+              target="_blank"
+              rel="noreferrer"
               className="btnPrimary btnPrimary--red"
-              onClick={() => setVideoOn(true)}
             >
               Watch Now
-            </button>
+            </a>
           </div>
           <Link
             to={"/home/movies"}

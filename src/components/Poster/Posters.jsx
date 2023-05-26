@@ -19,9 +19,6 @@ const Posters = () => {
   // console.log(movieGenres);
   // console.log(movie);
 
-  // year (napraviti input pa da kucaju y:2002 )
-  // pagination
-
   const getMovieRequest = async (getQuery) => {
     if (getQuery) {
       const url = `https://api.themoviedb.org/3/search/multi?api_key=39b7c306441823329a6e5fa506a7906c&query=${getQuery}&language=en-US`;

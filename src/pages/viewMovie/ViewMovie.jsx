@@ -9,14 +9,12 @@ const ViewMovie = () => {
   const navigate = useNavigate();
   console.log(movieGenres);
 
-  // kad se stisne na dugme od nekog zanra da mi izlista taj zanr
   // reviews
 
   // useEffect(() => {
   //   const getMovieReview = async () => {
   //     const urlMovie =
   //       "https://api.themoviedb.org/3/movie/312221/reviews?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1";
-  //     // "https://api.themoviedb.org/3/discover/movie?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=35,10749&sort_by=popularity.desc";
 
   //     try {
   //       const response = await fetch(urlMovie);
@@ -40,11 +38,11 @@ const ViewMovie = () => {
     console.log(a);
   };
 
-  const addToFav = (a, b) => {
+  const addToFav = (a, b, c) => {
     const picTitle = {
       name: a,
       pic: b,
-      // id: c,
+      id: c,
     };
     setFavorite((prev) => [...prev, picTitle]);
   };
@@ -81,7 +79,11 @@ const ViewMovie = () => {
               <p>{viewMovieOrTv.vote_count} Users vote</p>
               <p
                 onClick={() =>
-                  addToFav(viewMovieOrTv.title, viewMovieOrTv.poster_path)
+                  addToFav(
+                    viewMovieOrTv.title,
+                    viewMovieOrTv.poster_path,
+                    viewMovieOrTv.id
+                  )
                 }
               >
                 Add to favorite <FaHeart className="favorite" />{" "}
