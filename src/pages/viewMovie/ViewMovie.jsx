@@ -116,7 +116,7 @@ const ViewMovie = () => {
               </p>
             </div>
             <div className="overview-about__paragraph">
-              {viewMovieOrTv.overview}
+              {viewMovieOrTv.overview.substring(0, 700)}
             </div>
             <div className="overview-about__btn">
               <a
@@ -128,7 +128,7 @@ const ViewMovie = () => {
                 Watch Now
               </a>
               <button className="btnPrimary" onClick={goBack}>
-                Search More
+                Go Back
               </button>
             </div>
           </div>
