@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useMemo,
   useCallback,
+  useRef,
 } from "react";
 import "./HeroImage.scss";
 import MovieContext from "../../context/MovieContext";
@@ -15,6 +16,7 @@ const HeroImage = () => {
     setMovieOrTV,
     setClickedMovie,
     clickedMovie,
+    clickedTVshow,
     setClickedTVshow,
     setMovieGenres,
   } = useContext(MovieContext);
@@ -23,6 +25,7 @@ const HeroImage = () => {
   const [transitionTV, setTransitionTV] = useState(false);
   const [imgPopularMovie, setImgPopularMovie] = useState("");
   const [imgPopularTV, setImgPopularTV] = useState("");
+  const refArrowIcon = useRef();
 
   const handleMovie = () => {
     setTimeout(() => {
@@ -42,6 +45,10 @@ const HeroImage = () => {
     }, 2500);
     setTransitionTV(true);
     setTransitionMovie(false);
+  };
+
+  const removeArrowIcon = () => {
+    refArrowIcon.current.className = "heroImg__arrow--none";
   };
   const baseUrl = "https://api.themoviedb.org/3/";
   const myApiKey = "api_key=39b7c306441823329a6e5fa506a7906c";
@@ -127,6 +134,18 @@ const HeroImage = () => {
   return (
     <>
       <div className="heroImg">
+        <a
+          className={
+            clickedMovie || clickedTVshow
+              ? "heroImg__arrow"
+              : "heroImg__arrow--none"
+          }
+          href={"#trend"}
+          ref={refArrowIcon}
+          onClick={removeArrowIcon}
+        >
+          <FaAngleDoubleDown className="heroImg__arrow__icon" />
+        </a>
         <div
           className={
             !transitionMovie && !transitionTV
@@ -134,15 +153,12 @@ const HeroImage = () => {
               : "heroImg__title--none"
           }
         >
-          <p className="heroImg__title__welcome">
+          <p className="heroImg__welcome">
             <span>Welcome!</span>
             <br />
-            <span>Choose your favorite TV Show or Movie</span>
+            <span>Do you prefer more TV Shows or Movies?</span>
           </p>
         </div>
-        {/* <a className={clickedMovie ? "heroImg__arrow" : ""} href={"#trend"}>
-          <FaAngleDoubleDown />
-        </a> */}
 
         <div
           style={{

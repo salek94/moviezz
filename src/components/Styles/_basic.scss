@@ -14,10 +14,9 @@
   cursor: pointer;
   transition: $transition;
   text-decoration: none;
-
   &:hover {
     background-color: $secondaryFontColor;
-    // border: 1px solid $secondaryFontColor;
+    color: $primaryFontColor;
   }
   &--red {
     background-color: $red;

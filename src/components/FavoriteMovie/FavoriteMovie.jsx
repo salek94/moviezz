@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import "./FavoriteMovie.scss";
 import MovieContext from "../../context/MovieContext";
-import { IoIosRemoveCircleOutline } from "react-icons/io";
+import { IoIosRemoveCircleOutline, IoIosPlay } from "react-icons/io";
 
 const FavoriteMovie = ({ fav, onClickOutside, show }) => {
   const { favorite, setFavorite } = useContext(MovieContext);
@@ -27,11 +27,19 @@ const FavoriteMovie = ({ fav, onClickOutside, show }) => {
   // if (!show) return null;
 
   return (
-    <div className="favMenu" ref={ref} id={fav.id}>
+    <div className="favMenu" ref={ref}>
       <span className="favMenu__img">
         <img src={`https://image.tmdb.org/t/p/original${fav.pic}`} alt="" />
       </span>
       <span className="favMenu__title">{fav.name}</span>
+      <a
+        href={`/watch/?v=${fav.id}`}
+        target="_blank"
+        rel="noreferrer"
+        className="favMenu__watch"
+      >
+        <IoIosPlay />
+      </a>
       <span className="favMenu__removeItem">
         <IoIosRemoveCircleOutline onClick={() => handleRemoveItem(fav)} />
       </span>

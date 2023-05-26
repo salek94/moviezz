@@ -7,7 +7,8 @@ import ScrollTop from "../features/scrollTop/ScrollTop";
 
 const Posters = () => {
   const [query] = useSearchParams();
-  const { movie, setMovie, setViewMovieOrTv } = useContext(MovieContext);
+  const { movie, setMovie, setViewMovieOrTv, setMovieOrTV } =
+    useContext(MovieContext);
   const [flag, setFlag] = useState(false);
   const [showMore, setShowMore] = useState(true);
   const [showScroll, setShowScroll] = useState(false);
@@ -16,12 +17,12 @@ const Posters = () => {
 
   const navigate = useNavigate();
   const getQuery = query.get("search");
-  // console.log(movieGenres);
-  console.log("aaa", showMore);
 
   const getMovieRequest = async (getQuery) => {
+    const baseUrl = "https://api.themoviedb.org/3/";
+    const myApiKey = "api_key=39b7c306441823329a6e5fa506a7906c";
     if (getQuery) {
-      const url = `https://api.themoviedb.org/3/search/multi?api_key=39b7c306441823329a6e5fa506a7906c&query=${getQuery}&language=en-US`;
+      const url = `${baseUrl}search/multi?${myApiKey}&query=${getQuery}&language=en-US`;
       const response = await fetch(url);
       const responseJson = await response.json();
 
@@ -42,7 +43,6 @@ const Posters = () => {
   const handleText = (i) => {
     setSelectedPara(i);
     setShowMore(showMore ? false : true);
-    console.log("clicked", showMore);
   };
 
   const goToView = (movie) => {
@@ -54,6 +54,10 @@ const Posters = () => {
     if (window.scrollY >= 1000) {
       setShowScroll(true);
     } else setShowScroll(false);
+  };
+
+  const handleMovieOrTV = (movie) => {
+    setMovieOrTV(movie.media_type);
   };
 
   if (desc) movie?.sort((a, b) => a.popularity - b.popularity);
@@ -127,9 +131,15 @@ const Posters = () => {
                     </p>
 
                     <div className="poster-info__poster-btn">
-                      <button className="btnPrimary btnPrimary--red ">
+                      <a
+                        href={`/watch/?v=${movie.id}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btnPrimary btnPrimary--red"
+                        onClick={() => handleMovieOrTV(movie)}
+                      >
                         Watch Now
-                      </button>
+                      </a>
                       <button
                         className="btnPrimary"
                         onClick={() => goToView(movie)}

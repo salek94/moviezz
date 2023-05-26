@@ -22,24 +22,39 @@
     &--none {
       display: none;
     }
-    &__welcome {
-      font-size: 2.7rem;
-      font-weight: $fontWeight700;
-      position: relative;
-      display: block;
-      span::after {
-        position: absolute;
-        left: 0%;
-        bottom: 3%;
-        content: "";
-        background-color: $red;
-        height: 20px;
-        width: 100%;
-        z-index: -1;
-      }
+  }
+  &__welcome {
+    font-size: 2.7rem;
+    font-weight: $fontWeight700;
+    position: relative;
+    display: block;
+    span::after {
+      position: absolute;
+      left: 0%;
+      bottom: 3%;
+      content: "";
+      background-color: $red;
+      height: 20px;
+      width: 100%;
+      z-index: -1;
     }
   }
-
+  &__arrow {
+    display: inline-block;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    z-index: 100;
+    transition: $transition;
+    transition-delay: 4.5s;
+    &--none {
+      display: none;
+    }
+    &__icon {
+      width: 5.5em;
+      height: 5.2em;
+    }
+  }
   &__left {
     background-image: linear-gradient(
       to right,
@@ -52,8 +67,6 @@
     background-position: center;
     width: 50%;
     height: 84vh;
-    // transform-origin: top right;
-    // transform: skew(-13deg, 0deg);
     transition: linear 1.5s;
     &__tv-info {
       width: 600px;
@@ -61,19 +74,6 @@
       bottom: 13%;
       left: 1%;
     }
-    // &__arrow {
-    //   display: inline-block;
-    //   position: absolute;
-    //   bottom: 15%;
-    //   left: 50%;
-    //   z-index: 100;
-    //   // height: 100px;
-    //   // width: 100px;
-    //   svg {
-    //     width: 2.5em;
-    //     height: 1.2em;
-    //   }
-    // }
     &--btnHero {
       position: absolute;
       bottom: 12%;
@@ -97,8 +97,6 @@
     background-size: cover;
     height: 84vh;
     width: 50%;
-    // transform-origin: bottom left;
-    // transform: skew(-13deg, 0deg);
     transition: linear 1.5s;
     &__movie-info {
       text-align: end;
@@ -123,8 +121,6 @@
     background-position: center;
     width: 40%;
     height: 84vh;
-    // transform-origin: top right;
-    // transform: skew(-25deg, 0deg);
     opacity: 0.9;
     transition: linear 1.5s;
     &__tv-info {
@@ -141,10 +137,8 @@
         color: $primaryFontColor;
       }
     }
-    // clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
   }
   &__right--transition-movie {
-    // background-image: url("../../img/JW4.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -172,8 +166,6 @@
     background-position: center;
     width: 100%;
     height: 84vh;
-    // transform-origin: top right;
-    // transform: skew(-25deg, 0deg);
     opacity: 0.9;
     transition: linear 1.5s;
     &__tv-info {
@@ -187,7 +179,6 @@
       font-size: 1.3rem;
       text-decoration: none;
     }
-    // clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
   }
   &__right--transition-tv {
     background-repeat: no-repeat;
@@ -211,6 +202,5 @@
         color: $primaryFontColor;
       }
     }
-    // clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
 }
