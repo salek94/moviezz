@@ -15,6 +15,7 @@ import { useContext, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import Playvideo from "./components/Playvideo/Playvideo";
+import { routeConfig } from "./config/routeConfig";
 
 function App() {
   const { auth, setAuth, userLogin, setUserLogin, logout } =
@@ -84,21 +85,21 @@ function App() {
         {/* <Route path="/" element={<Register />}></Route> */}
         {userLogin && JSON.parse(localStorage?.getItem("tokenSession")) ? (
           <>
-            <Route path="/home" element={<Home />}>
-              <Route path="movies" element={<MovieSection />} />
-              <Route path="tv" element={<TVshowSection />} />
+            <Route path={routeConfig.HOME.url} element={<Home />}>
+              <Route path={routeConfig.MOVIES.url} element={<MovieSection />} />
+              <Route path={routeConfig.TV.url} element={<TVshowSection />} />
             </Route>
-            <Route path="/list" element={<SearchedMovies />} />
-            <Route path="/view">
-              <Route path=":id" element={<ViewMovie />} />
+            <Route path={routeConfig.LIST.url} element={<SearchedMovies />} />
+            <Route path={routeConfig.OVERVIEW.url} element={<ViewMovie />}>
+              {/* <Route path=":id" element={<ViewMovie />} /> */}
             </Route>
           </>
         ) : (
           <>
-            <Route path="/watch" element={<Playvideo />} />
+            <Route path={routeConfig.WATCH.url} element={<Playvideo />} />
             <Route path="*" element={<Register />} />
             {/* <Route path="*" element={<NotFound/>} /> */}
-            <Route path="/" element={<Register />} />
+            <Route path={routeConfig.REGISTER.url} element={<Register />} />
           </>
         )}
       </Routes>

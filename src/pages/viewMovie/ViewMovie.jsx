@@ -115,7 +115,7 @@ const ViewMovie = () => {
                   : viewMovieOrTv.first_air_date}
               </p>
             </div>
-            <div className="overview-about__overview">
+            <div className="overview-about__paragraph">
               {viewMovieOrTv.overview}
             </div>
             <div className="overview-about__btn">
