@@ -100,7 +100,7 @@ const ViewMovie = () => {
                       <p
                         key={idx}
                         className="genre"
-                        onClick={() => handleClickedGenre(genreMovie.name)}
+                        onClick={() => handleClickedGenre(genreMovie)}
                       >
                         {genreMovie.name}
                       </p>

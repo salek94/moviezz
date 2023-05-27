@@ -10,7 +10,8 @@ const TopRated = () => {
 
   const getMovieTopRated = async (movieOrTV) => {
     const baseUrl = "https://api.themoviedb.org/3/";
-    const urlTopRated = `${baseUrl}${movieOrTV}/top_rated?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1`;
+    const myApiKey = "api_key=39b7c306441823329a6e5fa506a7906c";
+    const urlTopRated = `${baseUrl}${movieOrTV}/top_rated?${myApiKey}&language=en-US&page=1`;
 
     try {
       const response = await fetch(urlTopRated);

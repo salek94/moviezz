@@ -8,7 +8,8 @@ const Documentary = () => {
 
   const getMovieDocumentary = async () => {
     const baseUrl = "https://api.themoviedb.org/3/discover/";
-    const urlDocumentary = `${baseUrl}tv?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=99&sort_by=popularity.desc`;
+    const myApiKey = "api_key=39b7c306441823329a6e5fa506a7906c";
+    const urlDocumentary = `${baseUrl}tv?${myApiKey}&with_genres=99&sort_by=popularity.desc`;
 
     try {
       const response = await fetch(urlDocumentary);

@@ -61,13 +61,14 @@
       rgba(200, 188, 21, 0.7),
       rgba(237, 226, 15, 0.7)
     );
-    // url(https://image.tmdb.org/t/p/original${ex.backdrop_path});
-
     background-size: cover;
     background-position: center;
     width: 50%;
     height: 84vh;
     transition: linear 1.5s;
+    &__name {
+      font-weight: $fontWeight400;
+    }
     &__tv-info {
       width: 600px;
       position: absolute;
@@ -87,17 +88,19 @@
   }
   &__right {
     background-image: linear-gradient(
-        to right,
-        rgba(131, 39, 39, 0.8),
-        rgba(166, 21, 21, 0.8)
-      ),
-      url("../../img/JW4.jpg");
+      to right,
+      rgba(129, 56, 56, 0.8),
+      rgba(126, 36, 36, 0.8)
+    );
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 84vh;
     width: 50%;
     transition: linear 1.5s;
+    &__name {
+      font-weight: $fontWeight400;
+    }
     &__movie-info {
       text-align: end;
       right: 1%;

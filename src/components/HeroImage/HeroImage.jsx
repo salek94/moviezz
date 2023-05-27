@@ -72,7 +72,7 @@ const HeroImage = () => {
   useMemo(() => {
     getMovieGenre();
   }, []);
-
+  ////////////
   const getPopularMovie = useCallback(async () => {
     const urlPopular = `${baseUrl}movie/popular?${myApiKey}&language=en-US&page=1`;
 
@@ -177,7 +177,9 @@ const HeroImage = () => {
               transitionMovie ? "--transition-movie" : ""
             }${transitionTV ? "--transition-tv" : ""}__tv-info`}
           >
-            <h2>{imgPopularTV.title || imgPopularTV.original_name}</h2>
+            <h2 className="heroImg__left__name">
+              {imgPopularTV.title || imgPopularTV.original_name}
+            </h2>
             <p>
               <b>{imgPopularTV?.overview?.substring(0, 200)}</b>...
             </p>
@@ -218,7 +220,9 @@ const HeroImage = () => {
               transitionMovie ? "--transition-movie" : ""
             }${transitionTV ? "--transition-tv" : ""}__movie-info`}
           >
-            <h2>{imgPopularMovie.title}</h2>
+            <h2 className="heroImg__right__name">
+              {imgPopularMovie.title || imgPopularMovie.original_name}
+            </h2>
             <p>
               <b>{imgPopularMovie?.overview?.substring(0, 200)}</b>...
             </p>

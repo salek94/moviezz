@@ -7,14 +7,8 @@ import ScrollTop from "../features/scrollTop/ScrollTop";
 
 const Posters = () => {
   const [query] = useSearchParams();
-  const {
-    movie,
-    setMovie,
-    setViewMovieOrTv,
-    movieOrTV,
-    setMovieOrTV,
-    chosenGenre,
-  } = useContext(MovieContext);
+  const { movie, setMovie, setViewMovieOrTv, setMovieOrTV, chosenGenre } =
+    useContext(MovieContext);
   const [flag, setFlag] = useState(false);
   const [showMore, setShowMore] = useState(true);
   const [showScroll, setShowScroll] = useState(false);
@@ -23,7 +17,7 @@ const Posters = () => {
 
   const navigate = useNavigate();
   const getQuery = query.get("search");
-
+  console.log(chosenGenre);
   const baseUrl = "https://api.themoviedb.org/3/";
   const myApiKey = "api_key=39b7c306441823329a6e5fa506a7906c";
 
@@ -32,23 +26,26 @@ const Posters = () => {
       const url = `${baseUrl}search/multi?${myApiKey}&query=${getQuery}&language=en-US`;
       const response = await fetch(url);
       const responseJson = await response.json();
-
-      if (responseJson.results) {
-        // console.log(responseJson.total_pages);
-        // console.log(responseJson.results);
-        setMovie(responseJson.results);
-        setFlag(true);
-        setShowMore(true);
+      try {
+        if (responseJson.results) {
+          // console.log(responseJson.total_pages);
+          // console.log(responseJson.results);
+          setMovie(responseJson.results);
+          setFlag(true);
+          setShowMore(true);
+        }
+      } catch (error) {
+        console.error(error);
       }
     }
   };
 
   useEffect(() => {
     getMovieOrTVRequest(getQuery);
-  }, [query]);
+  }, [getQuery]);
 
-  const getMovieOrTvFromGenre = async (movieOrTV, chosenGenre) => {
-    const url = `${baseUrl}${movieOrTV}?${myApiKey}&with_genres=${chosenGenre}&sort_by=popularity.desc`;
+  const getMovieOrTvFromGenre = async (chosenGenre) => {
+    const url = `${baseUrl}discover/movie?${myApiKey}&with_genres=${chosenGenre.id}&language=en-US&page=1&sort_by=popularity.desc`;
     try {
       const response = await fetch(url);
       const responseJson = await response.json();
@@ -66,7 +63,7 @@ const Posters = () => {
   };
 
   useEffect(() => {
-    getMovieOrTvFromGenre(movieOrTV, chosenGenre);
+    getMovieOrTvFromGenre(chosenGenre);
   }, [chosenGenre]);
 
   const handleText = (i) => {
@@ -99,7 +96,11 @@ const Posters = () => {
     <div className="poster-container" onMouseMove={handleScroll}>
       {showScroll ? <ScrollTop /> : ""}
       <div className="poster-search">
-        <h3>Search results for: {getQuery}</h3>
+        {chosenGenre ? (
+          <h3>Search results for genre: {chosenGenre.name}</h3>
+        ) : (
+          <h3>Search results for: {getQuery}</h3>
+        )}
       </div>
 
       <div className="poster-info">

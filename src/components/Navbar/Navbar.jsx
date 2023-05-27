@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext, useEffect } from "react";
+import React, { useRef, useState, useContext } from "react";
 import "../Navbar/Navbar.scss";
 import MovieContext from "../../context/MovieContext";
 import mainLogo from "../../img/logo.png";
@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import FavoriteMovie from "../FavoriteMovie/FavoriteMovie";
 
 const Navbar = () => {
-  const { userLogin, setLogout, favorite } = useContext(MovieContext);
+  const { userLogin, setLogout, favorite, setChosenGenre } =
+    useContext(MovieContext);
   const [searchValue, setSearchValue] = useState("");
   const [showFavoriteMovie, setShowFavoriteMovie] = useState(false);
   const navigate = useNavigate();
@@ -17,10 +18,10 @@ const Navbar = () => {
     setSearchValue(e.target.value);
   };
 
-  const getSearchResults = (e) => {
-    e.preventDefault();
+  const getSearchResults = () => {
     if (searchValue) {
       navigate(`/list?search=${searchValue}`);
+      setChosenGenre("");
       inputSearch.current.value = "";
     }
   };
@@ -33,6 +34,7 @@ const Navbar = () => {
   const handleEnter = (e) => {
     if (e.key === "Enter") {
       navigate(`/list/?search=${searchValue}`);
+      setChosenGenre("");
       inputSearch.current.value = "";
     }
   };
