@@ -7,8 +7,14 @@ import ScrollTop from "../features/scrollTop/ScrollTop";
 
 const Posters = () => {
   const [query] = useSearchParams();
-  const { movie, setMovie, setViewMovieOrTv, setMovieOrTV } =
-    useContext(MovieContext);
+  const {
+    movie,
+    setMovie,
+    setViewMovieOrTv,
+    movieOrTV,
+    setMovieOrTV,
+    chosenGenre,
+  } = useContext(MovieContext);
   const [flag, setFlag] = useState(false);
   const [showMore, setShowMore] = useState(true);
   const [showScroll, setShowScroll] = useState(false);
@@ -18,9 +24,10 @@ const Posters = () => {
   const navigate = useNavigate();
   const getQuery = query.get("search");
 
-  const getMovieRequest = async (getQuery) => {
-    const baseUrl = "https://api.themoviedb.org/3/";
-    const myApiKey = "api_key=39b7c306441823329a6e5fa506a7906c";
+  const baseUrl = "https://api.themoviedb.org/3/";
+  const myApiKey = "api_key=39b7c306441823329a6e5fa506a7906c";
+
+  const getMovieOrTVRequest = async (getQuery) => {
     if (getQuery) {
       const url = `${baseUrl}search/multi?${myApiKey}&query=${getQuery}&language=en-US`;
       const response = await fetch(url);
@@ -37,8 +44,30 @@ const Posters = () => {
   };
 
   useEffect(() => {
-    getMovieRequest(getQuery);
+    getMovieOrTVRequest(getQuery);
   }, [query]);
+
+  const getMovieOrTvFromGenre = async (movieOrTV, chosenGenre) => {
+    const url = `${baseUrl}${movieOrTV}?${myApiKey}&with_genres=${chosenGenre}&sort_by=popularity.desc`;
+    try {
+      const response = await fetch(url);
+      const responseJson = await response.json();
+
+      if (responseJson.results) {
+        // console.log(responseJson.total_pages);
+        console.log(responseJson.results);
+        setMovie(responseJson.results);
+        setFlag(true);
+        setShowMore(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getMovieOrTvFromGenre(movieOrTV, chosenGenre);
+  }, [chosenGenre]);
 
   const handleText = (i) => {
     setSelectedPara(i);

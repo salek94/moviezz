@@ -5,14 +5,14 @@ import MovieContext from "../../context/MovieContext";
 import { FaStar, FaHeart } from "react-icons/fa";
 
 const ViewMovie = () => {
-  const { viewMovieOrTv, movieGenres, setFavorite } = useContext(MovieContext);
+  const { viewMovieOrTv, movieGenres, setFavorite, setChosenGenre } =
+    useContext(MovieContext);
   const navigate = useNavigate();
-  // console.log(movieGenres);
 
   // reviews
 
   // useEffect(() => {
-  //   const getMovieReview = async () => {
+  //   const getReview = async () => {
   //     const urlMovie =
   //       "https://api.themoviedb.org/3/movie/312221/reviews?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1";
 
@@ -27,15 +27,17 @@ const ViewMovie = () => {
   //       console.error(error);
   //     }
   //   };
-  //   getMovieReview();
+  //   getReview();
   // }, []);
+  // "https://api.themoviedb.org/3/discover/movie?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=27,53&sort_by=popularity.desc";
 
   const goBack = () => {
     navigate(-1);
   };
 
-  const handleClickedGenre = (a) => {
-    console.log(a);
+  const handleClickedGenre = (genre) => {
+    setChosenGenre(genre);
+    navigate(-1);
   };
 
   const addToFav = (a, b, c) => {
