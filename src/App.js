@@ -79,6 +79,9 @@ function App() {
     goLogout();
   }, [logout]);
 
+  //todo kada se logout da mu ostane favorite kad se opet login
+  //todo namestiti login formu i proveriti userLogin
+
   return (
     <div className="App">
       <Routes>

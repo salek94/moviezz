@@ -73,7 +73,7 @@
       width: 600px;
       position: absolute;
       bottom: 13%;
-      left: 1%;
+      left: 2%;
     }
     &--btnHero {
       position: absolute;
@@ -92,7 +92,6 @@
       rgba(129, 56, 56, 0.8),
       rgba(126, 36, 36, 0.8)
     );
-    background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 84vh;
@@ -103,14 +102,17 @@
     }
     &__movie-info {
       text-align: end;
-      right: 1%;
+      right: 2%;
       width: 600px;
       position: absolute;
       bottom: 13%;
     }
     &--btnHero {
-      @extend .heroImg__left--btnHero;
-      left: 53%;
+      position: absolute;
+      bottom: 12%;
+      right: 40%;
+      font-size: 1.3rem;
+      text-decoration: none;
       &:hover {
         color: $primaryFontColor;
       }
@@ -119,12 +121,12 @@
 
   // when movie button is clicked
 
-  &__left--transition-movie {
+  &__left__transition-movie {
     background-size: cover;
     background-position: center;
     width: 40%;
     height: 84vh;
-    opacity: 0.9;
+    opacity: 0.8;
     transition: linear 1.5s;
     &__tv-info {
       display: none;
@@ -141,16 +143,17 @@
       }
     }
   }
-  &__right--transition-movie {
+  &__right__transition-movie {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 84vh;
     width: 100%;
+    opacity: 0.9;
     transition: linear 1.5s;
-    z-index: 0;
     &__movie-info {
       @extend .heroImg__right__movie-info;
+      animation: movieTranslate 2s;
     }
     &--btnHero {
       visibility: hidden;
@@ -164,7 +167,7 @@
 
   // when TV shows button is clicked
 
-  &__left--transition-tv {
+  &__left__transition-tv {
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -173,6 +176,7 @@
     transition: linear 1.5s;
     &__tv-info {
       @extend .heroImg__left__tv-info;
+      animation: TvTranslate 2s;
     }
     &--btnHero {
       visibility: hidden;
@@ -183,7 +187,7 @@
       text-decoration: none;
     }
   }
-  &__right--transition-tv {
+  &__right__transition-tv {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

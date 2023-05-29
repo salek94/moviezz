@@ -44,7 +44,8 @@
           transition: $transition;
           &:hover {
             // color: $secondaryFontColor;
-            animation: ticTac 1s infinite;
+            // animation: ticTac 1s infinite;
+            transform: scale(1.3);
           }
           &:active {
             color: $secondaryFontColor;

@@ -5,8 +5,14 @@ import MovieContext from "../../context/MovieContext";
 import { FaStar, FaHeart } from "react-icons/fa";
 
 const ViewMovie = () => {
-  const { viewMovieOrTv, movieGenres, setFavorite, setChosenGenre } =
-    useContext(MovieContext);
+  const {
+    viewMovieOrTv,
+    movieGenres,
+    setFavorite,
+    setChosenGenre,
+    setArrowIconDisable,
+    arrowIconDisable,
+  } = useContext(MovieContext);
   const navigate = useNavigate();
 
   // reviews
@@ -32,6 +38,7 @@ const ViewMovie = () => {
   // "https://api.themoviedb.org/3/discover/movie?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=27,53&sort_by=popularity.desc";
 
   const goBack = () => {
+    setArrowIconDisable(!arrowIconDisable);
     navigate(-1);
   };
 

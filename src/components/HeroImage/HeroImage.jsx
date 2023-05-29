@@ -19,6 +19,7 @@ const HeroImage = () => {
     clickedTVshow,
     setClickedTVshow,
     setMovieGenres,
+    arrowIconDisable,
   } = useContext(MovieContext);
 
   const [transitionMovie, setTransitionMovie] = useState(false);
@@ -50,6 +51,14 @@ const HeroImage = () => {
   const removeArrowIcon = () => {
     refArrowIcon.current.className = "heroImg__arrow--none";
   };
+
+  useEffect(() => {
+    let a = setTimeout(() => {
+      refArrowIcon.current.className = "heroImg__arrow--none";
+    }, 0);
+    return () => clearTimeout(a);
+  }, [arrowIconDisable]);
+
   const baseUrl = "https://api.themoviedb.org/3/";
   const myApiKey = "api_key=39b7c306441823329a6e5fa506a7906c";
 
@@ -169,13 +178,13 @@ const HeroImage = () => {
             ), url(https://image.tmdb.org/t/p/original${imgPopularTV.backdrop_path})`,
           }}
           className={`heroImg__left${
-            transitionMovie ? "--transition-movie" : ""
-          }${transitionTV ? "--transition-tv" : ""}`}
+            transitionMovie ? "__transition-movie" : ""
+          }${transitionTV ? "__transition-tv" : ""}`}
         >
           <div
             className={`heroImg__left${
-              transitionMovie ? "--transition-movie" : ""
-            }${transitionTV ? "--transition-tv" : ""}__tv-info`}
+              transitionMovie ? "__transition-movie" : ""
+            }${transitionTV ? "__transition-tv" : ""}__tv-info`}
           >
             <h2 className="heroImg__left__name">
               {imgPopularTV.title || imgPopularTV.original_name}
@@ -195,8 +204,8 @@ const HeroImage = () => {
           <Link
             to={"/home/tv"}
             className={`heroImg__left${
-              transitionMovie ? "--transition-movie" : ""
-            }${transitionTV ? "--transition-tv" : ""}--btnHero btnPrimary`}
+              transitionMovie ? "__transition-movie" : ""
+            }${transitionTV ? "__transition-tv" : ""}--btnHero btnPrimary`}
             onClick={handleTVshow}
           >
             TV Shows
@@ -211,14 +220,14 @@ const HeroImage = () => {
             ), url(https://image.tmdb.org/t/p/original${imgPopularMovie.backdrop_path})`,
           }}
           className={`heroImg__right${
-            transitionMovie ? "--transition-movie" : ""
-          }${transitionTV ? "--transition-tv" : ""}`}
+            transitionMovie ? "__transition-movie" : ""
+          }${transitionTV ? "__transition-tv" : ""}`}
         >
           {" "}
           <div
             className={`heroImg__right${
-              transitionMovie ? "--transition-movie" : ""
-            }${transitionTV ? "--transition-tv" : ""}__movie-info`}
+              transitionMovie ? "__transition-movie" : ""
+            }${transitionTV ? "__transition-tv" : ""}__movie-info`}
           >
             <h2 className="heroImg__right__name">
               {imgPopularMovie.title || imgPopularMovie.original_name}
@@ -238,8 +247,8 @@ const HeroImage = () => {
           <Link
             to={"/home/movies"}
             className={`heroImg__right${
-              transitionMovie ? "--transition-movie" : ""
-            }${transitionTV ? "--transition-tv" : ""}--btnHero btnPrimary`}
+              transitionMovie ? "__transition-movie" : ""
+            }${transitionTV ? "__transition-tv" : ""}--btnHero btnPrimary`}
             onClick={handleMovie}
           >
             Movies

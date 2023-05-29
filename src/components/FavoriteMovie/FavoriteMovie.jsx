@@ -11,6 +11,7 @@ const FavoriteMovie = ({ fav, onClickOutside, show }) => {
     let deleteItem = favorite.filter((item) => item.id !== fav.id);
     setFavorite(deleteItem);
   };
+  console.log(fav);
 
   // useEffect(() => {
   //   const handleClickOutside = (event) => {
@@ -31,7 +32,9 @@ const FavoriteMovie = ({ fav, onClickOutside, show }) => {
       <span className="favMenu__img">
         <img src={`https://image.tmdb.org/t/p/original${fav.pic}`} alt="" />
       </span>
-      <span className="favMenu__title">{fav.name}</span>
+      <span className="favMenu__title">
+        {fav.name === undefined ? "" : fav.name.substring(0, 20)}
+      </span>
       <a
         href={`/watch/?v=${fav.id}`}
         target="_blank"

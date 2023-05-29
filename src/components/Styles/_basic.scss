@@ -51,3 +51,19 @@
     transform: scale(1);
   }
 }
+@keyframes movieTranslate {
+  from {
+    transform: translateX(300px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+@keyframes TvTranslate {
+  from {
+    transform: translateX(-300px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}

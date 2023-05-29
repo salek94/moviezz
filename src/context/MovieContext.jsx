@@ -16,6 +16,7 @@ export const MovieProvider = ({ children }) => {
   const [auth, setAuth] = useState(false);
   const [logout, setLogout] = useState(false);
   const [chosenGenre, setChosenGenre] = useState("");
+  const [arrowIconDisable, setArrowIconDisable] = useState(false);
 
   return (
     <MovieContext.Provider
@@ -42,6 +43,8 @@ export const MovieProvider = ({ children }) => {
         setLogout,
         chosenGenre,
         setChosenGenre,
+        arrowIconDisable,
+        setArrowIconDisable,
       }}
     >
       {children}
