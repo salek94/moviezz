@@ -1,11 +1,11 @@
-import React from "react";
-import Trending from "../../components/Banner/Trending";
-import TopRated from "../../components/Banner/TopRated";
-import Popular from "../../components/Banner/Popular";
-import Action from "../../components/Banner/Action";
-import Animation from "../../components/Banner/Animation";
-import Horror from "../../components/Banner/Horror";
-import Comedy from "../../components/Banner/Comedy";
+import React, { lazy } from "react";
+const Trending = lazy(() => import("../../components/Banner/Trending"));
+const TopRated = lazy(() => import("../../components/Banner/TopRated"));
+const Popular = lazy(() => import("../../components/Banner/Popular"));
+const Action = lazy(() => import("../../components/Banner/Action"));
+const Animation = lazy(() => import("../../components/Banner/Animation"));
+const Horror = lazy(() => import("../../components/Banner/Horror"));
+const Comedy = lazy(() => import("../../components/Banner/Comedy"));
 
 const MovieSection = () => {
   return (

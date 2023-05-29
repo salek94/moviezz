@@ -1,21 +1,20 @@
+import { useContext, useEffect } from "react";
+import { Route, Routes, useNavigate, useSearchParams } from "react-router-dom";
+import MovieContext from "./context/MovieContext";
+import axios from "axios";
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "animate.css";
+import Playvideo from "./components/Playvideo/Playvideo";
+import { routeConfig } from "./config/routeConfig";
 import Register from "./pages/Register/Register";
-import MovieContext from "./context/MovieContext";
-import { Route, Routes, useNavigate } from "react-router-dom";
 import ViewMovie from "./pages/ViewMovie/ViewMovie";
 import Home from "./pages/Home/Home";
 import SearchedMovies from "./pages/SearchedMovies/SearchedMovies";
 import MovieSection from "./pages/MovieSection/MovieSection";
 import TVshowSection from "./pages/TVshowSection/TVshowSection";
-import "animate.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { useContext, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import axios from "axios";
-import Playvideo from "./components/Playvideo/Playvideo";
-import { routeConfig } from "./config/routeConfig";
 
 function App() {
   const { auth, setAuth, userLogin, setUserLogin, logout } =
@@ -81,11 +80,11 @@ function App() {
 
   //todo kada se logout da mu ostane favorite kad se opet login
   //todo namestiti login formu i proveriti userLogin
+  //todo lazyLoading, codeSplitting
 
   return (
     <div className="App">
       <Routes>
-        {/* <Route path="/" element={<Register />}></Route> */}
         {userLogin && JSON.parse(localStorage?.getItem("tokenSession")) ? (
           <>
             <Route path={routeConfig.HOME.url} element={<Home />}>
@@ -93,16 +92,17 @@ function App() {
               <Route path={routeConfig.TV.url} element={<TVshowSection />} />
             </Route>
             <Route path={routeConfig.LIST.url} element={<SearchedMovies />} />
-            <Route path={routeConfig.OVERVIEW.url} element={<ViewMovie />}>
-              {/* <Route path=":id" element={<ViewMovie />} /> */}
-            </Route>
+            <Route
+              path={routeConfig.OVERVIEW.url}
+              element={<ViewMovie />}
+            ></Route>
           </>
         ) : (
           <>
             <Route path={routeConfig.WATCH.url} element={<Playvideo />} />
             <Route path="*" element={<Register />} />
-            {/* <Route path="*" element={<NotFound/>} /> */}
             <Route path={routeConfig.REGISTER.url} element={<Register />} />
+            {/* <Route path="*" element={<NotFound/>} /> */}
           </>
         )}
       </Routes>
