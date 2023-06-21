@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Route, Routes, useNavigate, useSearchParams } from "react-router-dom";
 import MovieContext from "./context/MovieContext";
 import axios from "axios";
@@ -19,20 +19,21 @@ import TVshowSection from "./pages/TVshowSection/TVshowSection";
 function App() {
   const { auth, setAuth, userLogin, setUserLogin, logout } =
     useContext(MovieContext);
+  const [sessionId, setSessionId] = useState("");
+  const [isMounted, setIsMounted] = useState(false);
   const navigate = useNavigate();
   const [approve] = useSearchParams("");
   const approved = approve.get("approved");
-  console.log(userLogin);
 
   useEffect(() => {
-    if (approved == "true") {
+    if (approved === "true") {
       setAuth(true);
     }
   }, [approved]);
 
   useEffect(() => {
     const handleAuth = () => {
-      if (auth) {
+      if (isMounted && !userLogin) {
         axios
           .post(
             "https://api.themoviedb.org/3/authentication/session/new?api_key=39b7c306441823329a6e5fa506a7906c",
@@ -43,49 +44,33 @@ function App() {
           .then((res) => {
             if (res && res.status === 200) {
               setUserLogin(true);
-              localStorage.setItem(
-                "tokenSession",
-                JSON.stringify(res.data.session_id)
-              );
-              console.log(res.data);
-              console.log(res.data.session_id);
+              setSessionId(res.data.session_id);
             }
-          });
-      }
+          })
+          .catch((err) => console.log(err));
+      } else setIsMounted(true);
     };
     handleAuth();
   }, [auth]);
 
   useEffect(() => {
-    const goLogout = () => {
-      const sessionId = JSON.parse(localStorage.getItem("tokenSession"));
-      if (logout) {
-        axios
-          .delete(
-            `https://api.themoviedb.org/3/authentication/session?api_key=39b7c306441823329a6e5fa506a7906c&session_id=${sessionId}`
-          )
-          .then((res) => {
-            if (res && res.status === 200) {
-              console.log(res.data);
-              setUserLogin(false);
-              // localStorage.removeItem("tokenSession");
-              navigate("/");
-            }
-          })
-          .catch((err) => console.log(err));
-      }
-    };
-    goLogout();
+    if (isMounted) {
+      axios
+        .delete(
+          `https://api.themoviedb.org/3/authentication/session?api_key=39b7c306441823329a6e5fa506a7906c&session_id=${sessionId}`
+        )
+        .then((res) => {
+          setUserLogin(false);
+          navigate("/");
+        })
+        .catch((err) => console.error(err));
+    } else setIsMounted(true);
   }, [logout]);
-
-  //todo kada se logout da mu ostane favorite kad se opet login
-  //todo namestiti login formu i proveriti userLogin
-  //todo lazyLoading, codeSplitting
 
   return (
     <div className="App">
       <Routes>
-        {userLogin && JSON.parse(localStorage?.getItem("tokenSession")) ? (
+        {userLogin ? (
           <>
             <Route path={routeConfig.HOME.url} element={<Home />}>
               <Route path={routeConfig.MOVIES.url} element={<MovieSection />} />
@@ -96,13 +81,13 @@ function App() {
               path={routeConfig.OVERVIEW.url}
               element={<ViewMovie />}
             ></Route>
+            <Route path={routeConfig.WATCH.url} element={<Playvideo />} />
+            <Route path="*" element={<Home />} />
           </>
         ) : (
           <>
-            <Route path={routeConfig.WATCH.url} element={<Playvideo />} />
-            <Route path="*" element={<Register />} />
             <Route path={routeConfig.REGISTER.url} element={<Register />} />
-            {/* <Route path="*" element={<NotFound/>} /> */}
+            <Route path="*" element={<Register />} />
           </>
         )}
       </Routes>

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import FavoriteMovie from "../FavoriteMovie/FavoriteMovie";
 
 const Navbar = () => {
-  const { userLogin, setLogout, favorite, setChosenGenre } =
+  const { userLogin, setLogout, logout, favorite, setChosenGenre } =
     useContext(MovieContext);
   const [searchValue, setSearchValue] = useState("");
   const [showFavoriteMovie, setShowFavoriteMovie] = useState(false);
@@ -63,7 +63,6 @@ const Navbar = () => {
           <input
             type="search"
             className="navbar__input"
-            // className="navbar__search__input"
             placeholder="Search for a movie, tv shows..."
             name="searchMovie"
             autoComplete="off"
@@ -80,7 +79,7 @@ const Navbar = () => {
             <div className="navbar__login">
               <span
                 className="navbar__login--icon"
-                onClick={() => setLogout(true)}
+                onClick={() => setLogout(!logout)}
               >
                 <FaUserCircle />
               </span>

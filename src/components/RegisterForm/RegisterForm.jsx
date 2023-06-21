@@ -5,10 +5,10 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import PopupModal from "../ModalPopup/PopupModal";
 import axios from "axios";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 const RegisterForm = ({ setSignIn }) => {
   const [isSubmitForm, setIsSubmitForm] = useState(false);
-
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -27,8 +27,6 @@ const RegisterForm = ({ setSignIn }) => {
           )
           .then((res) => {
             if (res && res.status === 200) {
-              // console.log(res.data);
-
               localStorage.setItem(
                 "tokenRequest",
                 JSON.stringify(res.data.request_token)
@@ -41,23 +39,13 @@ const RegisterForm = ({ setSignIn }) => {
       setIsSubmitForm(true);
 
       action.resetForm();
-      // axios.post(url, values)
-      //.then((res)=>{
-      /// if (res && res.status === 200){
-      //  console.log(res.data)
-      //  localStorage.setItem('tokenUser', JSON.stringify(res.data.token));
-      //  setUserLogin(true);
-      //  }
-      //.catch((err)=>{
-      // console.log(err)})
-      //})
     },
   });
 
   return (
     <>
       {isSubmitForm ? (
-        <PopupModal setIsSubmitForm={setIsSubmitForm} authModal={false} />
+        <PopupModal setIsSubmitForm={setIsSubmitForm} />
       ) : (
         <div className="bckground-form">
           <div>
@@ -156,6 +144,7 @@ const RegisterForm = ({ setSignIn }) => {
                 <Form.Control
                   id="password"
                   name="password"
+                  // type="text"
                   type="password"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -179,6 +168,7 @@ const RegisterForm = ({ setSignIn }) => {
                 <Form.Control
                   id="confirmPassword"
                   name="confirmPassword"
+                  // type="text"
                   type="password"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -198,7 +188,6 @@ const RegisterForm = ({ setSignIn }) => {
 
               <Button
                 className="mb-3"
-                variant="warning"
                 type="submit"
                 disabled={formik.isSubmitting}
               >
@@ -209,7 +198,9 @@ const RegisterForm = ({ setSignIn }) => {
                 <Form.Text className="text-muted">
                   Already have a account?
                 </Form.Text>
-                <Button onClick={() => setSignIn(true)}>Sign In</Button>
+                <Button variant="warning" onClick={() => setSignIn(true)}>
+                  Sign In
+                </Button>
               </div>
             </Form>
           </div>

@@ -1,72 +1,77 @@
 import { useFormik } from "formik";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
-import { ValidationUser } from "../ValidationScheme/ValidationUser";
+import { ValidationUserLogin } from "../ValidationScheme/ValidationUser";
 import axios from "axios";
 import MovieContext from "../../context/MovieContext";
 
 const SignInForm = ({ setSignIn }) => {
   const navigate = useNavigate();
 
-  const { setUserLogin } = useContext(MovieContext);
+  const { setAuth } = useContext(MovieContext);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [request, setRequest] = useState("");
+  const [isMounted, setIsMounted] = useState(false);
 
   const formik = useFormik({
     initialValues: {
       userName: "",
       password: "",
     },
-    validationSchema: ValidationUser,
+    validationSchema: ValidationUserLogin,
     onSubmit: async (values, action) => {
-      console.log(values);
-
-      // try {
-      //   await axios
-      //     .post(
-      //       "https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=39b7c306441823329a6e5fa506a7906c",
-      //       {
-      //         username: JSON.stringify(values.userName),
-      //         password: JSON.stringify(values.password),
-      //         request_token: JSON.parse(localStorage.getItem("tokenRequest")),
-      //       }
-      //     )
-      //     .then((res) => {
-      //       console.log("login", res.data);
-      //       setUserLogin(true);
-      //     });
-      // } catch (error) {
-      //   console.log(error);
-      // }
-      // action.resetForm();
-      // gotoHome button izbrisati
+      try {
+        await axios
+          .get(
+            "https://api.themoviedb.org/3/authentication/token/new?api_key=39b7c306441823329a6e5fa506a7906c"
+          )
+          .then((res) => {
+            if (res && res.status === 200) {
+              setRequest(res.data.request_token);
+              setPassword(values.password);
+              setUsername(values.userName);
+            }
+          });
+      } catch (error) {
+        console.log(error);
+      }
+      action.resetForm();
     },
   });
 
-  // useEffect(()=>{
-
-  // AuthService.checkUser({email: email})
-  // .then(()=>{
-  // if (res && res.status === 200){
-  //  goToHome();
-  //  }
-  //.catch((err)=>{
-  //  console.log(err)})
-  // });
-
-  // },[values])
-
-  const goToHome = () => {
-    navigate("/home");
-    localStorage.setItem("tokenSession", JSON.stringify("3423tsfdqwe"));
-    //dispatch setUser(values)
-    setUserLogin(true);
-  };
+  useEffect(() => {
+    if (isMounted) {
+      axios
+        .post(
+          "https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=39b7c306441823329a6e5fa506a7906c",
+          {
+            username: username,
+            password: password,
+            request_token: request,
+          }
+        )
+        .then((res) => {
+          console.log("login", res.data);
+          localStorage.setItem(
+            "tokenRequest",
+            JSON.stringify(res.data.request_token)
+          );
+          setAuth(true);
+          navigate("/home");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else setIsMounted(true);
+  }, [request]);
 
   return (
     <div className="bckground-form relative">
       <div className="container-form absolute form-border">
-        <Form>
+        <Form onSubmit={formik.handleSubmit}>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="userName">Username:</Form.Label>
             <Form.Control
@@ -108,19 +113,18 @@ const SignInForm = ({ setSignIn }) => {
               ""
             )}
           </Form.Group>
-
+          <Button
+            className="mb-3"
+            variant="warning"
+            type="submit"
+            disabled={formik.isSubmitting}
+          >
+            Sign In
+          </Button>
           <div className="flex-login">
             <Form.Text className="text-muted">Don't have a account?</Form.Text>
             <Button onClick={() => setSignIn(false)}>Register Here</Button>
           </div>
-          <Button
-            className="mt-3"
-            variant="warning"
-            onClick={goToHome}
-            // type="submit"
-          >
-            Sign in
-          </Button>
         </Form>
       </div>
     </div>
