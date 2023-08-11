@@ -15,28 +15,6 @@ const ViewMovie = () => {
   } = useContext(MovieContext);
   const navigate = useNavigate();
 
-  // reviews
-
-  // useEffect(() => {
-  //   const getReview = async () => {
-  //     const urlMovie =
-  //       "https://api.themoviedb.org/3/movie/312221/reviews?api_key=39b7c306441823329a6e5fa506a7906c&language=en-US&page=1";
-
-  //     try {
-  //       const response = await fetch(urlMovie);
-  //       const responseJson = await response.json();
-
-  //       if (responseJson.results) {
-  //         console.log(responseJson.results);
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   getReview();
-  // }, []);
-  // "https://api.themoviedb.org/3/discover/movie?api_key=39b7c306441823329a6e5fa506a7906c&with_genres=27,53&sort_by=popularity.desc";
-
   const goBack = () => {
     setArrowIconDisable(!arrowIconDisable);
     navigate(-1);

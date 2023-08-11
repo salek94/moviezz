@@ -17,7 +17,6 @@ const Posters = () => {
 
   const navigate = useNavigate();
   const getQuery = query.get("search");
-  console.log(chosenGenre);
   const baseUrl = "https://api.themoviedb.org/3/";
   const myApiKey = "api_key=39b7c306441823329a6e5fa506a7906c";
 
@@ -28,8 +27,6 @@ const Posters = () => {
       const responseJson = await response.json();
       try {
         if (responseJson.results) {
-          // console.log(responseJson.total_pages);
-          // console.log(responseJson.results);
           setMovie(responseJson.results);
           setFlag(true);
           setShowMore(true);
@@ -46,19 +43,19 @@ const Posters = () => {
 
   const getMovieOrTvFromGenre = async (chosenGenre) => {
     const url = `${baseUrl}discover/movie?${myApiKey}&with_genres=${chosenGenre.id}&language=en-US&page=1&sort_by=popularity.desc`;
-    try {
-      const response = await fetch(url);
-      const responseJson = await response.json();
+    if (chosenGenre) {
+      try {
+        const response = await fetch(url);
+        const responseJson = await response.json();
 
-      if (responseJson.results) {
-        // console.log(responseJson.total_pages);
-        console.log(responseJson.results);
-        setMovie(responseJson.results);
-        setFlag(true);
-        setShowMore(true);
+        if (responseJson.results) {
+          setMovie(responseJson.results);
+          setFlag(true);
+          setShowMore(true);
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
   };
 
@@ -120,7 +117,6 @@ const Posters = () => {
               </li>
             </ul>
           </div>
-          {/* <div>Year</div> */}
         </aside>
         <div className="poster-info__results">
           {movie.length === 0 && <h3>No results</h3>}

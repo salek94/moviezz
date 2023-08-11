@@ -7,13 +7,13 @@ import { useNavigate } from "react-router-dom";
 import FavoriteMovie from "../FavoriteMovie/FavoriteMovie";
 
 const Navbar = () => {
-  const { userLogin, setLogout, logout, favorite, setChosenGenre } =
+  const { setLogout, logout, favorite, setChosenGenre } =
     useContext(MovieContext);
   const [searchValue, setSearchValue] = useState("");
   const [showFavoriteMovie, setShowFavoriteMovie] = useState(false);
   const navigate = useNavigate();
   const inputSearch = useRef();
-
+  const userLogin = JSON.parse(localStorage.getItem("user"));
   const handleSearchValue = (e) => {
     setSearchValue(e.target.value);
   };
@@ -26,17 +26,16 @@ const Navbar = () => {
     }
   };
 
-  const goToHome = (e) => {
-    e.preventDefault();
-    navigate("/home");
-  };
-
   const handleEnter = (e) => {
     if (e.key === "Enter") {
       navigate(`/list/?search=${searchValue}`);
       setChosenGenre("");
       inputSearch.current.value = "";
     }
+  };
+  const goToHome = (e) => {
+    e.preventDefault();
+    navigate("/home");
   };
 
   const handleFavoriteMovie = () => {

@@ -17,13 +17,13 @@ import MovieSection from "./pages/MovieSection/MovieSection";
 import TVshowSection from "./pages/TVshowSection/TVshowSection";
 
 function App() {
-  const { auth, setAuth, userLogin, setUserLogin, logout } =
-    useContext(MovieContext);
+  const { auth, setAuth, logout } = useContext(MovieContext);
   const [sessionId, setSessionId] = useState("");
   const [isMounted, setIsMounted] = useState(false);
   const navigate = useNavigate();
   const [approve] = useSearchParams("");
   const approved = approve.get("approved");
+  const userLogin = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     if (approved === "true") {
@@ -43,7 +43,7 @@ function App() {
           )
           .then((res) => {
             if (res && res.status === 200) {
-              setUserLogin(true);
+              localStorage.setItem("user", "true");
               setSessionId(res.data.session_id);
             }
           })
@@ -60,7 +60,9 @@ function App() {
           `https://api.themoviedb.org/3/authentication/session?api_key=39b7c306441823329a6e5fa506a7906c&session_id=${sessionId}`
         )
         .then((res) => {
-          setUserLogin(false);
+          localStorage.removeItem("user");
+          localStorage.removeItem("tokenRequest");
+          // setIsMounted(true);
           navigate("/");
         })
         .catch((err) => console.error(err));
