@@ -52,9 +52,7 @@ const Navbar = () => {
     <div className="nav-container">
       <div className="navbar">
         <div className="navbar__logo" onClick={goToHome}>
-          <div>
-            <img src={mainLogo} alt="" />
-          </div>
+          <img className="navbar__img" src={mainLogo} alt="" />
           <h3>MOVIZZ</h3>
         </div>
 

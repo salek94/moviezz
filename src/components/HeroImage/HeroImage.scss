@@ -9,6 +9,9 @@
   background-color: $secondaryFontColor;
   position: relative;
   overflow: hidden;
+  @include mobile {
+    height: auto;
+  }
 
   &__title {
     width: 30%;
@@ -18,9 +21,12 @@
     z-index: 99;
     text-align: center;
     color: $primaryFontColor;
-    // mix-blend-mode: overlay;
     &--none {
       display: none;
+    }
+    @include mobile {
+      left: 6%;
+      width: 90%;
     }
   }
   &__welcome {
@@ -37,6 +43,12 @@
       height: 20px;
       width: 100%;
       z-index: -1;
+      @include mobile {
+        display: none;
+      }
+    }
+    @include mobile {
+      font-size: 2rem;
     }
   }
   &__arrow {
@@ -68,12 +80,18 @@
     transition: linear 1.5s;
     &__name {
       font-weight: $fontWeight400;
+      @include mobile {
+        width: 30%;
+      }
     }
     &__tv-info {
       width: 600px;
       position: absolute;
       bottom: 13%;
       left: 2%;
+      // @include mobile {
+      //   display: none;
+      // }
     }
     &--btnHero {
       position: absolute;
@@ -99,6 +117,9 @@
     transition: linear 1.5s;
     &__name {
       font-weight: $fontWeight400;
+      // @include mobile {
+      //   width: 30%;
+      // }
     }
     &__movie-info {
       text-align: end;
@@ -106,6 +127,9 @@
       width: 600px;
       position: absolute;
       bottom: 13%;
+      // @include mobile {
+      //   display: none;
+      // }
     }
     &--btnHero {
       position: absolute;

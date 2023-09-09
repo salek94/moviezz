@@ -17,13 +17,38 @@
     cursor: pointer;
     color: $secondaryFontColor;
     font-family: $fontLogo;
+    @include mobile {
+      @include flexx($dir: row, $justify: flex-start, $align: center);
+      gap: 4px;
+      width: 40%;
+    }
+    @include tablet {
+      @include flexx($dir: row, $justify: flex-start, $align: center);
+      gap: 4px;
+      width: 40%;
+    }
+    // @include desktop {
+    //   @include flexx($dir: row, $justify: flex-start, $align: center);
+    //   gap: 4px;
+    //   width: 40%;
+    // }
+  }
+  &__img {
+    @include mobile {
+      width: 25%;
+    }
   }
   &__search {
     @include flexx($dir: row, $justify: space-between, $align: center);
     position: relative;
     width: 45%;
+    @include mobile {
+      width: 56%;
+    }
+    @include tablet {
+      width: 56%;
+    }
   }
-
   &__input {
     width: 80%;
     height: 35px;
@@ -32,6 +57,14 @@
     font-size: 1.1rem;
     color: $secondaryFontColor;
     padding-left: 10px;
+    @include mobile {
+      width: 56%;
+      padding-left: 3px;
+    }
+    // @include tablet {
+    //   width: 56%;
+    //   padding-left: 3px;
+    // }
   }
   &__searchIcon {
     position: absolute;
@@ -41,6 +74,9 @@
     height: 1.5em;
     width: 2em;
     cursor: pointer;
+    @include mobile {
+      position: static;
+    }
   }
   &__notLogin {
     color: $primaryFontColor;
@@ -49,12 +85,18 @@
     width: 12%;
   }
   &__login {
-    @include flexx($dir: row, $justify: space-around, $align: center);
+    @include flexx($dir: row, $justify: center, $align: center);
     width: 20%;
     color: $secondaryFontColor;
     font-size: $fontSize;
     &--icon {
       cursor: pointer;
+    }
+    @include mobile {
+      flex-wrap: nowrap;
+    }
+    @include tablet {
+      flex-wrap: nowrap;
     }
   }
   &__favorite-length::after {
